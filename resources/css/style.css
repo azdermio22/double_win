@@ -4,8 +4,113 @@ nav{
     position: fixed;
     top: 0;
 }
+
+.register{
+    background-color: white;
+    padding: 5px 40px 10px 40px;
+    width: 100%;
+    position: absolute;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.register_label{
+    position: relative;
+    transform: translateY(23px);
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    user-select: none;
+}
+
+.register_form_container{
+    background-color: gray;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background-color: white;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.register_btn{
+    height: 40px;
+    width: 200px;
+    background-color: rgb(214, 214, 214);
+    display: flex;
+    position: relative;
+    z-index: 2;
+    margin-top: 10px;
+    border-radius: 30px;
+
+}
+
+.btnr{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    font-weight: 600;
+    user-select: none;
+}
+
+.btnr:hover{
+    cursor: pointer;
+}
+
+.register_input{
+    border: none;
+    border-bottom: 1px solid black;
+    border-radius: none;
+    outline: none;
+    width: 100%;
+}
+
+.register_submit{
+    background: linear-gradient(45deg,orange,red);
+    border: none;
+    color: white;
+    height: 40px;
+    width: 150px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.input_border{
+    height: 1px;
+    width: 100%;
+    background-color: rgb(69, 69, 255);
+    position: absolute;
+    bottom: 0px;
+    transform: translateX(-101%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.btn_swich{
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(50deg,orange,red);
+    z-index: 3;
+    border-radius: 30px;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.register_container{
+    background-size: cover;
+    height: 100vh !important;
+    background-image: url('https://i.pinimg.com/736x/82/4c/75/824c75d5d8baddac1e3ab99a48b77f36.jpg');
+}
+
 .eye{
     font-size: 20px;
+    border-bottom: 1px solid black;
 }
 .card_text{
     color: gray;
@@ -34,4 +139,85 @@ header{
     height: 100vh;
     background-image: url('https://www.itstodini.it/wp-content/uploads/2019/11/consumo-elettrodomestici.jpg');
     background-size: cover;
+}
+
+@keyframes login{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes login2{
+    0%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes border1 {
+    0%{
+        transform: translatex(-101%);
+    }
+    100%{
+        transform: translatex(0%);
+    }
+}
+
+@keyframes border2 {
+    0%{
+        transform: translatex(0%);
+    }
+    100%{
+        transform: translatex(-101%);
+    }
+}
+
+@keyframes register_input1{
+    0%{
+        transform: translateY(23px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+@keyframes register_input2{
+    0%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(23px);
+    }
+}
+
+@keyframes register_swich1{
+    0%{
+        transform: translate(100px);
+        background-position: 0% 50%;
+    }
+    50% {
+		background-position: 100% 50%;
+	}
+    100%{
+        transform: translateX(0px);
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes register_swich2{
+    0%{
+        transform: translate(0px);
+        background-position: 0% 50%;
+    }
+    50% {
+		background-position: 100% 50%;
+	}
+    100%{
+        transform: translateX(100px);
+        background-position: 0% 50%;
+    }
 }
