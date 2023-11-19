@@ -14,6 +14,16 @@ nav{
     animation-fill-mode: forwards;
 }
 
+.login{
+    position: absolute;
+    transform: translateX(100%);
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 .register_label{
     position: relative;
     transform: translateY(23px);
@@ -32,6 +42,7 @@ nav{
     background-color: white;
     position: relative;
     overflow-x: hidden;
+    height: 400px;
 }
 
 .register_btn{
@@ -39,10 +50,11 @@ nav{
     width: 200px;
     background-color: rgb(214, 214, 214);
     display: flex;
-    position: relative;
+    position: absolute;
     z-index: 2;
     margin-top: 10px;
     border-radius: 30px;
+    top: 0;
 
 }
 
@@ -100,6 +112,7 @@ nav{
     border-radius: 30px;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    animation-name: register_swich2;
 }
 
 .register_container{
@@ -140,22 +153,39 @@ header{
     background-image: url('https://www.itstodini.it/wp-content/uploads/2019/11/consumo-elettrodomestici.jpg');
     background-size: cover;
 }
-
-@keyframes login{
+@keyframes login1 {
     0%{
         transform: translateX(0);
     }
     100%{
-        transform: translateX(-100%);
+        transform: translateX(100%);
     }
 }
 
-@keyframes login2{
+@keyframes login2 {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes register1{
     0%{
         transform: translateX(-100%);
     }
     100%{
         transform: translateX(0);
+    }
+}
+
+@keyframes register2{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
     }
 }
 
@@ -196,28 +226,17 @@ header{
 
 @keyframes register_swich1{
     0%{
-        transform: translate(100px);
-        background-position: 0% 50%;
+        transform: translateX(100px);
     }
-    50% {
-		background-position: 100% 50%;
-	}
     100%{
-        transform: translateX(0px);
-        background-position: 0% 50%;
+        transform: translateX(0);
     }
 }
 
 @keyframes register_swich2{
     0%{
-        transform: translate(0px);
-        background-position: 0% 50%;
     }
-    50% {
-		background-position: 100% 50%;
-	}
     100%{
         transform: translateX(100px);
-        background-position: 0% 50%;
     }
 }
