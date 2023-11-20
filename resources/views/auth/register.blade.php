@@ -72,14 +72,5 @@
       </div>
     </div>
   </div>
-  <script>
-    if ({{$form}} == 1) {
-    let login = document.querySelector('.login');
-    let register = document.querySelector('.register');
-    let swich = document.querySelector('.btn_swich');
-    swich.style.transform = "translateX(100px)";
-    login.style.transform= 'translateX(0)';
-    register.style.transform= 'translateX(-100%)';
-    }
-  </script>
+  <input id="form" class="d-none" value="{{$form}}" type="number">
 </x-layout>

@@ -112,7 +112,6 @@ nav{
     border-radius: 30px;
     animation-duration: 1s;
     animation-fill-mode: forwards;
-    animation-name: register_swich2;
 }
 
 .register_container{
@@ -226,17 +225,32 @@ header{
 
 @keyframes register_swich1{
     0%{
-        transform: translateX(100px);
+        transform: translateX(100%);
     }
     100%{
-        transform: translateX(0);
+        transform: translateX(0%);
     }
 }
 
 @keyframes register_swich2{
     0%{
+        transform: translateX(0%);
     }
     100%{
-        transform: translateX(100px);
+        transform: translateX(100%);
     }
 }
+
+/* card carousel */
+.card_carousel{
+    transition: 1s;
+}
+.card-img-top{
+    border-radius: 0;
+}
+.img_miniature{
+    height: 71px;
+    width: 71px;
+    padding: 1px;
+}
+/* fine card carousel */
