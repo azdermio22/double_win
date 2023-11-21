@@ -11,7 +11,8 @@
     </header>
     <main>
         <div class="container-fluid">
-            <div class="row card_row justify-content-evenly">
+            <div class="card_row row justify-content-evenly">
+                <div class="triger"></div>
                 @foreach ($articles as $article)
                 <div class="card col-3 p-0 my-3 text-center overflow-hidden" style="width: 18rem;">
                     <div class="d-flex card_carousel">
@@ -24,8 +25,8 @@
                     <div class="d-flex">
                         @foreach ($images as $image)
                         @if ($image->article_id == $article->id)
-                        <div class="img_miniature">  
-                        <img src="{{Storage::url($image->images)}}" class="card-img-top" alt="...">
+                        <div class="img_miniature_container">  
+                        <img src="{{Storage::url($image->images)}}" class="card-img-top img_miniature" alt="...">
                         </div>
                         @endif  
                         @endforeach

@@ -87,20 +87,49 @@ if (text.innerHTML.length > 116) {
 // card carousel
 let carousels = document.querySelectorAll('.card_carousel');
 let cards = document.querySelectorAll('.card');
-let card_row = document.querySelectorAll('.card_row');
+let triger = document.querySelector('.triger');
 
 carousels.forEach((carousel, i)=> { 
     let per = -100;
     let reset = 2;
-    let mini = 0;
+    let mini = 1;
     let interval;
-    let miniatures = cards[i].querySelectorAll('.img_miniature');
+    let counter = 0;
+    let miniatures_containers = cards[i].querySelectorAll('.img_miniature_container');
     let images = carousel.querySelectorAll('.image');
+    let img_miniatures = cards[i].querySelectorAll('.img_miniature');
+
+    img_miniatures.forEach((img_miniature, i)=> {
+        img_miniature.addEventListener('click',()=>{ 
+                per = -100 * i;
+                reset = 1 + i;
+                mini = 0 + i;
+             console.log(per);
+             console.log(reset);
+             console.log(mini);
+             miniatures_containers.forEach((miniature)=> {
+                miniature.style.border = 'none';
+                miniature.style.padding = '1px';
+            });
+            miniatures_containers[i].style.border = '2px solid red';
+            miniatures_containers[i].style.padding = '0';
+            carousel.style.transform= `translateX(${per}%)`;
+        });
+    });
+
     cards[i].addEventListener('mouseover',()=>{
+        if (counter == 0) {
+            counter++;
+        miniatures_containers[0].style.border = '2px solid red';
+        miniatures_containers[0].style.padding = '0';
         interval = setInterval(() => {
             carousel.style.transform= `translateX(${per}%)`;
-            miniatures[mini].style.border = '1px solid red';
-            // miniatures[min].style.padding = '0';
+                miniatures_containers.forEach((miniature)=> {
+                    miniature.style.border = 'none';
+                    miniature.style.padding = '1px';
+                });
+            miniatures_containers[mini].style.border = '2px solid red';
+            miniatures_containers[mini].style.padding = '0';
             if (images[reset]) {    
                 per -= 100;
                 reset ++;
@@ -111,9 +140,20 @@ carousels.forEach((carousel, i)=> {
                 mini = 0;
             }
         }, 3000);
-    })
-    cards[i].addEventListener('mouseout',()=>{
-        clearInterval(interval);
+    }
+});
+    triger.addEventListener('mouseover',()=>{
+        if (counter == 1) {
+            counter--;
+            clearInterval(interval);
+            miniatures_containers.forEach((miniature)=> {
+                miniature.style.border = 'none';
+                miniature.style.padding = '1px';
+            });
+            mini = 1;
+            per = -100;
+            reset = 2;
         carousel.style.transform= 'translateX(0)';
+        }
     }) 
 });

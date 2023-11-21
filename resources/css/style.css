@@ -248,9 +248,17 @@ header{
 .card-img-top{
     border-radius: 0;
 }
-.img_miniature{
+.img_miniature_container{
     height: 71px;
     width: 71px;
     padding: 1px;
+}
+.card_row{
+    position: relative;
+}
+.triger{
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
 /* fine card carousel */
