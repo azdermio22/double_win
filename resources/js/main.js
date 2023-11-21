@@ -157,3 +157,20 @@ carousels.forEach((carousel, i)=> {
         }
     }) 
 });
+
+let bg_bt = document.querySelectorAll('.bg_bt');
+let btn_card = document.querySelectorAll('.btn_card');
+let text_gradient = document.querySelectorAll('.text_gradient');
+
+btn_card.forEach((btn, i)=> {
+    btn.addEventListener('mouseover',()=>{
+        bg_bt[i].style.animationName= 'btn_card';
+        text_gradient[i].style.background = 'white';
+        text_gradient[i].style.webkitBackgroundClip= '';
+    });
+    btn.addEventListener('mouseout',()=>{
+        bg_bt[i].style.animationName= '';
+        text_gradient[i].style.background = '-webkit-linear-gradient(orange,red)';
+        text_gradient[i].style.webkitBackgroundClip= 'text';
+    });
+});

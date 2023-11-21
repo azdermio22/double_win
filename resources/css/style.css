@@ -241,7 +241,47 @@ header{
     }
 }
 
-/* card carousel */
+/* card*/
+.btn_card{
+    height: 40px;
+    width: 120px;
+    background-color: white;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+}
+.bg_bt{
+    position: absolute;
+    z-index: 0;
+    height: 130px;
+    width: 130px;
+    border-radius: 100px;
+    background: linear-gradient(45deg,orange,red);
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.text_gradient{
+    background: -webkit-linear-gradient(orange,red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+.btn_a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    padding: 2px;
+    width: 122px;
+}
+.btn_card:hover{
+    background-color: transparent;
+}
 .card_carousel{
     transition: 1s;
 }
@@ -261,4 +301,12 @@ header{
     height: 100%;
     width: 100%;
 }
-/* fine card carousel */
+@keyframes btn_card {
+    0%{
+        transform: rotateZ(0);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+/* fine card*/

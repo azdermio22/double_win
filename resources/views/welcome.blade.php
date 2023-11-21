@@ -35,7 +35,10 @@
                       <h5 class="card-title">{{$article->name}}</h5>
                       <p class="card_text">{{$article->description}}</p>
                       <h5>{{$article->price}}</h5>
-                      <a href="#" class="btn btn-primary">dettagli</a>
+                      <div class="d-flex justify-content-center"> 
+                          <a href="#" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">dettagli</span></div></a>
+                      </div>
+
                     </div>
                 </div>
                 @endforeach
