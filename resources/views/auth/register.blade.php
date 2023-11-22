@@ -11,23 +11,28 @@
         </div>
       <form class="d-flex align-items-center flex-column register" method="POST" action="{{route('register')}}">
         @csrf
-        <div class="mb-3 w-100 position-relative overflow-x-hidden">
+        <div class="primary_container position-relative w-100">
+        <div class="secondary_container mb-3 w-100 position-relative overflow-x-hidden">
             <label for="name" class="register_label">name</label>
             <input value="{{old('name')}}" name="name" type="text" class="register_input" id="name">
             <div class="input_border"></div>
           </div>
           @error('name')
-          <div class="alert alert-danger">{{ $message }}</div>
+          <div class="error" id="name">{{ $message }}</div>
           @enderror
-        <div class="mb-3 w-100  position-relative overflow-x-hidden">
+        </div>
+        <div class="primary_container position-relative w-100">
+        <div class="secondary_container mb-3 w-100  position-relative overflow-x-hidden">
           <label for="email" class="register_label">Email</label>
           <input value="{{old('email')}}" name="email" type="email" class="register_input" id="email">
           <div class="input_border"></div>
         </div>
-        @error('surname')
-        <div class="alert alert-danger">{{ $message }}</div>
+        @error('email')
+        <div class="error">{{ $message }}</div>
         @enderror
-        <div class="mb-3 w-100  position-relative overflow-x-hidden">
+        </div>
+        <div class="primary_container position-relative w-100">
+        <div class="secondary_container mb-3 w-100  position-relative overflow-x-hidden">
           <label for="password" class="register_label">Password</label>
           <div class="d-flex">
           <input name="password" type="password" class="register_input password" id="password">
@@ -36,9 +41,11 @@
         </div>
         </div>
         @error('password')
-        <div class="alert alert-danger">{{ $message }}</div>
+        <div class="error">{{ $message }}</div>
         @enderror
-        <div class="mb-3 w-100  position-relative overflow-x-hidden">
+        </div>
+        <div class="primary_container position-relative w-100">
+        <div class="secondary_container mb-3 w-100  position-relative overflow-x-hidden">
             <label for="password_confirmation" class="register_label">repeat Password</label>
             <div class="d-flex">
             <input name="password_confirmation" type="password" class="register_input password" id="password_confirmation">
@@ -47,24 +54,35 @@
             </div>
           </div>
           @error('password_confirmation')
-          <div class="alert alert-danger">{{ $message }}</div>
+          <div class="error">{{ $message }}</div>
           @enderror
+        </div>
         <button type="submit" class="register_submit">invia</button>
       </form>
       <form class="mt-5 login d-flex align-items-center flex-column" method="POST" action="{{route('login')}}">
         @csrf
-        <div class="mb-3 w-100  position-relative overflow-x-hidden">
+        <div class="primary_container position-relative w-100">
+        <div class="secondary_container mb-3 w-100  position-relative overflow-x-hidden">
           <label for="email" class="register_label">Email</label>
           <input value="{{old('email')}}" name="email" type="email" class="register_input" id="email1" aria-describedby="emailHelp">
           <div class="input_border"></div>
         </div>
-        <div class="mb-3 w-100  position-relative overflow-x-hidden">
+        @error('email')
+          <div class="error">{{ $message }}</div>
+          @enderror
+        </div>
+        <div class="primary_container position-relative w-100">
+        <div class="secondary_container mb-3 w-100  position-relative overflow-x-hidden">
           <label for="password" class="register_label">Password</label>
           <div class="d-flex">
           <input name="password" type="password" class="register_input password" id="password1">
           <div class="eye"><i class="bi bi-eye-slash"></i></div>
         </div>
           <div class="input_border"></div>
+        </div>
+        @error('password')
+          <div class="error">{{ $message }}</div>
+          @enderror
         </div>
         <a class="mt-2" href="">password dimenticata?</a>
         <button type="submit" class="register_submit mt-5">Submit</button>

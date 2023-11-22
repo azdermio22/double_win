@@ -310,3 +310,10 @@ header{
     }
 }
 /* fine card*/
+/* register form */
+.error{
+position: absolute;
+bottom: -10px;
+color: red;
+}
+/* end register form */
