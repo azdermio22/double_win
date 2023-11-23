@@ -36,7 +36,7 @@
                       <p class="card_text">{{$article->description}}</p>
                       <h5>{{$article->price}}</h5>
                       <div class="d-flex justify-content-center"> 
-                          <a href="#" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">dettagli</span></div></a>
+                          <a href="{{route('detail',compact('article'))}}" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">dettagli</span></div></a>
                       </div>
 
                     </div>

@@ -317,3 +317,15 @@ bottom: -10px;
 color: red;
 }
 /* end register form */
+/* detail page */
+.img_detail{
+    height: 100%;
+    width: 100%;
+    transition: 1s;
+}
+.miniature_detail{
+    height: 100%;
+    width: 100%;
+    padding: 1px;
+}
+/* edn detail page */

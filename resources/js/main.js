@@ -18,96 +18,96 @@
 // });
 
 // register form
-let btnr = document.querySelectorAll('.btnr');
-let swich = document.querySelector('.btn_swich');
-let register = document.querySelector('.register');
-let inputs = document.querySelectorAll('.register_input');
-let login = document.querySelector('.login');
-let form = document.querySelector('#form').value;
-let primary_containers = document.querySelectorAll('.primary_container');
+// let btnr = document.querySelectorAll('.btnr');
+// let swich = document.querySelector('.btn_swich');
+// let register = document.querySelector('.register');
+// let inputs = document.querySelectorAll('.register_input');
+// let login = document.querySelector('.login');
+// let form = document.querySelector('#form').value;
+// let primary_containers = document.querySelectorAll('.primary_container');
 
-if (form == 1) {
-    let login = document.querySelector('.login');
-    let register = document.querySelector('.register');
-    let swich = document.querySelector('.btn_swich');
+// if (form == 1) {
+//     let login = document.querySelector('.login');
+//     let register = document.querySelector('.register');
+//     let swich = document.querySelector('.btn_swich');
 
-    swich.style.transform= 'translateX(100px)';
-    login.style.transform= 'translateX(0)';
-    register.style.transform= 'translateX(-100%)';
-    }
+//     swich.style.transform= 'translateX(100px)';
+//     login.style.transform= 'translateX(0)';
+//     register.style.transform= 'translateX(-100%)';
+//     }
 
-btnr[0].addEventListener('click',()=>{
-    if (form == 1) {    
-        form = 0;   
-        swich.style.animationName = 'register_swich1';
-        btnr[0].style.color= 'white';
-        btnr[1].style.color= 'black';
-        register.style.animationName = 'register1';
-        login.style.animationName= 'login1';
-    }
-});
-btnr[1].addEventListener('click',()=>{
-    if (form == 0) {
-        form = 1;
-        swich.style.animationName = 'register_swich2';
-    btnr[1].style.color= 'white';
-    btnr[0].style.color= 'black';
-    register.style.animationName = 'register2';
-    login.style.animationName = 'login2';
-    }
-});
+// btnr[0].addEventListener('click',()=>{
+//     if (form == 1) {    
+//         form = 0;   
+//         swich.style.animationName = 'register_swich1';
+//         btnr[0].style.color= 'white';
+//         btnr[1].style.color= 'black';
+//         register.style.animationName = 'register1';
+//         login.style.animationName= 'login1';
+//     }
+// });
+// btnr[1].addEventListener('click',()=>{
+//     if (form == 0) {
+//         form = 1; 
+//         swich.style.animationName = 'register_swich2';
+//     btnr[1].style.color= 'white';
+//     btnr[0].style.color= 'black';
+//     register.style.animationName = 'register2';
+//     login.style.animationName = 'login2';
+//     }
+// });
 
-let labels = document.querySelectorAll('.register_label');
-let border = document.querySelectorAll('.input_border');
+// let labels = document.querySelectorAll('.register_label');
+// let border = document.querySelectorAll('.input_border');
 
-inputs.forEach((input, i)=> {
-    if (input.value != "") {
-        labels[i].style.transform='translateY(0)';
-        labels[i].style.color= 'blue';
-        border[i].style.animationName = 'border1';
-    }
-    input.addEventListener('focus',()=>{
-        labels[i].style.animationName = 'register_input1';
-        labels[i].style.color= 'blue';
-        border[i].style.animationName = 'border1';
-        input.style.borderBottom= '1px solid black';
-        if (primary_containers[i].querySelector('.error')) {    
-            primary_containers[i].querySelector('.error').classList.add('d-none');
-           let local = primary_containers[i].querySelector('.secondary_container');
-           local.style.color= 'black';
-            if (local.querySelector('.eye')) {
-                local.querySelector('.eye').style.borderBottom= '1px solid black';
-            } 
-        }
-    });
-    inputs = document.querySelectorAll('.register_input');
-    input = inputs[i];    
-        input.addEventListener('blur',()=>{
-            inputs = document.querySelectorAll('.register_input')[i];
-            if (inputs.value == "") {              
-                labels[i].style.animationName = 'register_input2';
-                labels[i].style.color= 'black';
-                border[i].style.animationName = 'border2';
-            }
-        });
-});
+// inputs.forEach((input, i)=> {
+//     if (input.value != "") {
+//         labels[i].style.transform='translateY(0)';
+//         labels[i].style.color= 'blue';
+//         border[i].style.animationName = 'border1';
+//     }
+//     input.addEventListener('focus',()=>{
+//         labels[i].style.animationName = 'register_input1';
+//         labels[i].style.color= 'blue';
+//         border[i].style.animationName = 'border1';
+//         input.style.borderBottom= '1px solid black';
+//         if (primary_containers[i].querySelector('.error')) {    
+//             primary_containers[i].querySelector('.error').classList.add('d-none');
+//            let local = primary_containers[i].querySelector('.secondary_container');
+//            local.style.color= 'black';
+//             if (local.querySelector('.eye')) {
+//                 local.querySelector('.eye').style.borderBottom= '1px solid black';
+//             } 
+//         }
+//     });
+//     inputs = document.querySelectorAll('.register_input');
+//     input = inputs[i];    
+//         input.addEventListener('blur',()=>{
+//             inputs = document.querySelectorAll('.register_input')[i];
+//             if (inputs.value == "") {              
+//                 labels[i].style.animationName = 'register_input2';
+//                 labels[i].style.color= 'black';
+//                 border[i].style.animationName = 'border2';
+//             }
+//         });
+// });
 
-primary_containers.forEach((primary_container)=> {
+// primary_containers.forEach((primary_container)=> {
 
-    let secondary_container = primary_container.querySelector('.secondary_container');
-    let input = secondary_container.querySelector('.register_input');
-    let error = primary_container.querySelector('.error');
-    let eye = secondary_container.querySelector('.eye');
+//     let secondary_container = primary_container.querySelector('.secondary_container');
+//     let input = secondary_container.querySelector('.register_input');
+//     let error = primary_container.querySelector('.error');
+//     let eye = secondary_container.querySelector('.eye');
 
-    if (error) {
-        secondary_container.style.color= 'red';
-        input.style.borderBottom = '1px solid red';
-        if (eye) {
-            eye.style.borderBottom= '1px solid red'; 
-        }  
-    }
+//     if (error) {
+//         secondary_container.style.color= 'red';
+//         input.style.borderBottom = '1px solid red';
+//         if (eye) {
+//             eye.style.borderBottom= '1px solid red'; 
+//         }  
+//     }
     
-});
+// });
 // end register form
 // card carousel
 // let carousels = document.querySelectorAll('.card_carousel');
@@ -129,9 +129,6 @@ primary_containers.forEach((primary_container)=> {
 //                 per = -100 * i;
 //                 reset = 1 + i;
 //                 mini = 0 + i;
-//              console.log(per);
-//              console.log(reset);
-//              console.log(mini);
 //              miniatures_containers.forEach((miniature)=> {
 //                 miniature.style.border = 'none';
 //                 miniature.style.padding = '1px';
@@ -199,3 +196,49 @@ primary_containers.forEach((primary_container)=> {
 //         text_gradient[i].style.webkitBackgroundClip= 'text';
 //     });
 // });
+// detail
+let carousel_detail = document.querySelector('.carousel_detail');
+let reset_d = carousel_detail.querySelectorAll('img');
+let miniature_detail = document.querySelectorAll('.miniature_detail');
+let per_d = -100;
+let im = 2;
+let timer = 5000;
+
+miniature_detail[0].style.border= '2px solid red';
+miniature_detail[0].style.padding = '0';
+
+    let interval_detail = setInterval(()=>{
+        swipe();
+    }, timer);
+
+miniature_detail.forEach((miniature, i)=> {
+    miniature.addEventListener('click',()=>{
+        per_d = 0 - i*100;
+        im = 1 + i;
+        clearInterval(interval_detail);
+        swipe();
+        setTimeout(() => {       
+            interval_detail = setInterval(()=>{
+                swipe();
+            }, timer);
+        }, 15000);
+    })
+});
+
+function swipe(){
+carousel_detail.style.transform = `translateX(${per_d}%)`;
+miniature_detail.forEach((miniature)=> {
+    miniature.style.border= 'none';
+    miniature.style.padding= '1px';
+});
+miniature_detail[im-1].style.border= '2px solid red';
+miniature_detail[im-1].style.padding = '0';
+if (reset_d[im]) {
+    per_d -= 100;
+    im++;
+}else{
+    per_d = 0;
+    im = 1;
+}
+}
+// end detail

@@ -13,9 +13,9 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Article $article)
     {
-        //
+        return view('article_detail',compact('article'));
     }
 
     /**
