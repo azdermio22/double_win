@@ -321,11 +321,36 @@ color: red;
 .img_detail{
     height: 100%;
     width: 100%;
+}
+.carousel_detail{
     transition: 1s;
 }
 .miniature_detail{
     height: 100%;
     width: 100%;
     padding: 1px;
+}
+.p_detail{
+    height: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fixed{
+    position: fixed;
+    top: 48px;
+    left: 0;
+}
+.info{
+    background-color: rgb(243, 243, 243);
+    font-weight: 600;
+    position: fixed;
+    top: 56px;
+    height: 100%;
+    right: 0;
+}
+.description{
+    margin-left: 33.5%;
 }
 /* edn detail page */

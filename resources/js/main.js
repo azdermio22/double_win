@@ -108,8 +108,8 @@
 //     }
     
 // });
-// end register form
-// card carousel
+// // end register form
+// // card carousel
 // let carousels = document.querySelectorAll('.card_carousel');
 // let cards = document.querySelectorAll('.card');
 // let triger = document.querySelector('.triger');
@@ -240,5 +240,10 @@ if (reset_d[im]) {
     per_d = 0;
     im = 1;
 }
+}
+
+let p = document.querySelector('.p_detail');
+if (p.style.overflow) {
+    p.style.alignItems= 'start';
 }
 // end detail

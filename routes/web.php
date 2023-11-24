@@ -16,6 +16,6 @@ use App\Http\Controllers\ArticleController;
 */
 
 Route::get('/',[PublicController::class,'home'])->name('home');
-Route::get('/vendi',[ArticleController::class,'create'])->name('vendi');
+Route::get('/vendi',[ArticleController::class,'create'])->name('vendi')->middleware('auth');
 Route::post('/store',[ArticleController::class,'store'])->name('store');
 Route::get('/detail/{article}',[ArticleController::class,'index'])->name('detail');
