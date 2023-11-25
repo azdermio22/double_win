@@ -43,10 +43,10 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
         Fortify::loginView(function () {
-            return view('auth.register')->with('form', 1);
+            return view('livewire.form')->with('form', 1);
         });
         Fortify::registerView(function () {
-            return view('auth.register')->with('form', 0);
+            return view('livewire.form')->with('form', 0);
         });
     }
 }

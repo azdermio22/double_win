@@ -27,7 +27,10 @@
             </div>
             <div class="col-6 d-flex align-items-center flex-column description">
                 <h1 class="my-4">{{$article->name}}</h1>
-                <p class="p_detail">{{$article->description}} {{$article->description}}</p>
+                <div class="position-relative">
+                    <p class="p_detail">{{$article->description}} {{$article->description}}</p>
+                    <span class="espandi">espandi</span>
+                </div>
                 <h2 class="my-4">{{$article->price}}$</h2>
                 <a href=""><button class="mb-4">aquista ora</button></a>
             </div>
