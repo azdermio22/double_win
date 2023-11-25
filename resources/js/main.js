@@ -243,7 +243,22 @@ if (reset_d[im]) {
 }
 
 let p = document.querySelector('.p_detail');
-if (p.style.overflow) {
-    p.style.alignItems= 'start';
+let string = [];
+
+if (p.innerHTML.length > 1000) {
+    p.style.alignItems= 'flex-start';
+    for (let i = 0; i < p.innerHTML.length; i++) {
+        let p_char = p.innerHTML[i];
+        string.push(p_char);
+    }
+    let string1 = "";
+    let leng = 945;
+    let continua = "espandi";
+    let continua1 = leng - continua.length;
+    string.splice(continua1, 0, continua)
+    string.forEach((char)=> {
+        string1 += char;
+    });
+    p.innerHTML = string1;
 }
 // end detail
