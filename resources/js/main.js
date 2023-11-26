@@ -72,7 +72,6 @@ inputs.forEach((input, i)=> {
         border[i].style.animationName = 'border1';
         input.style.borderBottom= '1px solid black';
         if (primary_containers[i].querySelector('.error')) {    
-            primary_containers[i].querySelector('.error').classList.add('d-none');
            let local = primary_containers[i].querySelector('.secondary_container');
            local.style.color= 'black';
             if (local.querySelector('.eye')) {
@@ -92,20 +91,41 @@ inputs.forEach((input, i)=> {
         });
 });
 
-primary_containers.forEach((primary_container)=> {
+primary_containers.forEach((primary_container, i)=> {
 
     let secondary_container = primary_container.querySelector('.secondary_container');
     let input = secondary_container.querySelector('.register_input');
     let error = primary_container.querySelector('.error');
     let eye = secondary_container.querySelector('.eye');
+    let rule;
+    input.addEventListener('blur',()=>{
+        switch (i) {
+            case 0:
+                rule = input.value.length < 3;
+                break;
 
-    if (error) {
-        secondary_container.style.color= 'red';
-        input.style.borderBottom = '1px solid red';
-        if (eye) {
-            eye.style.borderBottom= '1px solid red'; 
-        }  
-    }
+            case 1:
+                rule = input.value.contain("@");
+                break;
+        
+            default:
+                rule = input.value.length < 2;
+                break;
+        }
+        if (rule) {
+            error.innerHTML = "prova";
+        }else{
+            error.innerHTML = "";
+            document.querySelectorAll('.register_submit')[0].type= "submit";
+        }
+        if (error.innerHTML != "") {
+            secondary_container.querySelector('label').style.color= "red";
+            input.style.borderBottom = '1px solid red';
+            if (eye) {
+                eye.style.borderBottom= '1px solid red'; 
+            }  
+        }
+    })
     
 });
 // // end register form
