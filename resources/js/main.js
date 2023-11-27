@@ -63,8 +63,6 @@ let border = document.querySelectorAll('.input_border');
 inputs.forEach((input, i)=> {
     if (input.value != "") {
         labels[i].style.transform='translateY(0)';
-        labels[i].style.color= 'blue';
-        border[i].style.animationName = 'border1';
     }
     input.addEventListener('focus',()=>{
         labels[i].style.animationName = 'register_input1';
@@ -79,15 +77,13 @@ inputs.forEach((input, i)=> {
             } 
         }
     });
-    inputs = document.querySelectorAll('.register_input');
-    input = inputs[i];    
-        input.addEventListener('blur',()=>{
+    inputs = document.querySelectorAll('.register_input');    
+        inputs[i].addEventListener('blur',()=>{
             inputs = document.querySelectorAll('.register_input')[i];
             if (inputs.value == "") {              
                 labels[i].style.animationName = 'register_input2';
-                labels[i].style.color= 'black';
-                border[i].style.animationName = 'border2';
             }
+            border[i].style.animationName = 'border2';
         });
 });
 
@@ -98,31 +94,74 @@ primary_containers.forEach((primary_container, i)=> {
     let error = primary_container.querySelector('.error');
     let eye = secondary_container.querySelector('.eye');
     let rule;
+    let message;
+    let acces = 0;
+
     input.addEventListener('blur',()=>{
-        switch (i) {
+             switch (i) {
             case 0:
-                rule = input.value.length < 3;
+                rule = input.value.length >= 3;
+                message = "inserisci almeno 3 caratteri";
                 break;
 
             case 1:
-                rule = input.value.contain("@");
+                rule = input.value.includes("@");
+                message = "email non valida";
                 break;
-        
+
+            case 2:
+                rule = input.value.length >= 8;
+                message = "deve contenere minimo 8 caratteri";
+                break;
+
+            case 3:
+                rule = primary_containers[2].querySelector('.secondary_container').querySelector('.register_input').value === input.value;
+                message = "la password non corrisponde";
+                break;
+
+            case 4:
+                rule = input.value.includes("@");
+                message = "email non valida";
+                break;
+
+            case 5:
+                rule = input.value.length >= 8;
+                message = "deve contenere minimo 8 caratteri";
+                break;
+                        
             default:
-                rule = input.value.length < 2;
+                rule = input.value.length > 2;
                 break;
         }
         if (rule) {
-            error.innerHTML = "prova";
+            error.innerHTML = "";  
         }else{
-            error.innerHTML = "";
+            error.innerHTML = message;
+        }
+        let control = document.querySelectorAll('.register_input');
+        let error_control = document.querySelectorAll('.error');
+        if (control[0].value != "" && control[1].value != "" && control[2].value != "" && control[3].value != "" && error_control[0].innerHTML == "" && error_control[1].innerHTML == "" && error_control[2].innerHTML == "" && error_control[3].innerHTML == "") {
+            console.log('ok');
+            document.querySelectorAll('.register_submit')[0].type= "submit";
+        }
+        if (control[4].value != "" && control[5].value != "" && error_control[4].innerHTML == "" && error_control[5].innerHTML == "") {
+            console.log('ok');
             document.querySelectorAll('.register_submit')[0].type= "submit";
         }
         if (error.innerHTML != "") {
+            secondary_container.style.color= "red";
             secondary_container.querySelector('label').style.color= "red";
             input.style.borderBottom = '1px solid red';
             if (eye) {
                 eye.style.borderBottom= '1px solid red'; 
+            }  
+        }
+        if (error.innerHTML == "") {
+            secondary_container.style.color= "rgb(109, 182, 0)";
+            secondary_container.querySelector('label').style.color= "rgb(109, 182, 0)";
+            input.style.borderBottom = '1px solid rgb(109, 182, 0)';
+            if (eye) {
+                eye.style.borderBottom= '1px solid rgb(109, 182, 0)'; 
             }  
         }
     })

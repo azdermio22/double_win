@@ -25,6 +25,9 @@
               <input value="{{old('email')}}" name="email" type="email" class="register_input" id="email">
               <div class="input_border"></div>
             </div>
+            @error('email')
+            <div class="error">{{ $message }}</div>
+            @enderror
             <div class="error"></div>
             </div>
             <div class="primary_container position-relative w-100">
@@ -49,7 +52,7 @@
               </div>
               <div class="error"></div>
             </div>
-            <button type="button" class="register_submit reg">invia</button>
+            <button type="button" class="register_submit mt-3">invia</button>
           </form>
           <form class="mt-5 login d-flex align-items-center flex-column" method="POST" action="{{route('login')}}">
             @csrf
@@ -59,6 +62,9 @@
               <input value="{{old('email')}}" name="email" type="email" class="register_input" id="email1" aria-describedby="emailHelp">
               <div class="input_border"></div>
             </div>
+            @error('email')
+            <div class="error">{{ $message }}</div>
+            @enderror
               <div class="error"></div>
             </div>
             <div class="primary_container position-relative w-100">
@@ -73,7 +79,7 @@
             <div class="error"></div>
             </div>
             <a class="mt-2" href="">password dimenticata?</a>
-            <button type="button" class="register_submit mt-5 log">invia</button>
+            <button type="button" class="register_submit mt-5">invia</button>
           </form>
           </div>
         </div>
