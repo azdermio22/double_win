@@ -346,6 +346,7 @@ let information = document.querySelector('.info_container');
 let datas = document.querySelectorAll('.data');
 let profile_page = document.querySelector('.profile_page');
 let user = document.querySelector('.user');
+let invia = document.querySelector('.invia');
 
 modifi.addEventListener('click',()=>{
     datas.forEach((data)=> {
@@ -353,17 +354,9 @@ modifi.addEventListener('click',()=>{
         data.innerHTML =`<label>${p[0].innerHTML}</label><input name=${p[0].innerHTML} placeholder=${p[1].innerHTML} type= text>`;
     });
     let img_button = document.querySelector('.img_button');
-    modifi.type= "submit";
-    modifi.innerHTML = "save";
+    modifi.classList.add('d-none');
+    invia.classList.remove('d-none');
     img_button.classList.remove('d-none');
-    let form = document.createElement('form');
-    form.classList.add('d-flex');
-    form.method= "POST";
-    form.action= "{{route('update_profile')}}";
-    form.enctype= "multipart/form-data";
-    form.innerHTML = user.innerHTML;
-    user.innerHTML ="";
-    user.appendChild(form);
     img_button = document.querySelector('.img_button');
 img_button.addEventListener('mouseover',()=>{
     img_button.style.backgroundColor= "rgb(0,0,0,0.300)";
