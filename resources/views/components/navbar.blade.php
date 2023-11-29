@@ -13,11 +13,12 @@
         <a class="nav_link"  href="{{route('login')}}">login</a>
         <a class="nav_link"  href="{{route('register')}}">register</a>
         @endguest
-        @auth 
+        @auth
         <form method="POST" action="{{route('logout')}}">
         @csrf
         <button type="submit">logout</button>
     </form>
+    <a class="nav_link" href="{{route('profile',['user' => Auth::user()])}}">{{Auth::user()->name}}</a>
         @endauth
     </div>
 </div>

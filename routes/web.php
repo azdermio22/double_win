@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::get('/',[PublicController::class,'home'])->name('home');
 Route::get('/vendi',[ArticleController::class,'create'])->name('vendi')->middleware('auth');
 Route::post('/store',[ArticleController::class,'store'])->name('store');
 Route::get('/detail/{article}',[ArticleController::class,'index'])->name('detail');
+Route::get('/profile/{user}',[ProfileController::class,'profile'])->name('profile')->middleware('auth');
+Route::post('/profileimg',[ProfileController::class,'update'])->name('update_profile')->middleware('auth');
