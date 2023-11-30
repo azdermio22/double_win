@@ -335,7 +335,6 @@
 // profile
 let img_profile = document.querySelector('.img_profile_container');
 if (!img_profile.querySelector('.img_profile')) {
-    console.log('ok');
     let default_img = document.createElement('img');
     default_img.src= 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png';
     default_img.classList.add('img_profile');
@@ -366,5 +365,10 @@ img_button.addEventListener('mouseout',()=>{
     img_button.style.backgroundColor= "";
     img_button.style.color= "transparent";
 })
+img_button.addEventListener('click',()=>{
+    let input = document.querySelector('#input');
+    input.click();
+    console.log(input.value);
+});
 })
 // end profile

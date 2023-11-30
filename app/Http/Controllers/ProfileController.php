@@ -8,15 +8,32 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    public $verified;
     function profile(User $user){
         $user_images = UsersImage::all();
         return view('profile',compact('user','user_images'));
     }
-    function update(USer $user){
-        dd($user);
-        UsersImage::create([
-            'image' => $request->image,
-            'user_id' => $user->id,
+    function update(User $user, Request $request){
+        $imgs = UsersImage::all();
+        foreach ($imgs as $img) {
+            if ($img->user_id == $user->id) {
+                $this->verified = $img;
+            }
+        }
+        if ($this->verified == "") {
+            UsersImage::create([
+                'image' => $request->file("img")->store('public/img'),
+                'user_id' => $user->id,
+            ]);
+        }else{
+            $this->verified->update([
+                'image' => $request->file("img")->store('public/img'),
+            ]);
+        }
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
         ]);
+        return redirect(route('home'));
     }
 }
