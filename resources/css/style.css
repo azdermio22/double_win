@@ -403,4 +403,28 @@ color: red;
     align-items: center;
     padding: 5px;
 }
+.separeitor{
+    height: 1px;
+    width: 100%;
+    background-color: orange;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.table_row{
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+.row_container{
+    box-shadow: 2px 2px 5px gray;
+    border-radius: 20px;
+    border: 1px solid rgb(224, 224, 224);
+}
+.table_title{
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translate(-50%);
+}
 /* end profile */

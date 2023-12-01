@@ -15,25 +15,68 @@
                 <button class="invia d-none" type="submit">invia</button>
                     <div class="modifi">modifica profilo<i class="bi bi-pencil-fill"></i></div>
             </div>
-            <div class="col-8">
-                <h3 class="text-center mt-3">dati personali:</h3>
-                <div class="info_container">
-                    <div class="d-flex data">
-                        <p>name</p>:
-                        <p>{{$user->name}}</p>
+            <div class="col-8 d-flex justify-content-center flex-column position-relative">
+                <h3 class="table_title">dati personali:</h3>
+                <div class="w-50 row_container container-fluid">
+                    <div class="row">
+                        <div class="col-6 table_row">name</div>
+                        <div class="col-6 table_row">{{$user->name}}</div>
                     </div>
-                    <div class="d-flex data">
-                        <p>email</p>:
-                        <p>{{$user->email}}</p>
+                    <div class="row">
+                        <div class="col-6 table_row">email</div>
+                        <div class="col-6 table_row">{{$user->email}}</div>
                     </div>
-                    <div class="d-flex data">
-                        <p>phone number</p>:
-                        <p></p>
+                    <div class="row">
+                        <div class="col-6 table_row">country</div>
+                        <div class="col-6 table_row">-</div>
                     </div>
-                    <input class="d-none" name="img" id="input" type="file">
+                    <div class="row">
+                        <div class="col-6 table_row">phone number</div>
+                        <div class="col-6 table_row">-</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 table_row border-0">surname</div>
+                        <div class="col-6 table_row border-0">-</div>
+                    </div>
                 </div>
             </div>
         </form>
+        </div>
+        <div class="separeitor"></div>
+        <div class="row justify-content-evenly">
+            <div class="triger"></div>
+            <h2 class="text-center">articoli caricati:</h2>
+            @foreach ($articles as $article)
+            @if ($article->user_id == $user->id)
+            <div class="card col-3 p-0 my-3 text-center overflow-hidden" style="width: 18rem;">
+                <div class="d-flex card_carousel">
+                @foreach ($images as $image)
+                @if ($image->article_id == $article->id)   
+                <img src="{{Storage::url($image->images)}}" class="card-img-top image" alt="...">
+                @endif  
+                @endforeach
+                </div>
+                <div class="d-flex">
+                    @foreach ($images as $image)
+                    @if ($image->article_id == $article->id)
+                    <div class="img_miniature_container">  
+                    <img src="{{Storage::url($image->images)}}" class="card-img-top img_miniature" alt="...">
+                    </div>
+                    @endif  
+                    @endforeach
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{$article->name}}</h5>
+                  <p class="card_text">{{$article->description}}</p>
+                  <h5>{{$article->price}}</h5>
+                  <div class="d-flex justify-content-center"> 
+                      <a href="{{route('detail',compact('article'))}}" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">dettagli</span></div></a>
+                  </div>
+                </div>
+            </div>
+            @endif
+            @endforeach
+            <div class="separeitor"></div>
         </div>
     </div>
 </x-layout>
