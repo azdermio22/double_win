@@ -12,7 +12,7 @@
                     @endif
                     @endforeach
                 </div>
-                <button class="invia d-none" type="button">annulla</button>
+                <button class="invia d-none" type="submit">annulla</button>
                     <div class="modifi">modifica profilo<i class="bi bi-pencil-fill"></i></div>
             </div>
             <div class="col-8 d-flex justify-content-center flex-column position-relative">
@@ -32,7 +32,7 @@
                             @if ($user->country)
                             {{$user->country}}
                             @else
-                                -
+                                0
                             @endif
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                             @if ($user->phone)
                             {{$user->phone}}
                             @else
-                                -
+                                0
                             @endif
                         </div>
                     </div>

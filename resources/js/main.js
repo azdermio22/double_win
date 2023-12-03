@@ -394,15 +394,7 @@ let inputs = row_container.querySelectorAll('input');
 invia.addEventListener('click',()=>{          
     inputs.forEach((input, i)=> {
         if (input.value == "") {
-            console.log(value_array[i]);
-            if (value_array[i] === "-") { 
-                console.log('ok');   
-                input.value = "1";
-                console.log(input_value);
-            }else{
-                console.log('ok1');
                 input.value = value_array[i];
-            }
         }
     });
 })
