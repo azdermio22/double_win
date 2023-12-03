@@ -101,26 +101,31 @@ primary_containers.forEach((primary_container, i)=> {
                 break;
 
             case 1:
+                rule = input.value.length >= 3;
+                message = "inserisci almeno 3 caratteri";
+                break;
+
+            case 2:
                 rule = input.value.includes("@");
                 message = "email non valida";
                 break;
 
-            case 2:
+            case 3:
                 rule = input.value.length >= 8;
                 message = "deve contenere minimo 8 caratteri";
                 break;
 
-            case 3:
-                rule = primary_containers[2].querySelector('.secondary_container').querySelector('.register_input').value === input.value;
+            case 4:
+                rule = primary_containers[3].querySelector('.secondary_container').querySelector('.register_input').value === input.value;
                 message = "la password non corrisponde";
                 break;
 
-            case 4:
+            case 5:
                 rule = input.value.includes("@");
                 message = "email non valida";
                 break;
 
-            case 5:
+            case 6:
                 rule = input.value.length >= 8;
                 message = "deve contenere minimo 8 caratteri";
                 break;
@@ -136,12 +141,10 @@ primary_containers.forEach((primary_container, i)=> {
         }
         let control = document.querySelectorAll('.register_input');
         let error_control = document.querySelectorAll('.error');
-        if (control[0].value != "" && control[1].value != "" && control[2].value != "" && control[3].value != "" && error_control[0].innerHTML == "" && error_control[1].innerHTML == "" && error_control[2].innerHTML == "" && error_control[3].innerHTML == "") {
-            console.log('ok');
+        if (control[0].value != "" && control[1].value != "" && control[2].value != "" && control[3].value != "" && control[4].value != "" && error_control[0].innerHTML == "" && error_control[1].innerHTML == "" && error_control[2].innerHTML == "" && error_control[3].innerHTML == "" && error_control[4].innerHTML == "") {
             document.querySelectorAll('.register_submit')[0].type= "submit";
         }
-        if (control[4].value != "" && control[5].value != "" && error_control[4].innerHTML == "" && error_control[5].innerHTML == "") {
-            console.log('ok1');
+        if (control[5].value != "" && control[6].value != "" && error_control[5].innerHTML == "" && error_control[6].innerHTML == "") {
             document.querySelectorAll('.register_submit')[1].type= "submit";
         }
         if (error.innerHTML != "") {
@@ -351,22 +354,24 @@ if (!img_profile.querySelector('.img_profile')) {
     img_profile.appendChild(default_img);
 }
 let modifi = document.querySelector('.modifi');
-let information = document.querySelector('.info_container');
-let datas = document.querySelectorAll('.data');
-let profile_page = document.querySelector('.profile_page');
-let user = document.querySelector('.user');
 let invia = document.querySelector('.invia');
+let value_array = [];
+let rows = document.querySelectorAll('.table_row');
 
 modifi.addEventListener('click',()=>{
-    datas.forEach((data)=> {
-        let p = data.querySelectorAll('p');
-        data.innerHTML =`<label>${p[0].innerHTML}</label><input name=${p[0].innerHTML} placeholder=${p[1].innerHTML} type= text>`;
+    rows.forEach((row, i)=> {
+        if (i % 2) {
+            value_array.push(row.innerHTML);
+            row.innerHTML = `<input class= text-center w-100 m-3 name=${rows[i-1].innerHTML} placeholder=${row.innerHTML} type= text>`;
+        }
     });
+
     let img_button = document.querySelector('.img_button');
     modifi.classList.add('d-none');
     invia.classList.remove('d-none');
     img_button.classList.remove('d-none');
     img_button = document.querySelector('.img_button');
+
 img_button.addEventListener('mouseover',()=>{
     img_button.style.backgroundColor= "rgb(0,0,0,0.300)";
     img_button.style.color= "white";
@@ -375,10 +380,36 @@ img_button.addEventListener('mouseout',()=>{
     img_button.style.backgroundColor= "";
     img_button.style.color= "transparent";
 })
+let input = document.querySelector('#input');
 img_button.addEventListener('click',()=>{
-    let input = document.querySelector('#input');
-    input.click();
-    console.log(input.value);
+    input.click(); 
+});
+input.addEventListener('input',()=>{
+    if (input.value != "") {
+        document.querySelector('.img_profile').src= window.URL.createObjectURL(input.files[0]);
+    }
+});
+let row_container = document.querySelector('.row_container')
+let inputs = row_container.querySelectorAll('input');
+invia.addEventListener('click',()=>{          
+    inputs.forEach((input, i)=> {
+        if (input.value == "") {
+            console.log(value_array[i]);
+            if (value_array[i] === "-") { 
+                console.log('ok');   
+                input.value = "1";
+                console.log(input_value);
+            }else{
+                console.log('ok1');
+                input.value = value_array[i];
+            }
+        }
+    });
+})
+inputs.forEach((input)=> {
+    input.addEventListener('input',()=>{
+        invia.innerHTML= "salva";
+    })
 });
 })
 }

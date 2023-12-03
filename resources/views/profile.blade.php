@@ -12,7 +12,7 @@
                     @endif
                     @endforeach
                 </div>
-                <button class="invia d-none" type="submit">invia</button>
+                <button class="invia d-none" type="button">annulla</button>
                     <div class="modifi">modifica profilo<i class="bi bi-pencil-fill"></i></div>
             </div>
             <div class="col-8 d-flex justify-content-center flex-column position-relative">
@@ -28,18 +28,31 @@
                     </div>
                     <div class="row">
                         <div class="col-6 table_row">country</div>
-                        <div class="col-6 table_row">-</div>
+                        <div class="col-6 table_row">
+                            @if ($user->country)
+                            {{$user->country}}
+                            @else
+                                -
+                            @endif
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-6 table_row">phone number</div>
-                        <div class="col-6 table_row">-</div>
+                        <div class="col-6 table_row">
+                            @if ($user->phone)
+                            {{$user->phone}}
+                            @else
+                                -
+                            @endif
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-6 table_row border-0">surname</div>
-                        <div class="col-6 table_row border-0">-</div>
+                        <div class="col-6 table_row border-0">{{$user->surname}}</div>
                     </div>
                 </div>
             </div>
+            <input class="d-none" name="img" id="input" type="file">
         </form>
         </div>
         <div class="separeitor"></div>

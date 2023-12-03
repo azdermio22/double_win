@@ -24,20 +24,25 @@ class ProfileController extends Controller
                 $this->verified = $img;
             }
         }
-        if ($this->verified == "") {
-            UsersImage::create([
-                'image' => $request->file("img")->store('public/img'),
-                'user_id' => $user->id,
-            ]);
-        }else{
-            $this->verified->update([
-                'image' => $request->file("img")->store('public/img'),
-            ]);
+        if ($request->img) {
+            if ($this->verified == "") {
+                UsersImage::create([
+                    'image' => $request->file("img")->store('public/img'),
+                    'user_id' => $user->id,
+                ]);
+            }else{
+                $this->verified->update([
+                    'image' => $request->file("img")->store('public/img'),
+                ]);
+            }
         }
         $user->update([
             'name' => $request->name,
+            'suname' => $request->surname,
+            'country' => $request->country,
             'email' => $request->email,
+            'phone' => $request->phone,
         ]);
-        return redirect(route('home'));
+        return redirect(route('profile',compact('user')));
     }
 }

@@ -20,6 +20,14 @@
               <div class="error"></div>
             </div>
             <div class="primary_container position-relative w-100">
+              <div class="secondary_container mb-3 w-100 position-relative overflow-x-hidden">
+                  <label for="surname" class="register_label">surname</label>
+                  <input value="{{old('surname')}}" name="surname" type="text" class="register_input" id="surname">
+                  <div class="input_border"></div>
+                </div>
+                <div class="error"></div>
+              </div>
+            <div class="primary_container position-relative w-100">
             <div class="secondary_container mb-3 w-100  position-relative overflow-x-hidden">
               <label for="email" class="register_label">Email</label>
               <input value="{{old('email')}}" name="email" type="email" class="register_input" id="email">
