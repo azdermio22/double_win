@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container-fluid mt-5 profile_page">
         <div class="row user">
-            <form class="d-flex" method="POST" action="{{route('update',compact('user'))}}" enctype="multipart/form-data">
+            <form class="d-flex" method="POST" action="{{route('user_update',compact('user'))}}" enctype="multipart/form-data">
                 @csrf
             <div class="col-4 mt-5 d-flex flex-column align-items-center">
                 <div class="img_profile_container">
@@ -83,7 +83,7 @@
                   <p class="card_text">{{$article->description}}</p>
                   <h5>{{$article->price}}</h5>
                   <div class="d-flex justify-content-center"> 
-                      <a href="{{route('detail',compact('article'))}}" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">dettagli</span></div></a>
+                      <a href="{{route('profile_detail',compact('article'))}}" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">dettagli</span></div></a>
                   </div>
                 </div>
             </div>

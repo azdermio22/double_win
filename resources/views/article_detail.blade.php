@@ -45,6 +45,12 @@
                 <div class="my-3">
                     categoria: {{$article->categori->categori}}
                 </div>
+                <a href="{{route('article_update',compact('article'))}}"><button type="submit">update</button></a>
+                <form method="POST" action="{{route('destroy',compact('article'))}}">
+                    @method('DELETE')
+                @csrf
+                <button type="submit">delete</button>
+            </form>
             </div>
         </div>
     </div>
