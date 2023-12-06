@@ -30,7 +30,7 @@ class PublicController extends Controller
                     array_push($filtered, $article);
             }
         }
-        if ($request->categori && $request->categori != "") {
+        if ($request->categori) {
             foreach ($filtered as $key => $article) {
                 if ($article->categori_id != $request->categori) {
                     unset($filtered[$key]);
@@ -39,14 +39,28 @@ class PublicController extends Controller
         }
         if ($request->range && $request->range != "") {
             foreach ($filtered as $key => $article) {
-                if ($article->price != $request->range.".0") {
+                if ($article->price > $request->range.".0") {
                     unset($filtered[$key]);
                 }
             }
     }
-    if (sizeof($filtered) > 0) {
-        $articles = $filtered;
-    }
+        $fil = [['price' => 0]];
+            foreach ($filtered as $article) {
+                if ($article->price >= $fil[0]['price']) {
+                   array_unshift($fil, $article);
+                }else{
+                    foreach ($fil as $key => $fi) {
+                        if ($fi['price'] < $article->price) {
+                            array_splice($fil,$key,0,compact('article'));
+                        }
+                    }
+                }
+            }
+            array_pop($fil);
+            if ($request->order) {
+                $fil = array_reverse($fil);
+            }             
+            $articles = $fil;
         $images = Image::all();
         return view('annunci',compact('articles','images','max','min'));
     }

@@ -9,6 +9,10 @@
             <option value="2">veicoli</option>
             <option value="3">gioglielli</option>
         </select>
+        <select name="order">
+            <option value="0">decrescente</option>
+            <option value="1">crescente</option>
+        </select>
         <input name="range" type="range" min="{{$min}}" max="{{$max}}">
         <button type="submit">prova</button>
     </form>
