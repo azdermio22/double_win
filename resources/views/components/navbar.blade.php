@@ -5,7 +5,7 @@
     </div>
     <div class="col-4 d-flex justify-content-evenly align-items-center">
         <a class="nav_link" href="">tasto</a>
-        <a class="nav_link"  href="">tasto</a>
+        <a class="nav_link"  href="{{route('annunci')}}">annunci</a>
         <a class="nav_link"  href="{{route('vendi')}}">vendi</a>
     </div>
     <div class="col-4 d-flex justify-content-evenly align-items-center">

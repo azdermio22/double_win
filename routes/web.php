@@ -26,6 +26,8 @@ Route::get('/profile_detail/{article}',[ArticleController::class,'profile_detail
 Route::get('/article_update/{article}',[ArticleController::class,'edit'])->name('article_update');
 Route::put('/update/{article}',[ArticleController::class,'update'])->name('update');
 Route::delete('/destroy/{article}',[ArticleController::class,'destroy'])->name('destroy');
+Route::get('/annunci',[PublicController::class,'annunci'])->name('annunci');
+Route::post('/filtra',[PublicController::class,'annunci'])->name('filtra');
 
 
 

@@ -431,3 +431,28 @@ color: red;
     transform: translate(-50%);
 }
 /* end profile */
+/* annunci */
+.filter_button{
+    position: absolute;
+    background-color: rgb(201, 201, 201);
+    border: 1px solid black;
+    border-left: none;
+    right: -60px;
+    top: -1px;
+    width: 60px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+}
+.filter_pannel{
+    background-color: rgb(201, 201, 201);
+    border: 1px solid black;
+    height: 595px;
+    width: 300px;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+}
+/* fine annunci */

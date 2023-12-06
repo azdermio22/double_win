@@ -101,7 +101,13 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        $images = Image::all();
+        foreach ($images as $image) {
+            if ($image->article_id == $article->id) {
+                $image->delete();
+            }
+        }
         $article->delete();
-        return redirect(route('profile'));
+        return redirect(route('home'));
     }
 }
