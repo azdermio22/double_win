@@ -3,18 +3,23 @@
         <div class="filter_button">filter</div>
         <form method="POST" action="{{route('filtra')}}">
         @csrf
-        <input name="serch" type="serch">
-        <select name="categori">
+        <input name="serch" type="serch" id="serch">
+        <select name="categori" id="categori">
+            <option value=""  hidden>select the categori</option>
             <option value="1">abbigliamento</option>
             <option value="2">veicoli</option>
             <option value="3">gioglielli</option>
         </select>
-        <select name="order">
+        <select name="orderby" id="orderby">
+            <option value="0">prezzo</option>
+            <option value="1">data</option>
+        </select>
+        <select name="order" id="order">
             <option value="0">decrescente</option>
             <option value="1">crescente</option>
         </select>
-        <input name="range" type="range" min="{{$min}}" max="{{$max}}">
-        <button type="submit">prova</button>
+        <input name="range" type="range" min="{{$min}}" max="{{$max}}" value="{{$max}}" id="range">
+        <button class="d-none" type="submit" id="submit"></button>
     </form>
     </div>
     <div class="container-fluid">

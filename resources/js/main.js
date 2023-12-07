@@ -406,3 +406,16 @@ inputs.forEach((input)=> {
 })
 }
 // end profile
+// annunci
+let submit = document.querySelector('#submit');
+let range = document.querySelector('#range');
+let filter = [document.querySelector('#orderby'),document.querySelector('#serch'),document.querySelector('#categori'),document.querySelector('#order')];
+filter.forEach((input)=> {
+    addEventListener('change',()=>{
+        submit.click();
+    })
+});
+range.addEventListener('mouseup',()=>{
+    submit.click();
+})
+// end annunci
