@@ -18,6 +18,7 @@ class PublicController extends Controller
         $articles = Article::all();
         $min = $articles->min('price');
         $max = $articles->max('price');
+        $categori = 0;
         $filtered = [];
         if ($request->serch) {
             foreach ($articles as $article) {
@@ -36,6 +37,17 @@ class PublicController extends Controller
                     unset($filtered[$key]);
                 }
             }
+            switch ($request->categori) {
+                case 0:
+                    $categori = "abbigliamento";
+                    break;
+                case '1':
+                    $categori = "veicoli";
+                    break;
+                case '2':
+                    $categori = "gioglielli";
+                    break;
+            }
         }
         if ($request->range) {
             foreach ($filtered as $key => $article) {
@@ -43,12 +55,13 @@ class PublicController extends Controller
                     unset($filtered[$key]);
                 }
             }
-    }
+        }
         $fil = [['price' => 0]];
         if ($request->orderby == 0) {
+            $orderby = "prezzo";
             foreach ($filtered as $article) {
                 if ($article->price >= $fil[0]['price']) {
-                   array_unshift($fil, $article);
+                    array_unshift($fil, $article);
                 }else{
                     foreach ($fil as $key => $fi) {
                         if ($fi['price'] < $article->price) {
@@ -60,8 +73,12 @@ class PublicController extends Controller
             array_pop($fil);
             if ($request->order) {
                 $fil = array_reverse($fil);
+                $order = "crescente";
+            }else{
+                $order = "decrescente";
             }
         }else{
+            $orderby = "data";
             foreach ($filtered as $article) {
                 $data = $article->created_at->day + $article->created_at->month + $article->created_at->year;
                 if ($data >= $fil[0]['price']) {
@@ -77,10 +94,14 @@ class PublicController extends Controller
             array_pop($fil);
             if ($request->order) {
                 $fil = array_reverse($fil);
-            }  
+                $order = "crescente";
+            }else{
+                $order = "decrescente";
+            }
         }             
             $articles = $fil;
         $images = Image::all();
-        return view('annunci',compact('articles','images','max','min'));
+        $prova = [$request->serch, $request->range, $order, $categori, $orderby];
+        return view('annunci',compact('articles','images','max','min','prova'));
     }
 }
