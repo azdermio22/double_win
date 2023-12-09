@@ -38,13 +38,13 @@ class PublicController extends Controller
                 }
             }
             switch ($request->categori) {
-                case 0:
+                case '1':
                     $categori = "abbigliamento";
                     break;
-                case '1':
+                case '2':
                     $categori = "veicoli";
                     break;
-                case '2':
+                case '3':
                     $categori = "gioglielli";
                     break;
             }
@@ -78,10 +78,16 @@ class PublicController extends Controller
                 $order = "decrescente";
             }
         }else{
+            $fil = [];
             $orderby = "data";
             foreach ($filtered as $article) {
                 $data = $article->created_at->day + $article->created_at->month + $article->created_at->year;
-                if ($data >= $fil[0]['price']) {
+                if (sizeof($fil) == 0) {
+                    $fil_data = 0;
+                }else{      
+                    $fil_data = $fil[0]->created_at->day + $fil[0]->created_at->month + $fil[0]->created_at->year;
+                }
+                if ($data >= $fil_data) {
                    array_unshift($fil, $article);
                 }else{
                     foreach ($fil as $key => $fi) {
@@ -91,7 +97,6 @@ class PublicController extends Controller
                     }
                 }
             }
-            array_pop($fil);
             if ($request->order) {
                 $fil = array_reverse($fil);
                 $order = "crescente";
@@ -101,7 +106,7 @@ class PublicController extends Controller
         }             
             $articles = $fil;
         $images = Image::all();
-        $prova = [$request->serch, $request->range, $order, $categori, $orderby];
-        return view('annunci',compact('articles','images','max','min','prova'));
+        $selected_filter = [$request->serch, $request->range, $order, $categori, $orderby, $request->order, $request->categori, $request->orderby];
+        return view('annunci',compact('articles','images','max','min','selected_filter'));
     }
 }

@@ -418,4 +418,12 @@ filter.forEach((input)=> {
 range.addEventListener('mouseup',()=>{
     submit.click();
 })
+let remove_filter = document.querySelectorAll('.remove_filter');
+let selected_filter = document.querySelectorAll('.selected_filter');
+remove_filter.forEach((filter, i)=> {
+    filter.addEventListener('click',()=>{
+        selected_filter[i].classList.add('d-none');
+        submit.click();
+    })
+});
 // end annunci
