@@ -20,6 +20,25 @@ class PublicController extends Controller
         $max = $articles->max('price');
         $categori = 0;
         $filtered = [];
+        if ($request->remove) {
+                switch ($request->remove) {
+                    case '1':
+                        $request->order = 0;
+                        break;
+                    case '2':
+                        $request->categori = "";
+                        break;
+                    case '3':
+                        $request->orderby = 0;
+                        break;
+                    case '4':
+                        $request->range = $max;
+                        break;
+                    case '5':
+                        $request->serch = "";
+                        break;
+                }
+        }
         if ($request->serch) {
             foreach ($articles as $article) {
                 if (str_contains($article->name, $request->serch)) {

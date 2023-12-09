@@ -420,9 +420,12 @@ range.addEventListener('mouseup',()=>{
 })
 let remove_filter = document.querySelectorAll('.remove_filter');
 let selected_filter = document.querySelectorAll('.selected_filter');
+let selected_filter_input = document.querySelectorAll('.selected_filter_input');
 remove_filter.forEach((filter, i)=> {
     filter.addEventListener('click',()=>{
         selected_filter[i].classList.add('d-none');
+        selected_filter_input[i].name= "remove";
+        console.log(selected_filter_input[i].name);
         submit.click();
     })
 });

@@ -4,7 +4,7 @@
         <form method="POST" action="{{route('filtra')}}">
         @csrf
         <input name="serch" type="serch" id="serch" value="{{$selected_filter[0]}}">
-        <select name="categori" id="categori">
+        <select class="d-block mt-3" name="categori" id="categori">
             @if ($selected_filter[3] != null)
             <option value="{{$selected_filter[6]}}"  hidden>{{$selected_filter[3]}}</option> 
             @else
@@ -14,35 +14,42 @@
             <option value="2">veicoli</option>
             <option value="3">gioglielli</option>
         </select>
-        <select name="orderby" id="orderby">
+        <select class="d-block mt-3" name="orderby" id="orderby">
             @if ($selected_filter[4] != null)
             <option value="{{$selected_filter[7]}}"  hidden>{{$selected_filter[4]}}</option> 
             @endif
             <option value="0">prezzo</option>
             <option value="1">data</option>
         </select>
-        <select name="order" id="order">
+        <select class="d-block mt-3" name="order" id="order">
             @if ($selected_filter[2] != null)
             <option value="{{$selected_filter[5]}}"  hidden>{{$selected_filter[2]}}</option>
             @endif
             <option value="0">decrescente</option>
             <option value="1">crescente</option>
         </select>
-        <input name="range" type="range" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
+        <input class="mt-3 mb-5" name="range" type="range" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
         <p>selected filter:</p>
             <div class="d-flex flex-wrap justify-content-evenly">
-                @if ($selected_filter[1])
+                @if ($selected_filter[0])
+                <div class="selected_filter">{{$selected_filter[0]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
+                <input class="d-none selected_filter_input" name="" value="5" type="text">
+            @endif
+                @if ($selected_filter[1] != $max && $selected_filter[1] != null)
                 <div class="selected_filter">{{$selected_filter[1]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
-                <input class="d-none" name="remove[]" value="1" type="text" disabled>
+                <input class="d-none selected_filter_input" name="" value="4" type="text">
             @endif
                 @if ($selected_filter[2] == "crescente")
                     <div class="selected_filter">{{$selected_filter[2]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
+                    <input class="d-none selected_filter_input" name="" value="1" type="text">
                 @endif
                 @if ($selected_filter[3])
                 <div class="selected_filter">{{$selected_filter[3]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
+                <input class="d-none selected_filter_input" name="" value="2" type="text">
             @endif
-            @if ($selected_filter[4])
+            @if ($selected_filter[4] == "data")
                 <div class="selected_filter">{{$selected_filter[4]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
+                <input class="d-none selected_filter_input" name="" value="3" type="text">
             @endif
             </div>
             <button class="d-none" type="submit" id="submit"></button>
