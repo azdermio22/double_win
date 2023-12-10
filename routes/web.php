@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Annunci;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
@@ -26,8 +27,7 @@ Route::get('/profile_detail/{article}',[ArticleController::class,'profile_detail
 Route::get('/article_update/{article}',[ArticleController::class,'edit'])->name('article_update');
 Route::put('/update/{article}',[ArticleController::class,'update'])->name('update');
 Route::delete('/destroy/{article}',[ArticleController::class,'destroy'])->name('destroy');
-Route::get('/annunci',[PublicController::class,'annunci'])->name('annunci');
-Route::post('/filtra',[PublicController::class,'annunci'])->name('filtra');
+Route::get('/annunci',[Annunci::class,'annunci'])->name('annunci');
 
 
 

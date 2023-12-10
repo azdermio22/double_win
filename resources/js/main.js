@@ -409,24 +409,27 @@ inputs.forEach((input)=> {
 // annunci
 let submit = document.querySelector('#submit');
 let range = document.querySelector('#range');
-let filter = [document.querySelector('#orderby'),document.querySelector('#serch'),document.querySelector('#categori'),document.querySelector('#order')];
+let serch = document.querySelector('#serch');
+let filter = [document.querySelector('#orderby'),document.querySelector('#categori'),document.querySelector('#order')];
+let remove_filter = document.querySelectorAll('.remove_filter');
 filter.forEach((input)=> {
     addEventListener('change',()=>{
         submit.click();
+        setTimeout(() => {
+            remove_filter = document.querySelectorAll('.remove_filter');
+            let selected_filter = document.querySelectorAll('.selected_filter');
+            let selected_filter_input = document.querySelectorAll('.selected_filter_input');
+            remove_filter.forEach((filter, i)=> {
+            filter.addEventListener('click',()=>{
+                selected_filter[i].classList.add('d-none');
+                selected_filter_input[i].removeAttribute('disabled');
+                submit.click();
+            })
+    });
+        }, 1000);
     })
 });
 range.addEventListener('mouseup',()=>{
     submit.click();
 })
-let remove_filter = document.querySelectorAll('.remove_filter');
-let selected_filter = document.querySelectorAll('.selected_filter');
-let selected_filter_input = document.querySelectorAll('.selected_filter_input');
-remove_filter.forEach((filter, i)=> {
-    filter.addEventListener('click',()=>{
-        selected_filter[i].classList.add('d-none');
-        selected_filter_input[i].name= "remove";
-        console.log(selected_filter_input[i].name);
-        submit.click();
-    })
-});
 // end annunci

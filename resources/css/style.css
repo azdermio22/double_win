@@ -454,6 +454,7 @@ color: red;
     position: fixed;
     z-index: 2;
     bottom: 0;
+    border-top: 1px solid black;
 }
 .selected_filter{
     border: 1px solid black;
