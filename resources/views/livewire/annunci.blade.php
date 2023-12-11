@@ -28,31 +28,14 @@
             <option value="1">crescente</option>
         </select>
         <input class="mt-3 mb-5" wire:model="range" type="range" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
-        <p>selected filter:</p>
-            <div class="d-flex flex-wrap justify-content-evenly filter_container">
-                @if ($selected_filter[0])
-                <div class="selected_filter">{{$selected_filter[0]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
-                <input class="d-none selected_filter_input" wire:model="remove" value="5" type="text">
-            @endif
-                @if ($selected_filter[1] != $max && $selected_filter[1] != null)
-                <div class="selected_filter">{{$selected_filter[1]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
-                <input class="d-none selected_filter_input" wire:model="remove" value="4" type="text" disabled>
-            @endif
-                @if ($selected_filter[2] == "crescente")
-                    <div class="selected_filter">{{$selected_filter[2]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
-                    <input class="d-none selected_filter_input" wire:model="remove" value="1" type="text" disabled>
-                @endif
-                @if ($selected_filter[3])
-                <div class="selected_filter">{{$selected_filter[3]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
-                <input class="d-none selected_filter_input" wire:model="remove" value="2" type="text" disabled>
-            @endif
-            @if ($selected_filter[4] == "data")
-                <div class="selected_filter">{{$selected_filter[4]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
-                <input class="d-none selected_filter_input" wire:model="remove" value="3" type="text" disabled>
-            @endif
-            </div>
+        <select class="prov" wire:model="prova" id="">
+        </select>
             <button class="d-none" type="submit" id="submit"></button>
     </form>
+    <p>selected filter:</p>
+        @if ($selected_filter[3] != null)
+            <div class="selected_filter" id="1">{{$selected_filter[3]}}<div class="remove_filter"><i class="bi bi-x-circle-fill"></i></div></div>
+        @endif
     </div>
     <div class="container-fluid">
         <div class="row justify-content-evenly">

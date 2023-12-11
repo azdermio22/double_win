@@ -411,21 +411,15 @@ let submit = document.querySelector('#submit');
 let range = document.querySelector('#range');
 let serch = document.querySelector('#serch');
 let filter = [document.querySelector('#orderby'),document.querySelector('#categori'),document.querySelector('#order')];
-let remove_filter = document.querySelectorAll('.remove_filter');
 filter.forEach((input)=> {
     addEventListener('change',()=>{
         submit.click();
-        setTimeout(() => {
-            remove_filter = document.querySelectorAll('.remove_filter');
-            let selected_filter = document.querySelectorAll('.selected_filter');
-            let selected_filter_input = document.querySelectorAll('.selected_filter_input');
-            remove_filter.forEach((filter, i)=> {
-            filter.addEventListener('click',()=>{
-                selected_filter[i].classList.add('d-none');
-                selected_filter_input[i].removeAttribute('disabled');
-                submit.click();
-            })
-    });
+        setTimeout(() => {         
+            let selected_filters = document.querySelectorAll('.selected_filter');
+            let select = document.querySelector('.prov');
+            selected_filters.forEach((selected_filter)=> {
+                select.innerHTML += `<option value=${selected_filter.id}>${selected_filter.id}</option>`;
+            });
         }, 1000);
     })
 });

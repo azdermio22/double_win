@@ -5,11 +5,11 @@ namespace App\Livewire;
 use App\Models\Image;
 use App\Models\Article;
 use Livewire\Component;
+use Illuminate\Http\Request;
 
 class Annunci extends Component
 {
     public $serch;
-    public $remove;
     public $range;
     public $categori;
     public $order;
@@ -19,31 +19,16 @@ class Annunci extends Component
     public $max;
     public $articles;
     public $images;
+    public $prova;
     function annunci() {
+        if ($this->prova) {
+            dd($this->prova);
+        }
         $articles = Article::all();
         $min = $articles->min('price');
         $max = $articles->max('price');
         $categori = 0;
         $filtered = [];
-        if ($this->remove) {
-                switch ($this->remove) {
-                    case '1':
-                        $this->order = 0;
-                        break;
-                    case '2':
-                        $this->categori = "";
-                        break;
-                    case '3':
-                        $this->orderby = 0;
-                        break;
-                    case '4':
-                        $this->range = $max;
-                        break;
-                    case '5':
-                        $this->serch = "";
-                        break;
-                }
-        }
         if ($this->serch) {
             foreach ($articles as $article) {
                 if (str_contains($article->name, $this->serch)) {
