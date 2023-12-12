@@ -434,17 +434,39 @@ color: red;
 /* annunci */
 .filter_button{
     position: absolute;
-    background-color: rgb(201, 201, 201);
-    border: 1px solid black;
-    border-left: none;
-    right: -60px;
+    background-color: white;
+    box-shadow: 2px 2px 5px black;
+    right: -70px;
     top: -1px;
-    width: 60px;
-    z-index: 2;
+    width: 70px;
     display: flex;
     justify-content: center;
-    color: white;
+    color: black;
     font-weight: 600;
+    border-top: 1px solid black;
+    z-index: 2;
+    user-select: none;
+    color: red;
+}
+.pannel_mouvment{
+left: -300px;
+}
+.arrow_mouvment{
+    transform: rotate(180deg);
+}
+.arrow_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.arrow{
+    height: 8px;
+    width: 8px;
+    border-right: 2px solid red;
+    border-bottom: 2px solid red;
+    transform: rotate(-45deg);
 }
 .filter_pannel{
     background-color: white;
@@ -456,17 +478,24 @@ color: red;
     bottom: 0;
     border-top: 1px solid black;
 }
+.range{
+    accent-color: red;
+}
+.indicatore{
+    position: absolute;
+    top: -35px;
+    right: 0px;
+}
 .selected_filter{
     border: 1px solid black;
     border-radius: 20px;
     background-color: rgb(212, 212, 212);
-    padding-left: 5px;
     display: flex;
-    margin-top: 5px;
-    margin-bottom: 5px;
     align-items: center;
+    padding-left: 5px;
     font-weight: 600;
     user-select: none;
+    margin: 5px;
 }
 .remove_filter{
 margin-left: 5px;

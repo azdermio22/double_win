@@ -411,19 +411,38 @@ let submit = document.querySelector('#submit');
 let range = document.querySelector('#range');
 let serch = document.querySelector('#serch');
 let filter = [document.querySelector('#orderby'),document.querySelector('#categori'),document.querySelector('#order')];
+serch.addEventListener('input',()=>{
+    submit.click();
+    setTimeout(() => {     
+        serch.focus();
+    }, 1000);
+})
 filter.forEach((input)=> {
-    addEventListener('change',()=>{
+    input.addEventListener('change',()=>{
         submit.click();
-        setTimeout(() => {         
-            let selected_filters = document.querySelectorAll('.selected_filter');
-            let select = document.querySelector('.prov');
-            selected_filters.forEach((selected_filter)=> {
-                select.innerHTML += `<option value=${selected_filter.id}>${selected_filter.id}</option>`;
-            });
-        }, 1000);
     })
 });
 range.addEventListener('mouseup',()=>{
     submit.click();
+})
+let indicatore = document.querySelector('.indicatore');
+let mouvment_range = 250/range.max;
+range.addEventListener('input',()=>{
+    indicatore.style.right= mouvment_range;
+})
+let remove_filters = document.querySelectorAll('.remove_filter');
+let remove = document.querySelector('#remove');
+remove_filters.forEach((remove_filter)=> {
+    remove_filter.addEventListener('click',()=>{
+        remove.value= remove_filter.id;
+        submit.click();
+    })
+});
+let filter_button = document.querySelector('.filter_button');
+let filter_pannel = document.querySelector('.filter_pannel');
+let arrow_container = document.querySelector('.arrow_container');
+filter_button.addEventListener('click',()=>{
+    filter_pannel.classList.toggle('pannel_mouvment');
+    arrow_container.classList.toggle('arrow_mouvment');
 })
 // end annunci
