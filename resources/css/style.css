@@ -481,6 +481,20 @@ left: -300px;
 .range{
     accent-color: red;
 }
+.search_icon{
+    height: 30px;
+    width: 30px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: none;
+}
+#serch{
+    border-radius: 0;
+    width: 100%;
+    outline: none;
+}
 .indicatore{
     position: absolute;
     top: -35px;

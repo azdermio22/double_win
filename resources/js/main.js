@@ -410,7 +410,28 @@ inputs.forEach((input)=> {
 let submit = document.querySelector('#submit');
 let range = document.querySelector('#range');
 let serch = document.querySelector('#serch');
+let search_icon = document.querySelector('.search_icon');
+let serch_submit = document.querySelector('#serch_submit');
 let filter = [document.querySelector('#orderby'),document.querySelector('#categori'),document.querySelector('#order')];
+
+serch.addEventListener('input',()=>{
+    if (search_icon.innerHTML = "<i class= 'bi bi-x-lg' ></i>") {
+        search_icon.addEventListener('click',()=>{
+            serch.value = "";
+            search_icon.innerHTML="<i class='bi bi-search'></i>";
+            serch_submit.value= serch.value;
+    serch_submit.dispatchEvent(new Event('input'));
+        submit.click();
+        })
+    }
+    if (serch.value != "") {
+        search_icon.style.cursor="default";
+        search_icon.innerHTML= "<i class='bi bi-x-lg'></i>";
+    }else{
+        search_icon.style.cursor="pointer";
+        search_icon.innerHTML= "<i class='bi bi-search'></i>";
+    }
+})
 
 function remove(){
     setTimeout(() => {         
@@ -418,7 +439,6 @@ function remove(){
         let remove = document.querySelector('#remove');
 remove_filters.forEach((remove_filter)=> {
   remove_filter.addEventListener('click',()=>{
-    console.log('ok');
       remove.value = remove_filter.id;
       remove.dispatchEvent(new Event('input'));
       submit.click();
@@ -428,7 +448,9 @@ remove_filters.forEach((remove_filter)=> {
 }
 
 serch.addEventListener('input',()=>{
-    submit.click();
+    serch_submit.value= serch.value;
+    serch_submit.dispatchEvent(new Event('input'));
+        submit.click();
     remove();
 })
 filter.forEach((input)=> {
@@ -437,6 +459,9 @@ filter.forEach((input)=> {
         remove();
     })
 });
+range.addEventListener('mousedown',()=>{
+    range.step=""; 
+})
 range.addEventListener('mouseup',()=>{
     submit.click();
     remove();

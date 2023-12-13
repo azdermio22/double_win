@@ -1,14 +1,16 @@
 <div>
-    <div class="filter_pannel pannel_mouvment" wire:ignore>
+    <div class="filter_pannel pannel_mouvment px-4" wire:ignore>
         <div class="filter_button">filter<span class="arrow_container"><div class="arrow"></div><div class="arrow"></div><div class="arrow"></div></span></div>
-        <form class="d-flex flex-column justify-content-center px-4" wire:submit.prevent="annunci">
-        <input class="my-3" wire:model="serch" type="serch" id="serch" value="{{$selected_filter[0]}}">
+        <div class="d-flex align-items-center">
+            <input class="my-3" placeholder="search"  type="text" id="serch">
+            <div class="search_icon">
+                <i class="bi bi-search"></i>
+            </div>
+        </div>
+        <form class="d-flex flex-column justify-content-center" wire:submit.prevent="annunci">
+            <input hidden class="my-3" wire:model="serch"  type="text" id="serch_submit">
         <select class="d-block my-4" wire:model="categori" id="categori">
-            @if ($selected_filter[3] != null)
-            <option value="{{$selected_filter[6]}}"  hidden>{{$selected_filter[3]}}</option> 
-            @else
             <option value=""  hidden>select the categori</option>   
-            @endif
             <option value="1">abbigliamento</option>
             <option value="2">veicoli</option>
             <option value="3">gioglielli</option>
@@ -29,7 +31,7 @@
         </select>
         <div class="my-5 position-relative">
                 <div class="indicatore">2</div>
-            <input class="range w-100" wire:model="range" type="range" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
+            <input class="range w-100" wire:model="range" type="range" step="12" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
         </div>
         <input hidden id="remove" wire:model="remove" type="number">
             <button class="d-none" type="submit" id="submit"></button>
