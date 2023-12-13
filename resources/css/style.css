@@ -3,7 +3,7 @@ nav{
     color: white;
     position: fixed;
     top: 0;
-    z-index: 1;
+    z-index: 2;
 }
 
 .register{
@@ -482,23 +482,23 @@ left: -300px;
     accent-color: red;
 }
 .search_icon{
-    height: 30px;
-    width: 30px;
+    height: 28px;
+    width: 28px;
     background-color: red;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: none;
+    border: 1px solid black;
 }
 #serch{
     border-radius: 0;
     width: 100%;
     outline: none;
+    border: 1px solid black;
 }
 .indicatore{
-    position: absolute;
-    top: -35px;
-    right: 0px;
+
 }
 .selected_filter{
     border: 1px solid black;

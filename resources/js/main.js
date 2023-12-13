@@ -418,6 +418,7 @@ serch.addEventListener('input',()=>{
     if (search_icon.innerHTML = "<i class= 'bi bi-x-lg' ></i>") {
         search_icon.addEventListener('click',()=>{
             serch.value = "";
+            search_icon.style.cursor="default";
             search_icon.innerHTML="<i class='bi bi-search'></i>";
             serch_submit.value= serch.value;
     serch_submit.dispatchEvent(new Event('input'));
@@ -425,10 +426,10 @@ serch.addEventListener('input',()=>{
         })
     }
     if (serch.value != "") {
-        search_icon.style.cursor="default";
         search_icon.innerHTML= "<i class='bi bi-x-lg'></i>";
-    }else{
         search_icon.style.cursor="pointer";
+    }else{
+        search_icon.style.cursor="default";
         search_icon.innerHTML= "<i class='bi bi-search'></i>";
     }
 })
@@ -468,8 +469,25 @@ range.addEventListener('mouseup',()=>{
 })
 let indicatore = document.querySelector('.indicatore');
 let mouvment_range = 250/range.max;
+indicatore.innerHTML= range.value;
+ let number = 0;
+ function number_space() {   
+     if (indicatore.innerHTML.length == 1) {
+          number = 15;
+     }else if (indicatore.innerHTML.length == 2) {
+          number = 15;
+     }else if (indicatore.innerHTML.length == 3) {
+          number = 30;
+     }
+ }
+let start = 250 - number + "px";
+indicatore.style.marginLeft= start;
 range.addEventListener('input',()=>{
-    indicatore.style.right= mouvment_range;
+    number_space();
+    indicatore.innerHTML= range.value;
+    let bo = mouvment_range * range.value;
+    bo -= number;
+    indicatore.style.marginLeft= bo+"px";
 })
 let filter_button = document.querySelector('.filter_button');
 let filter_pannel = document.querySelector('.filter_pannel');
