@@ -460,44 +460,19 @@ filter.forEach((input)=> {
         remove();
     })
 });
-range.addEventListener('mousedown',()=>{
-    range.step=""; 
-})
-range.addEventListener('mouseup',()=>{
-    submit.click();
-    remove();
-})
-let indicatore = document.querySelector('.indicatore');
-let value_motion = 237;
-let px_var = 0;
-let prova1 = range.value;
-range.addEventListener('input',()=>{
-    let prova2 = range.value;
-    console.log(prova1);
-    console.log(prova2);
-    if (prova2 < prova1) {
-        if (value_motion <= 237 && value_motion >= 177) {
-            value_motion -= 20;
-        }else if (px_var == 1) {
-            value_motion -= 20;
-            px_var = 0;
-        }else{
-            value_motion -= 19;
-            px_var = 1;
-        }
-    }else{
-        if (value_motion <= 237 && value_motion >= 177) {
-            value_motion += 20;
-        }else if (px_var == 1) {
-            value_motion += 20;
-            px_var = 0;
-        }else{
-            value_motion += 19;
-            px_var = 1;
-        }
-    }
-    indicatore.style.marginLeft= value_motion+"px";
-    prova1 = range.value;
+// range.addEventListener('mousedown',()=>{
+//     range.step=""; 
+// })
+// range.addEventListener('mouseup',()=>{
+//     submit.click();
+//     remove();
+// })
+
+let slider = document.querySelector('.slider');
+slider.addEventListener('mousedown',()=>{
+    slider.addEventListener('mouseout',()=>{
+        slider.style.marginLeft = "-50px";
+    })
 })
 
 let filter_button = document.querySelector('.filter_button');

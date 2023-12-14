@@ -497,6 +497,19 @@ left: -300px;
     border-radius: none;
     border: 1px solid black;
 }
+.slider_range{
+    height: 7px;
+    width: 100%;
+    background-color: gray;
+    display: flex;
+}
+.slider{
+    height: 15px;
+    width: 15px;
+    border-radius: 20px;
+    background-color: red;
+    margin-top: -3px;
+}
 #serch{
     border-radius: 0;
     width: 100%;

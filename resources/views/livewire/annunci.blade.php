@@ -29,10 +29,13 @@
             <option value="0">decrescente</option>
             <option value="1">crescente</option>
         </select>
-        <div class="my-5">
+        <div class="slider_range">
+            <div class="slider"></div>
+        </div>
+        {{-- <div class="my-5">
             <div class="indicatore">123</div>
             <input class="range w-100" wire:model="range" type="range" step="12" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
-        </div>
+        </div> --}}
         <input hidden id="remove" wire:model="remove" type="number">
             <button class="d-none" type="submit" id="submit"></button>
     </form>
