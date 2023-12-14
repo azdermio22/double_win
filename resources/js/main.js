@@ -468,27 +468,38 @@ range.addEventListener('mouseup',()=>{
     remove();
 })
 let indicatore = document.querySelector('.indicatore');
-let mouvment_range = 250/range.max;
-indicatore.innerHTML= range.value;
- let number = 0;
- function number_space() {   
-     if (indicatore.innerHTML.length == 1) {
-          number = 15;
-     }else if (indicatore.innerHTML.length == 2) {
-          number = 15;
-     }else if (indicatore.innerHTML.length == 3) {
-          number = 30;
-     }
- }
-let start = 250 - number + "px";
-indicatore.style.marginLeft= start;
+let value_motion = 237;
+let px_var = 0;
+let prova1 = range.value;
 range.addEventListener('input',()=>{
-    number_space();
-    indicatore.innerHTML= range.value;
-    let bo = mouvment_range * range.value;
-    bo -= number;
-    indicatore.style.marginLeft= bo+"px";
+    let prova2 = range.value;
+    console.log(prova1);
+    console.log(prova2);
+    if (prova2 < prova1) {
+        if (value_motion <= 237 && value_motion >= 177) {
+            value_motion -= 20;
+        }else if (px_var == 1) {
+            value_motion -= 20;
+            px_var = 0;
+        }else{
+            value_motion -= 19;
+            px_var = 1;
+        }
+    }else{
+        if (value_motion <= 237 && value_motion >= 177) {
+            value_motion += 20;
+        }else if (px_var == 1) {
+            value_motion += 20;
+            px_var = 0;
+        }else{
+            value_motion += 19;
+            px_var = 1;
+        }
+    }
+    indicatore.style.marginLeft= value_motion+"px";
+    prova1 = range.value;
 })
+
 let filter_button = document.querySelector('.filter_button');
 let filter_pannel = document.querySelector('.filter_pannel');
 let arrow_container = document.querySelector('.arrow_container');

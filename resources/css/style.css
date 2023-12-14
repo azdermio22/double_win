@@ -444,7 +444,7 @@ color: red;
     color: black;
     font-weight: 600;
     border-top: 1px solid black;
-    z-index: 2;
+    z-index: -5;
     user-select: none;
     color: red;
 }
@@ -471,7 +471,7 @@ left: -300px;
 .filter_pannel{
     background-color: white;
     box-shadow: 2px 5px 5px black;
-    height: 595px;
+    height: 585px;
     width: 300px;
     position: fixed;
     z-index: 2;
@@ -480,6 +480,12 @@ left: -300px;
 }
 .range{
     accent-color: red;
+}
+.indicatore{
+    width: 15px;
+    margin-left: 237px;
+    display: flex;
+    justify-content: center;
 }
 .search_icon{
     height: 28px;
@@ -496,9 +502,6 @@ left: -300px;
     width: 100%;
     outline: none;
     border: 1px solid black;
-}
-.indicatore{
-
 }
 .selected_filter{
     border: 1px solid black;
