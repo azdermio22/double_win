@@ -490,20 +490,23 @@ let cards = document.querySelectorAll('.card');
 let click = 0;
 filter_button.addEventListener('click',()=>{
     if (click == 0) {
-        cards.forEach((card)=> {
-            card.style.animationName = "prova";
+        card_container.classList.remove('justify-content-evenly');
+        card_container.style.paddingLeft = "40px";
+        cards.forEach((card, i)=> {
+            card.style.animationName = "card_mouvment1";
         });
-        card_container.style.animationName = "card_mouvment1";
+        card_container.style.animationName = "card_container_mouvment1";
         filter_pannel.style.animationName = "pannel_mouvment1";
-        setTimeout(()=>{
-            card_container.style.marginLeft = "-26px";
-            card_container.classList.add('col-10');
-        },1000);
         click = 1;
     }else{
-        card_container.style.marginLeft = "0px";
-            card_container.classList.remove('col-10');
-        card_container.style.animationName = "card_mouvment2";
+        card_container.style.paddingLeft = "auto";
+        cards.forEach((card, i)=> {
+            card.style.animationName = "card_mouvment2";
+        });
+        setTimeout(()=>{
+            card_container.classList.add('justify-content-evenly');
+        },1000)
+        card_container.style.animationName = "card_container_mouvment2";
         filter_pannel.style.animationName = "pannel_mouvment2";
         click = 0;
     }

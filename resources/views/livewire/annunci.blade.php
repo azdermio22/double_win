@@ -59,8 +59,8 @@
     @endif
 </div>
     </div>
-    <div class="container-fluid card_container">
-        <div class="row justify-content-evenly">
+    <div class="container-fluid">
+        <div class="row justify-content-evenly card_container">
             <div class="triger"></div>
             @foreach ($articles as $article)
             <div class="card col-3 p-0 my-3 text-center overflow-hidden" style="width: 18rem;">

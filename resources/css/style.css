@@ -2,6 +2,10 @@
     --thumb: 95%;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 nav{
     background-color: orange;
     color: white;
@@ -138,6 +142,7 @@ nav{
 .card{
     border: 2px solid orange;
     animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 .title_container{
     background-color: white;
@@ -592,7 +597,7 @@ cursor: pointer;
         left: -300px;
     }
 }
-@keyframes card_mouvment1{
+@keyframes card_container_mouvment1{
     0%{ 
         left: 0px;  
     }
@@ -600,7 +605,7 @@ cursor: pointer;
         left: 300px;
     }
 }
-@keyframes card_mouvment2{
+@keyframes card_container_mouvment2{
     0%{   
         left: 300px;
     }
@@ -608,12 +613,20 @@ cursor: pointer;
         left: 0px;
     }
 }
-@keyframes prova{
+@keyframes card_mouvment1{
     0%{
-
+        margin-right: 35px;
     }
     100%{
-        margin-left: 300px;
+        margin-right: 50px;
+    }
+}
+@keyframes card_mouvment2{
+    0%{
+        margin-right: 50px;
+    }
+    100%{
+        margin-right: 35px;
     }
 }
 /* fine annunci */
