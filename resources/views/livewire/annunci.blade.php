@@ -1,5 +1,5 @@
 <div>
-    <div class="filter_pannel pannel_mouvment px-4" wire:ignore>
+    <div class="filter_pannel px-4" wire:ignore.self>
         <div class="filter_button">filter<span class="arrow_container"><div class="arrow"></div><div class="arrow"></div><div class="arrow"></div></span></div>
         <div class="d-flex align-items-center">
             <input class="my-3" placeholder="search"  type="text" id="serch">
@@ -29,13 +29,14 @@
             <option value="0">decrescente</option>
             <option value="1">crescente</option>
         </select>
-        <div class="slider_range">
-            <div class="slider"></div>
+        <div class="my-5 position-relative">
+            <div class="value_display"></div>
+            <input wire:change="$refresh" class="range w-100" wire:model="range" type="range" step="12" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
+            <div class="d-flex">
+                <div>{{$min}}</div>
+                <div class="position-absolute end-0">{{$max}}</div>
+            </div>
         </div>
-        {{-- <div class="my-5">
-            <div class="indicatore">123</div>
-            <input class="range w-100" wire:model="range" type="range" step="12" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
-        </div> --}}
         <input hidden id="remove" wire:model="remove" type="number">
             <button class="d-none" type="submit" id="submit"></button>
     </form>
@@ -58,7 +59,7 @@
     @endif
 </div>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid card_container">
         <div class="row justify-content-evenly">
             <div class="triger"></div>
             @foreach ($articles as $article)

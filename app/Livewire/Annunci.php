@@ -22,13 +22,12 @@ class Annunci extends Component
 
     function annunci() {
         $this->articles = Article::all();
-        $min = $this->articles->min('price');
-        $max = $this->articles->max('price');
         $categori = 0;
         $filtered = [];
 
         if ($this->remove) {
-            dd($this->remove);
+            if ($this->categori) {
+            }
             switch ($this->remove) {
                 case '1':
                     $this->categori = null;
@@ -47,6 +46,7 @@ class Annunci extends Component
                     break;
             }
         }
+        $this->remove = 0;
         if ($this->serch) {
             foreach ($this->articles as $article) {
                 if (str_contains($article->name, $this->serch)) {
@@ -76,6 +76,18 @@ class Annunci extends Component
                     break;
             }
         }
+        $this->max = 0;
+        foreach ($filtered as $article) {
+            if ($article['price'] > $this->max) {
+                $this->max = $article['price'];
+            }
+        }
+        $this->min = $this->max;
+        foreach ($filtered as $article) {
+            if ($article['price'] < $this->min) {
+                $this->min = $article['price'];
+            }
+        }  
         if ($this->range) {
             foreach ($filtered as $key => $article) {
                 if ($article->price > $this->range.".0") {
@@ -136,6 +148,8 @@ class Annunci extends Component
         $this->selected_filter = [$this->serch, $this->range, $order, $categori, $orderby, $this->order, $this->categori, $this->orderby];
         $articles = $this->articles;
         $selected_filter = $this->selected_filter;
+        $max = $this->max;
+        $min = $this->min;
         return view('annunci',compact('articles','images','max','min','selected_filter'));
     }
 

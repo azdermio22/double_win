@@ -460,26 +460,53 @@ filter.forEach((input)=> {
         remove();
     })
 });
-// range.addEventListener('mousedown',()=>{
-//     range.step=""; 
-// })
-// range.addEventListener('mouseup',()=>{
-//     submit.click();
-//     remove();
-// })
+range.addEventListener('mousedown',()=>{
+    range.step=""; 
+})
+range.addEventListener('mouseup',()=>{
+    submit.click();
+    remove();
+})
 
-let slider = document.querySelector('.slider');
-slider.addEventListener('mousedown',()=>{
-    slider.addEventListener('mouseout',()=>{
-        slider.style.marginLeft = "-50px";
-    })
+let thumb_container = document.querySelector('.thumb_container');
+let value_display = document.querySelector('.value_display');
+let root = document.querySelector(':root');
+let css_var = getComputedStyle(root);
+let css_var_value = css_var.getPropertyValue('--thumb');
+range.addEventListener('input',()=>{
+    let var_value = 95 / range.max /range.max * range.value;
+let motion_range = 95 / range.max * (range.value - 1) + var_value;
+console.log(motion_range); 
+value_display.innerHTML = range.value+'<div class="range_arrow"></div>';
+value_display.style.left = motion_range+"%";
+root.style.setProperty('--thumb', motion_range+"%");
 })
 
 let filter_button = document.querySelector('.filter_button');
 let filter_pannel = document.querySelector('.filter_pannel');
 let arrow_container = document.querySelector('.arrow_container');
+let card_container = document.querySelector('.card_container');
+let cards = document.querySelectorAll('.card');
+let click = 0;
 filter_button.addEventListener('click',()=>{
-    filter_pannel.classList.toggle('pannel_mouvment');
+    if (click == 0) {
+        cards.forEach((card)=> {
+            card.style.animationName = "prova";
+        });
+        card_container.style.animationName = "card_mouvment1";
+        filter_pannel.style.animationName = "pannel_mouvment1";
+        setTimeout(()=>{
+            card_container.style.marginLeft = "-26px";
+            card_container.classList.add('col-10');
+        },1000);
+        click = 1;
+    }else{
+        card_container.style.marginLeft = "0px";
+            card_container.classList.remove('col-10');
+        card_container.style.animationName = "card_mouvment2";
+        filter_pannel.style.animationName = "pannel_mouvment2";
+        click = 0;
+    }
     arrow_container.classList.toggle('arrow_mouvment');
 })
 // end annunci
