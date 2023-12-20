@@ -9,20 +9,20 @@
         </div>
         <form class="d-flex flex-column justify-content-center" wire:submit.prevent="annunci">
             <input hidden class="my-3" wire:model="serch"  type="text" id="serch_submit">
-        <select class="d-block my-4" wire:model="categori" id="categori">
-            <option value=""  hidden>select the categori</option>   
+        <select class="d-block my-4" wire:model.live="categori" id="categori"onfocus="this.size=4;" onblur="this.size=0;">
+            <option value="" selected  disabled>select the categori</option>   
             <option value="1">abbigliamento</option>
             <option value="2">veicoli</option>
             <option value="3">gioglielli</option>
         </select>
-        <select class="d-block my-4" wire:model="orderby" id="orderby">
+        <select class="d-block my-4" wire:model.live="orderby" id="orderby">
             @if ($selected_filter[4] != null)
             <option value="{{$selected_filter[7]}}"  hidden>{{$selected_filter[4]}}</option> 
             @endif
             <option value="0">prezzo</option>
             <option value="1">data</option>
         </select>
-        <select class="d-block my-4" wire:model="order" id="order">
+        <select class="d-block my-4" wire:model.live="order" id="order">
             @if ($selected_filter[2] != null)
             <option value="{{$selected_filter[5]}}"  hidden>{{$selected_filter[2]}}</option>
             @endif
@@ -37,7 +37,7 @@
                 <div class="position-absolute end-0">{{$max}}</div>
             </div>
         </div>
-        <input hidden id="remove" wire:model="remove" type="number">
+        <input hidden id="remove" wire:model.live="remove" type="number">
             <button class="d-none" type="submit" id="submit"></button>
     </form>
     <p>selected filter:</p>

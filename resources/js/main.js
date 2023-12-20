@@ -191,7 +191,7 @@ carousels.forEach((carousel, i)=> {
     let miniatures_containers = cards[i].querySelectorAll('.img_miniature_container');
     let images = carousel.querySelectorAll('.image');
     let img_miniatures = cards[i].querySelectorAll('.img_miniature');
-
+    
     img_miniatures.forEach((img_miniature, i)=> {
         img_miniature.addEventListener('click',()=>{ 
                 per = -100 * i;
@@ -454,12 +454,7 @@ serch.addEventListener('input',()=>{
         submit.click();
     remove();
 })
-filter.forEach((input)=> {
-    input.addEventListener('change',()=>{
-        submit.click();
-        remove();
-    })
-});
+
 range.addEventListener('mousedown',()=>{
     range.step=""; 
 })
@@ -481,7 +476,6 @@ value_display.innerHTML = range.value+'<div class="range_arrow"></div>';
 value_display.style.left = motion_range+"%";
 root.style.setProperty('--thumb', motion_range+"%");
 })
-
 let filter_button = document.querySelector('.filter_button');
 let filter_pannel = document.querySelector('.filter_pannel');
 let arrow_container = document.querySelector('.arrow_container');
@@ -489,26 +483,34 @@ let card_container = document.querySelector('.card_container');
 let cards = document.querySelectorAll('.card');
 let click = 0;
 filter_button.addEventListener('click',()=>{
+    card_container.classList.remove("justify-content-evenly");
+card_container.style.width = "1500px";
     if (click == 0) {
-        card_container.classList.remove('justify-content-evenly');
-        card_container.style.paddingLeft = "40px";
-        cards.forEach((card, i)=> {
+        click = 1;
+        card_container.classList.remove("justify-content-evenly");
+        card_container.style.width = "1500px";
+        cards.forEach((card)=> {
             card.style.animationName = "card_mouvment1";
         });
         card_container.style.animationName = "card_container_mouvment1";
         filter_pannel.style.animationName = "pannel_mouvment1";
-        click = 1;
+        setTimeout(() => {
+            card_container.style.width = "1006px";
+            card_container.classList.add("justify-content-evenly");
+        }, 1000);
     }else{
-        card_container.style.paddingLeft = "auto";
-        cards.forEach((card, i)=> {
+        click = 0;
+        card_container.style.width = "1500px";
+        card_container.classList.remove("justify-content-evenly");
+        cards.forEach((card)=> {
             card.style.animationName = "card_mouvment2";
         });
-        setTimeout(()=>{
-            card_container.classList.add('justify-content-evenly');
-        },1000)
         card_container.style.animationName = "card_container_mouvment2";
         filter_pannel.style.animationName = "pannel_mouvment2";
-        click = 0;
+        setTimeout(() => {
+            card_container.style.width = "100%";
+            card_container.classList.add("justify-content-evenly");
+        }, 1000);
     }
     arrow_container.classList.toggle('arrow_mouvment');
 })

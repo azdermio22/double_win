@@ -143,6 +143,7 @@ nav{
     border: 2px solid orange;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    transform: scale(0.9);
 }
 .title_container{
     background-color: white;
@@ -582,6 +583,7 @@ cursor: pointer;
     animation-fill-mode: forwards;
     position: relative;
 }
+
 @keyframes pannel_mouvment1{
     0%{   
     }
@@ -615,18 +617,18 @@ cursor: pointer;
 }
 @keyframes card_mouvment1{
     0%{
-        margin-right: 35px;
+       margin-left: 43px;
     }
     100%{
-        margin-right: 50px;
+        margin-left: 47px;
     }
 }
 @keyframes card_mouvment2{
     0%{
-        margin-right: 50px;
+        margin-left: 47px;
     }
     100%{
-        margin-right: 35px;
+        margin-left: 43px;
     }
 }
 /* fine annunci */
