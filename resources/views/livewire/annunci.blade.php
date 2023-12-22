@@ -9,26 +9,32 @@
         </div>
         <form class="d-flex flex-column justify-content-center" wire:submit.prevent="annunci">
             <input hidden class="my-3" wire:model="serch"  type="text" id="serch_submit">
-        <select class="d-block my-4" wire:model.live="categori" id="categori"onfocus="this.size=4;" onblur="this.size=0;">
-            <option value="" selected  disabled>select the categori</option>   
+            <div class="d-block my-4 position-relative">
+        <select wire:model.live="categori" id="categori">
+            <option value="" hidden>select the categori</option>   
             <option value="1">abbigliamento</option>
             <option value="2">veicoli</option>
             <option value="3">gioglielli</option>
         </select>
-        <select class="d-block my-4" wire:model.live="orderby" id="orderby">
+    </div>
+    <div class="d-block my-4 position-relative">
+        <select wire:model.live="orderby" id="orderby">
             @if ($selected_filter[4] != null)
             <option value="{{$selected_filter[7]}}"  hidden>{{$selected_filter[4]}}</option> 
             @endif
             <option value="0">prezzo</option>
             <option value="1">data</option>
         </select>
-        <select class="d-block my-4" wire:model.live="order" id="order">
+    </div>
+    <div class="d-block my-4 position-relative">
+        <select wire:model.live="order" id="order">
             @if ($selected_filter[2] != null)
             <option value="{{$selected_filter[5]}}"  hidden>{{$selected_filter[2]}}</option>
             @endif
             <option value="0">decrescente</option>
             <option value="1">crescente</option>
         </select>
+    </div>
         <div class="my-5 position-relative">
             <div class="value_display"></div>
             <input wire:change="$refresh" class="range w-100" wire:model="range" type="range" step="12" min="{{$min}}" max="{{$max}}" @if ($selected_filter[1]) value="{{$selected_filter[1]}}" @else value="{{$max}}" @endif id="range">
@@ -61,7 +67,6 @@
     </div>
     <div class="container-fluid">
         <div class="row justify-content-evenly card_container">
-            <div class="triger"></div>
             @foreach ($articles as $article)
             <div class="card col-3 p-0 my-3 text-center overflow-hidden" style="width: 18rem;">
                 <div class="d-flex card_carousel">

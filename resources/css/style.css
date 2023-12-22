@@ -14,6 +14,40 @@ nav{
     z-index: 2;
 }
 
+.header_div{
+    height: 100px;
+    width: 150px;
+    background-color: red;
+    margin: 20px;
+    color: white;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.categori_title{
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+    height: 50px;
+    width: 100%;
+    background-color: orangered;
+}
+
+.header_search{
+    width: 50%;
+    margin: 20px;
+    border: 1px solid black;
+}
+
+.header_search_button{
+background-color: red;
+border-radius: 100%;
+border: 1px solid black;
+height: 35px;
+width: 35px;
+}
+
 .register{
     background-color: white;
     padding: 5px 40px 10px 40px;
@@ -138,6 +172,7 @@ nav{
     color: gray;
     height: 100px;
     overflow: hidden;
+    user-select: none;
 }
 .card{
     border: 2px solid orange;
@@ -147,11 +182,6 @@ nav{
 }
 .title_container{
     background-color: white;
-    height: 200px;
-    width: 700px;
-}
-.header_title{
-    color: black
 }
 .nav_link{
     color: white;
@@ -162,8 +192,7 @@ nav{
 }
 header{
     height: 100vh;
-    background-image: url('https://www.itstodini.it/wp-content/uploads/2019/11/consumo-elettrodomestici.jpg');
-    background-size: cover;
+    background-image: url('https://img.freepik.com/premium-vector/background-with-traveling-icons-traveling-holidays-icon-background_645658-2049.jpg');
 }
 @keyframes login1 {
     0%{
@@ -266,6 +295,12 @@ header{
     color: white;
     font-weight: 600;
     font-size: 20px;
+}
+.card_title{
+    user-select: none;
+}
+.card_price{
+    user-select: none;
 }
 .bg_bt{
     position: absolute;
@@ -492,6 +527,7 @@ animation-name: pannel_mouvment;
     animation-duration: 1s;
     animation-fill-mode: forwards;
 }
+
 .range{
     -webkit-appearance: none;
     height: 5px;

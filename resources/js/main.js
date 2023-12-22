@@ -180,13 +180,13 @@ if (carousels[0]) {
     });
 
 let cards = document.querySelectorAll('.card');
-let triger = document.querySelector('.triger');
 
 carousels.forEach((carousel, i)=> { 
+    let prova = 0;
+    let interval;
     let per = -100;
     let reset = 2;
     let mini = 1;
-    let interval;
     let counter = 0;
     let miniatures_containers = cards[i].querySelectorAll('.img_miniature_container');
     let images = carousel.querySelectorAll('.image');
@@ -208,6 +208,7 @@ carousels.forEach((carousel, i)=> {
     });
 
     cards[i].addEventListener('mouseover',()=>{
+        prova = 1;
         if (counter == 0) {
             counter++;
         miniatures_containers[0].style.border = '2px solid red';
@@ -232,19 +233,23 @@ carousels.forEach((carousel, i)=> {
         }, 3000);
     }
 });
-    triger.addEventListener('mouseover',()=>{
-        if (counter == 1) {
-            counter--;
-            clearInterval(interval);
-            miniatures_containers.forEach((miniature)=> {
-                miniature.style.border = 'none';
-                miniature.style.padding = '1px';
-            });
-            mini = 1;
-            per = -100;
-            reset = 2;
-        carousel.style.transform= 'translateX(0)';
-        }
+    cards[i].addEventListener('mouseout',()=>{
+        prova = 0;
+        setTimeout(() => {
+            console.log(prova);           
+            if (counter == 1 && prova == 0) {
+                counter--;
+                clearInterval(interval);
+                miniatures_containers.forEach((miniature)=> {
+                    miniature.style.border = 'none';
+                    miniature.style.padding = '1px';
+                });
+                mini = 1;
+                per = -100;
+                reset = 2;
+            carousel.style.transform= 'translateX(0)';
+            }
+        }, 1);
     }) 
 });
 
@@ -333,11 +338,9 @@ let cou = 0;
 espandi.addEventListener('click',()=>{
     p.classList.toggle('esp');
     if (cou == 0) {
-        console.log('ok');
         espandi.innerHTML = "retrai";
         cou = 1;
     }else if (cou == 1) {
-        console.log('o');
         espandi.innerHTML = "espandi";
         cou = 0; 
     }
@@ -407,111 +410,111 @@ inputs.forEach((input)=> {
 }
 // end profile
 // annunci
-let submit = document.querySelector('#submit');
-let range = document.querySelector('#range');
-let serch = document.querySelector('#serch');
-let search_icon = document.querySelector('.search_icon');
-let serch_submit = document.querySelector('#serch_submit');
-let filter = [document.querySelector('#orderby'),document.querySelector('#categori'),document.querySelector('#order')];
+// let submit = document.querySelector('#submit');
+// let range = document.querySelector('#range');
+// let serch = document.querySelector('#serch');
+// let search_icon = document.querySelector('.search_icon');
+// let serch_submit = document.querySelector('#serch_submit');
+// let filter = [document.querySelector('#orderby'),document.querySelector('#categori'),document.querySelector('#order')];
 
-serch.addEventListener('input',()=>{
-    if (search_icon.innerHTML = "<i class= 'bi bi-x-lg' ></i>") {
-        search_icon.addEventListener('click',()=>{
-            serch.value = "";
-            search_icon.style.cursor="default";
-            search_icon.innerHTML="<i class='bi bi-search'></i>";
-            serch_submit.value= serch.value;
-    serch_submit.dispatchEvent(new Event('input'));
-        submit.click();
-        })
-    }
-    if (serch.value != "") {
-        search_icon.innerHTML= "<i class='bi bi-x-lg'></i>";
-        search_icon.style.cursor="pointer";
-    }else{
-        search_icon.style.cursor="default";
-        search_icon.innerHTML= "<i class='bi bi-search'></i>";
-    }
-})
+// serch.addEventListener('input',()=>{
+//     if (search_icon.innerHTML = "<i class= 'bi bi-x-lg' ></i>") {
+//         search_icon.addEventListener('click',()=>{
+//             serch.value = "";
+//             search_icon.style.cursor="default";
+//             search_icon.innerHTML="<i class='bi bi-search'></i>";
+//             serch_submit.value= serch.value;
+//     serch_submit.dispatchEvent(new Event('input'));
+//         submit.click();
+//         })
+//     }
+//     if (serch.value != "") {
+//         search_icon.innerHTML= "<i class='bi bi-x-lg'></i>";
+//         search_icon.style.cursor="pointer";
+//     }else{
+//         search_icon.style.cursor="default";
+//         search_icon.innerHTML= "<i class='bi bi-search'></i>";
+//     }
+// })
 
-function remove(){
-    setTimeout(() => {         
-        let remove_filters = document.querySelectorAll('.remove_filter');
-        let remove = document.querySelector('#remove');
-remove_filters.forEach((remove_filter)=> {
-  remove_filter.addEventListener('click',()=>{
-      remove.value = remove_filter.id;
-      remove.dispatchEvent(new Event('input'));
-      submit.click();
-  })
-});
-      }, 550);
-}
+// function remove(){
+//     setTimeout(() => {         
+//         let remove_filters = document.querySelectorAll('.remove_filter');
+//         let remove = document.querySelector('#remove');
+// remove_filters.forEach((remove_filter)=> {
+//   remove_filter.addEventListener('click',()=>{
+//       remove.value = remove_filter.id;
+//       remove.dispatchEvent(new Event('input'));
+//       submit.click();
+//   })
+// });
+//       }, 550);
+// }
 
-serch.addEventListener('input',()=>{
-    serch_submit.value= serch.value;
-    serch_submit.dispatchEvent(new Event('input'));
-        submit.click();
-    remove();
-})
+// serch.addEventListener('input',()=>{
+//     serch_submit.value= serch.value;
+//     serch_submit.dispatchEvent(new Event('input'));
+//         submit.click();
+//     remove();
+// })
 
-range.addEventListener('mousedown',()=>{
-    range.step=""; 
-})
-range.addEventListener('mouseup',()=>{
-    submit.click();
-    remove();
-})
+// range.addEventListener('mousedown',()=>{
+//     range.step=""; 
+// })
+// range.addEventListener('mouseup',()=>{
+//     submit.click();
+//     remove();
+// })
 
-let thumb_container = document.querySelector('.thumb_container');
-let value_display = document.querySelector('.value_display');
-let root = document.querySelector(':root');
-let css_var = getComputedStyle(root);
-let css_var_value = css_var.getPropertyValue('--thumb');
-range.addEventListener('input',()=>{
-    let var_value = 95 / range.max /range.max * range.value;
-let motion_range = 95 / range.max * (range.value - 1) + var_value;
-console.log(motion_range); 
-value_display.innerHTML = range.value+'<div class="range_arrow"></div>';
-value_display.style.left = motion_range+"%";
-root.style.setProperty('--thumb', motion_range+"%");
-})
-let filter_button = document.querySelector('.filter_button');
-let filter_pannel = document.querySelector('.filter_pannel');
-let arrow_container = document.querySelector('.arrow_container');
-let card_container = document.querySelector('.card_container');
-let cards = document.querySelectorAll('.card');
-let click = 0;
-filter_button.addEventListener('click',()=>{
-    card_container.classList.remove("justify-content-evenly");
-card_container.style.width = "1500px";
-    if (click == 0) {
-        click = 1;
-        card_container.classList.remove("justify-content-evenly");
-        card_container.style.width = "1500px";
-        cards.forEach((card)=> {
-            card.style.animationName = "card_mouvment1";
-        });
-        card_container.style.animationName = "card_container_mouvment1";
-        filter_pannel.style.animationName = "pannel_mouvment1";
-        setTimeout(() => {
-            card_container.style.width = "1006px";
-            card_container.classList.add("justify-content-evenly");
-        }, 1000);
-    }else{
-        click = 0;
-        card_container.style.width = "1500px";
-        card_container.classList.remove("justify-content-evenly");
-        cards.forEach((card)=> {
-            card.style.animationName = "card_mouvment2";
-        });
-        card_container.style.animationName = "card_container_mouvment2";
-        filter_pannel.style.animationName = "pannel_mouvment2";
-        setTimeout(() => {
-            card_container.style.width = "100%";
-            card_container.classList.add("justify-content-evenly");
-        }, 1000);
-    }
-    arrow_container.classList.toggle('arrow_mouvment');
-})
+// let thumb_container = document.querySelector('.thumb_container');
+// let value_display = document.querySelector('.value_display');
+// let root = document.querySelector(':root');
+// let css_var = getComputedStyle(root);
+// let css_var_value = css_var.getPropertyValue('--thumb');
+// range.addEventListener('input',()=>{
+//     let var_value = 95 / range.max /range.max * range.value;
+// let motion_range = 95 / range.max * (range.value - 1) + var_value;
+// console.log(motion_range); 
+// value_display.innerHTML = range.value+'<div class="range_arrow"></div>';
+// value_display.style.left = motion_range+"%";
+// root.style.setProperty('--thumb', motion_range+"%");
+// })
+// let filter_button = document.querySelector('.filter_button');
+// let filter_pannel = document.querySelector('.filter_pannel');
+// let arrow_container = document.querySelector('.arrow_container');
+// let card_container = document.querySelector('.card_container');
+// let cards = document.querySelectorAll('.card');
+// let click = 0;
+// filter_button.addEventListener('click',()=>{
+//     card_container.classList.remove("justify-content-evenly");
+// card_container.style.width = "1500px";
+//     if (click == 0) {
+//         click = 1;
+//         card_container.classList.remove("justify-content-evenly");
+//         card_container.style.width = "1500px";
+//         cards.forEach((card)=> {
+//             card.style.animationName = "card_mouvment1";
+//         });
+//         card_container.style.animationName = "card_container_mouvment1";
+//         filter_pannel.style.animationName = "pannel_mouvment1";
+//         setTimeout(() => {
+//             card_container.style.width = "1006px";
+//             card_container.classList.add("justify-content-evenly");
+//         }, 1000);
+//     }else{
+//         click = 0;
+//         card_container.style.width = "1500px";
+//         card_container.classList.remove("justify-content-evenly");
+//         cards.forEach((card)=> {
+//             card.style.animationName = "card_mouvment2";
+//         });
+//         card_container.style.animationName = "card_container_mouvment2";
+//         filter_pannel.style.animationName = "pannel_mouvment2";
+//         setTimeout(() => {
+//             card_container.style.width = "100%";
+//             card_container.classList.add("justify-content-evenly");
+//         }, 1000);
+//     }
+//     arrow_container.classList.toggle('arrow_mouvment');
+// })
 // end annunci
