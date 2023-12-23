@@ -198,7 +198,7 @@ header{
     background-size: 34% 34%;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    background-position: 0 55px;
+    background-position: 0px 55px;
 }
 .lens{
     width: 40px;
@@ -216,8 +216,8 @@ header{
     top: 51px;
     left: 3px;
     transition: 1s;
-    background-position: 1.9% 1%;
-    left: -0.4%;
+    background-position: 107.6% 1%;
+    left: 33.6%;
     top: 7.5%;
 }
 .lens_body{

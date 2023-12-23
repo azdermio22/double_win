@@ -530,27 +530,27 @@ let lens = document.querySelector('.lens');
 setInterval(() => {
     switch (icon_var) {
         case 1:
-            x = 1.9;
+            x = 2;
              y = 1;
-             l = -0.4;
+             l = 33.6;
              t = 7.5;
             break;
         case 2:
             x = 37.5;
-             xy = 35;
-             l = 11.6;
+            y = 35;
+             l = 45.6;
              t = 18;
             break;
         case 3:
             x = 81.2;
             y = 38;
-            l = 25.6;
+            l = 59.6;
             t = 18.7;
             break;
         case 4:
             x = 58.5;
             y = 92.5;
-            l = 18.2;
+            l = 52.2;
             t = 35.2;
             break;
     
@@ -565,12 +565,6 @@ setInterval(() => {
             l += 34;
             x += 105.7;
             break;
-        case 2:
-            l += 68;
-            x += 211.4;
-            break;
-        default:
-            break;
     }
 
     icon_var2 = Math.floor(Math.random() * 2) + 1;
@@ -580,17 +574,10 @@ setInterval(() => {
             t += 34;
             y += 111.6;
             break;
-        case 1:
-            t += 68;
-            y += 223.2;
-            break;
-        default:
-            break;
     }
     x += "%";
     y += "%";
     xy = x + y;
-    console.log(x);
     lens.style.left = l+"%";
     lens.style.top= t+"%";
     lens.style.backgroundPosition = xy;
