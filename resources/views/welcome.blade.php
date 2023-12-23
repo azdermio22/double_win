@@ -1,5 +1,6 @@
 <x-layout>
     <header class="d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="lens"><div class="lens_body"></div></div>
         <h2>cerca e trova prodotti in tutto il mondo</h2>
         <div class="title_container">
         <div class="d-flex justify-content-evenly">
