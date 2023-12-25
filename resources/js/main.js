@@ -519,72 +519,75 @@ inputs.forEach((input)=> {
 // })
 // end annunci
 // header
-let x = 0;
-let y = 0;
-let xy = 0;
-let icon_var = 2;
-let icon_var2 = 0;
-var l = 0;
-let t = 0;
-let lens = document.querySelector('.lens');
+var icon_var = 2;
+var lens = document.querySelector('.lens');
+var header = document.querySelector('header');
+var l = 461;
+var t = 76;
+var l1 = 0;
+var y = 45;
+var x = 682;
 setInterval(() => {
+    if (l1 == -459) {
+        l1 = 0;
+        change();
+    }else{
+        l1 -= 1;
+    }
+    header.style.backgroundPosition = l1+"px 55px";
+}, 50);
+setInterval(() => {
+    l -= 1;
+    lens.style.left = l+"px";
+}, 50);
+function change(){
+    lens.style.animationName = "lens_rotate";
     switch (icon_var) {
         case 1:
-            x = 2;
-             y = 1;
-             l = 33.6;
-             t = 7.5;
+            t = 76;
+            l = 461;
+            y = -45;
+            x = -682;
             break;
         case 2:
-            x = 37.5;
-            y = 35;
-             l = 45.6;
-             t = 18;
+            t = 115;
+            l = 586;
+            x = -848;
+            y = -105;
             break;
         case 3:
-            x = 81.2;
-            y = 38;
-            l = 59.6;
-            t = 18.7;
+            t = 82;
+            l = 777;
+            x = -1108;
+            y = -55;
             break;
         case 4:
-            x = 58.5;
-            y = 92.5;
-            l = 52.2;
-            t = 35.2;
-            break;
-    
-        default:
+            t = 214;
+            l = 828;
+            x = -1178;
+            y = -256;
             break;
     }
-
-    icon_var2 = Math.floor(Math.random() * 2) + 1;
-
-    switch (icon_var2) {
-        case 1:
-            l += 34;
-            x += 105.7;
-            break;
+    let random = Math.floor(Math.random() * 2);
+    if (random == 1) {
+        l += 459;
+        x -= 625;
     }
-
-    icon_var2 = Math.floor(Math.random() * 2) + 1;
-
-    switch (icon_var2) {
-        case 1:
-            t += 34;
-            y += 111.6;
-            break;
+    random = Math.floor(Math.random() * 3);
+    if (random == 1) {
+        t += 218;
+        y -= 333;
+    }else if (random == 2) {
+        t += 436;
+        y -= 666;
     }
-    x += "%";
-    y += "%";
-    xy = x + y;
-    lens.style.left = l+"%";
-    lens.style.top= t+"%";
-    lens.style.backgroundPosition = xy;
     if (icon_var == 4) {
         icon_var = 1;
     }else{
         icon_var++;
     }
-}, 3000);
+    lens.style.top = t+"px";
+lens.style.left = l+"px";
+lens.style.backgroundPosition = x+"px"+" "+y+"px";
+}
 // end header

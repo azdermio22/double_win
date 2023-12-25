@@ -1,7 +1,7 @@
 <x-layout>
     <header class="d-flex flex-column justify-content-center align-items-center text-center">
     <div class="lens"><div class="lens_body"></div></div>
-        <h2>cerca e trova prodotti in tutto il mondo</h2>
+        {{-- <h2>cerca e trova prodotti in tutto il mondo</h2>
         <div class="title_container">
         <div class="d-flex justify-content-evenly">
             <div class="header_div">prodotti:<div class="number">10.000+</div></div>
@@ -13,7 +13,7 @@
             <input class="header_search" type="search" name="search" id="">
             <button class="header_search_button" type="submit"><i class="bi bi-search"></i></button>
         </form>
-        </div>
+        </div> --}}
     </header>
     <main>
         <div class="container-fluid p-0">

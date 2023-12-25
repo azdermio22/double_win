@@ -193,33 +193,28 @@ width: 35px;
 header{
     height: 100vh;
     background-image: url('https://img.freepik.com/premium-vector/background-with-traveling-icons-traveling-holidays-icon-background_645658-2049.jpg');
-    /* animation-name: header_background; */
-    animation-duration: 25s;
     background-size: 34% 34%;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
     background-position: 0px 55px;
+
 }
 .lens{
-    width: 40px;
     height: 40px;
-    border: 3px solid;
+    width: 40px;
     border-radius: 100%;
+    border:  3px solid black;
     position: absolute;
     display: flex;
     justify-content: center;
+    top: 76px;
+    left: 491px;
+    transition: background-position 7s, left 1s, top 1s;
     background-image: url('https://img.freepik.com/premium-vector/background-with-traveling-icons-traveling-holidays-icon-background_645658-2049.jpg');
-    /* animation-name: header_background; */
-    animation-duration: 25s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    top: 51px;
-    left: 3px;
-    transition: 1s;
-    background-position: 107.6% 1%;
-    left: 33.6%;
-    top: 7.5%;
+    background-position: -682px -45px;
+    animation-name: lens_rotate;
+    animation-duration: 15s;
+    animation-fill-mode: forwards;
 }
+
 .lens_body{
     height: 30px;
     width: 3px;
@@ -227,12 +222,14 @@ header{
     background-color: black;
     bottom: -30px;
 }
-@keyframes header_background{
+@keyframes lens_rotate {
     0%{
-        background-position: 0;
+        background-position: 0 0 45px ;
+        transform: rotate(-45deg);
     }
     100%{
-        background-position: -86.7%;
+        background-position: 0 0 -45px ;
+        transform: rotate(45deg);
     }
 }
 @keyframes login1 {
