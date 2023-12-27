@@ -207,14 +207,24 @@ header{
     justify-content: center;
     top: 76px;
     left: 491px;
-    transition: background-position 7s, left 1s, top 1s;
-    background-image: url('https://img.freepik.com/premium-vector/background-with-traveling-icons-traveling-holidays-icon-background_645658-2049.jpg');
-    background-position: -682px -45px;
+    transition: 1s;
     animation-name: lens_rotate;
     animation-duration: 15s;
     animation-fill-mode: forwards;
+    animation-timing-function: linear;
 }
-
+.background{
+    transition: background-position 6s;
+    background-image: url('https://img.freepik.com/premium-vector/background-with-traveling-icons-traveling-holidays-icon-background_645658-2049.jpg');
+    background-position: -682px -45px;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    animation-name: lens_background_rotate;
+    animation-duration: 15s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
 .lens_body{
     height: 30px;
     width: 3px;
@@ -224,11 +234,33 @@ header{
 }
 @keyframes lens_rotate {
     0%{
-        background-position: 0 0 45px ;
         transform: rotate(-45deg);
     }
     100%{
-        background-position: 0 0 -45px ;
+        transform: rotate(45deg);
+    }
+}
+@keyframes lens_rotate_reverse {
+    0%{
+        transform: rotate(45deg);
+    }
+    100%{
+        transform: rotate(-45deg);
+    }
+}
+@keyframes lens_background_rotate {
+    0%{
+        transform: rotate(45deg);
+    }
+    100%{
+        transform: rotate(-45deg);
+    }
+}
+@keyframes lens_background_rotate_reverse {
+    0%{
+        transform: rotate(-45deg);
+    }
+    100%{
         transform: rotate(45deg);
     }
 }

@@ -521,6 +521,7 @@ inputs.forEach((input)=> {
 // header
 var icon_var = 2;
 var lens = document.querySelector('.lens');
+var background = document.querySelector('.background');
 var header = document.querySelector('header');
 var l = 461;
 var t = 76;
@@ -541,7 +542,16 @@ setInterval(() => {
     lens.style.left = l+"px";
 }, 50);
 function change(){
-    lens.style.animationName = "lens_rotate";
+    lens.style.animationDuration = "3s";
+    background.style.animationDuration = "3s";
+    lens.style.animationName = "lens_rotate_reverse";
+    background.style.animationName = "lens_background_rotate_reverse";
+    setTimeout(() => {
+        lens.style.animationDuration = "15s";
+        background.style.animationDuration = "15s";
+        lens.style.animationName = "lens_rotate";
+        background.style.animationName = "lens_background_rotate";
+    }, 7000);
     switch (icon_var) {
         case 1:
             t = 76;
@@ -574,6 +584,9 @@ function change(){
         x -= 625;
     }
     random = Math.floor(Math.random() * 3);
+    if (icon_var == 4) {
+        random = 1;
+    }
     if (random == 1) {
         t += 218;
         y -= 333;
@@ -585,9 +598,10 @@ function change(){
         icon_var = 1;
     }else{
         icon_var++;
-    }
-    lens.style.top = t+"px";
+    }    
+        lens.style.top = t+"px";
 lens.style.left = l+"px";
-lens.style.backgroundPosition = x+"px"+" "+y+"px";
+background.style.backgroundPosition = y+"px";
+background.style.backgroundPosition = x+"px"+" "+y+"px";
 }
 // end header
