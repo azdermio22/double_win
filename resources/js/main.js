@@ -519,15 +519,16 @@ inputs.forEach((input)=> {
 // })
 // end annunci
 // header
-var icon_var = 2;
-var lens = document.querySelector('.lens');
-var background = document.querySelector('.background');
-var header = document.querySelector('header');
-var l = 461;
-var t = 76;
-var l1 = 0;
-var y = 45;
-var x = 682;
+let icon_var = 2;
+let lens = document.querySelector('.lens');
+let background = document.querySelector('.background');
+let header = document.querySelector('header');
+let l = 461;
+let t = 76;
+let l1 = 0;
+let y = 45;
+let x = 682;
+let prova = 1;
 setInterval(() => {
     if (l1 == -459) {
         l1 = 0;
@@ -536,12 +537,19 @@ setInterval(() => {
         l1 -= 1;
     }
     header.style.backgroundPosition = l1+"px 55px";
+    if (prova >= 1) {
+        if (prova > 1) {
+          l -= 10; 
+          prova --; 
+        }else{
+            l -= 1;
+        }     
+        lens.style.left = l+"px";
+    }
 }, 50);
-setInterval(() => {
-    l -= 1;
-    lens.style.left = l+"px";
-}, 50);
+
 function change(){
+    prova = 0;
     lens.style.animationDuration = "3s";
     background.style.animationDuration = "3s";
     lens.style.animationName = "lens_rotate_reverse";
@@ -555,25 +563,25 @@ function change(){
     switch (icon_var) {
         case 1:
             t = 76;
-            l = 461;
+            l = 467;
             y = -45;
             x = -682;
             break;
         case 2:
             t = 115;
-            l = 586;
-            x = -848;
-            y = -105;
+            l = 592;
+            x = -849;
+            y = -104;
             break;
         case 3:
             t = 82;
-            l = 777;
+            l = 783;
             x = -1108;
             y = -55;
             break;
         case 4:
             t = 214;
-            l = 828;
+            l = 834;
             x = -1178;
             y = -256;
             break;
@@ -599,9 +607,11 @@ function change(){
     }else{
         icon_var++;
     }    
-        lens.style.top = t+"px";
+    setTimeout(() => {
+        prova = 4;
+    }, 1000);
+lens.style.top = t+"px";
 lens.style.left = l+"px";
-background.style.backgroundPosition = y+"px";
 background.style.backgroundPosition = x+"px"+" "+y+"px";
 }
 // end header

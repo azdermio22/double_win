@@ -13,7 +13,15 @@ nav{
     top: 0;
     z-index: 2;
 }
-
+.nav_link:hover + .link_hover{
+    animation-name: link_hover;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    height: 2px;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+}
 .header_div{
     height: 100px;
     width: 150px;
@@ -195,7 +203,6 @@ header{
     background-image: url('https://img.freepik.com/premium-vector/background-with-traveling-icons-traveling-holidays-icon-background_645658-2049.jpg');
     background-size: 34% 34%;
     background-position: 0px 55px;
-
 }
 .lens{
     height: 40px;
@@ -207,14 +214,14 @@ header{
     justify-content: center;
     top: 76px;
     left: 491px;
-    transition: 1s;
+    transition: top 1s, left 1s;
     animation-name: lens_rotate;
     animation-duration: 15s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
 .background{
-    transition: background-position 6s;
+    transition: background-position 1s;
     background-image: url('https://img.freepik.com/premium-vector/background-with-traveling-icons-traveling-holidays-icon-background_645658-2049.jpg');
     background-position: -682px -45px;
     height: 100%;
@@ -231,6 +238,14 @@ header{
     position: absolute;
     background-color: black;
     bottom: -30px;
+}
+@keyframes link_hover{
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 100%;
+    }
 }
 @keyframes lens_rotate {
     0%{
