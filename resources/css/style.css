@@ -13,6 +13,42 @@ nav{
     top: 0;
     z-index: 2;
 }
+.logout{
+    background: none;
+    border: none;
+    color: white;
+}
+.nav_profile_icon{
+    height: 35px;
+    width: 35px;
+    border: 1px solid black;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+.login_link2{
+    position: absolute;
+    left: -55px;
+    transition: 0.7s;
+}
+.login_container{
+    width: 60px;
+    height: 25px;
+}
+.register_link2{
+    position: absolute;
+    left: -70px;
+    transition: 0.7s;
+}
+.register-container{
+    width: 75px;
+    height: 25px; 
+}
+.login_link:hover .login_link2{
+    left: 5px;
+}
+.register_link:hover .register_link2{
+    left: 5px;
+}
 .nav_link:hover + .link_hover{
     animation-name: link_hover;
     animation-duration: 0.5s;
@@ -21,6 +57,11 @@ nav{
     background-color: red;
     position: absolute;
     bottom: 0;
+}
+.w{
+    color: yellow;
+    position: absolute;
+    left: 141px;
 }
 .header_div{
     height: 100px;
@@ -190,6 +231,7 @@ width: 35px;
 }
 .title_container{
     background-color: white;
+    z-index: 1;
 }
 .nav_link{
     color: white;
