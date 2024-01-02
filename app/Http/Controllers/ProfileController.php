@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Article;
 use App\Models\UsersImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -15,7 +16,11 @@ class ProfileController extends Controller
         $user_images = UsersImage::all();
         $articles = Article::all();
         $images = Image::all();
-        return view('profile',compact('user','user_images','articles','images'));
+        $profile = 0;
+        if (Auth::user()) {
+            $profile = UsersImage::find(Auth::user()->id);
+        }
+        return view('profile',compact('user','user_images','articles','images','profile'));
     }
     function update(User $user, Request $request){
         $imgs = UsersImage::all();

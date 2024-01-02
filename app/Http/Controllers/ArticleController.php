@@ -16,6 +16,7 @@ class ArticleController extends Controller
      */
     public function index(Article $article)
     {
+        $profile = 0;
         if (Auth::user()) {
             $profile = UsersImage::find(Auth::user()->id);
         }

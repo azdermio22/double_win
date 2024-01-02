@@ -20,6 +20,12 @@
             <div class="link_hover"></div>
         </div>
         @endif
+        @if (Route::currentRouteName() != "home")           
+        <div class="position-relative d-flex justify-content-center">
+            <a class="nav_link" href="{{route('home')}}">home</a>
+            <div class="link_hover"></div>
+        </div>
+        @endif
     </div>
     <div class="col-4 d-flex justify-content-evenly align-items-center">
         @guest  
@@ -40,10 +46,12 @@
             <div class="link_hover"></div>
         </div>
     </form>
+    @if (Route::currentRouteName() != "profile")       
     <div class="position-relative d-flex justify-content-center">
-        <a class="nav_link register_link d-flex" href="{{route('profile',['user' => Auth::user()])}}">{{Auth::user()->name}}<div class="nav_profile_icon"><img class="w-100 h-100 rounded-5" src="{{Storage::url($profile->image)}}" alt=""></div><div class="register-container position-relative d-flex align-items-center overflow-hidden"><div class="register_link2 fs-5">logout</div></div></a>
-        <div class="link_hover"></div>
+        <a class="nav_link profile_link d-flex" href="{{route('profile',['user' => Auth::user()])}}"><div class="profile_name">{{Auth::user()->name}}</div><div class="nav_profile_icon"><img class="w-100 h-100 rounded-5" src="{{Storage::url($profile->image)}}" alt=""><div class="profile_swich"><div class="profile_swich_content">profile</div></div></div></a>
+        <div class="profile_link_hover"></div>
     </div> 
+    @endif
         @endauth
     </div>
 </div>

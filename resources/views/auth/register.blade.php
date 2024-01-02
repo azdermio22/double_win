@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :profile=$profile>
     <div class="container-fluid h-100 register_container">
         <div class="row flex-column justify-content-center align-items-center h-100">
     

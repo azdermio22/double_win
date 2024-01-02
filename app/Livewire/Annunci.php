@@ -152,6 +152,7 @@ class Annunci extends Component
         $selected_filter = $this->selected_filter;
         $max = $this->max;
         $min = $this->min;
+        $profile = 0;
         if (Auth::user()) {
             $profile = UsersImage::find(Auth::user()->id);
         }

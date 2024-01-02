@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :profile=$profile>
     <div class="container-fluid mt-5 profile_page">
         <div class="row user">
             <form class="d-flex" method="POST" action="{{route('user_update',compact('user'))}}" enctype="multipart/form-data">

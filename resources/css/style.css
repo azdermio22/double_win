@@ -13,6 +13,63 @@ nav{
     top: 0;
     z-index: 2;
 }
+.profile_link:hover .nav_profile_icon{
+    transition: 1s;
+    transform: translate(-90px);
+    z-index: 2;
+}
+.profile_link_hover{
+    width: 0;
+}
+.profile_link:hover + .profile_link_hover{
+    transition: 1s;
+    width: 100px;
+    height: 2px;
+    background-color: red;
+    position: absolute;
+    bottom: -5px;
+    right: 30px;
+}
+.profile_link:hover .profile_name{
+    transition: 0.5s;
+    transform: translate(100%);
+    z-index: 1;
+}
+.profile_link:not(:hover) .profile_name{
+    transition: 1s;
+    transform: translate(0px);
+    z-index: 1;
+}
+.profile_link:hover .nav_profile_icon{
+    transition: 1s;
+    transform: translate(-90px);
+    z-index: 2;
+}
+.profile_link:not(:hover) .nav_profile_icon{
+    transition: 1s;
+    transform: translate(0px);
+    z-index: 2;
+}
+.profile_link:hover .profile_swich_content{
+    left: 0px;
+}
+.profile_swich{
+    position: absolute;
+    left: 35px;
+    width: 150px;
+    height: 100%;
+    overflow: hidden;
+    background-color: orange;
+    top: -1px;
+}
+.profile_swich_content{
+    transition: 1s;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    left: -70px;
+}
 .title{
     user-select: none;
 }
@@ -30,6 +87,7 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
+    outline: 3px solid orange;
 }
 .login_link2{
     position: absolute;
