@@ -1,9 +1,9 @@
-<x-layout>
+<x-layout :profile=$profile>
     <header class="d-flex flex-column justify-content-center align-items-center text-center">
-    <div class="lens"><div class="background"></div><div class="lens_body"></div></div>
+        <div class="lens"><div class="background"></div><div class="lens_body"></div></div>
         <h2>cerca e trova prodotti in tutto il mondo</h2>
         <div class="title_container">
-        <div class="d-flex justify-content-evenly">
+            <div class="d-flex justify-content-evenly">
             <div class="header_div">prodotti:<div class="number">10.000+</div></div>
             <div class="header_div">utenti:<div class="number">5.000+</div></div>
             <div class="header_div">partner:<div class="number">500+</div></div>

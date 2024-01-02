@@ -410,117 +410,121 @@ inputs.forEach((input)=> {
 }
 // end profile
 // annunci
-// let submit = document.querySelector('#submit');
-// let range = document.querySelector('#range');
-// let serch = document.querySelector('#serch');
-// let search_icon = document.querySelector('.search_icon');
-// let serch_submit = document.querySelector('#serch_submit');
-// let filter = [document.querySelector('#orderby'),document.querySelector('#categori'),document.querySelector('#order')];
+let filter = document.querySelector('#orderby');
+if (filter) {
+    filter = [document.querySelector('#orderby'),document.querySelector('#categori'),document.querySelector('#order')];
+    console.log(filter);
+let submit = document.querySelector('#submit');
+let range = document.querySelector('#range');
+let serch = document.querySelector('#serch');
+let search_icon = document.querySelector('.search_icon');
+let serch_submit = document.querySelector('#serch_submit');
+serch.addEventListener('input',()=>{
+    if (search_icon.innerHTML = "<i class= 'bi bi-x-lg' ></i>") {
+        search_icon.addEventListener('click',()=>{
+            serch.value = "";
+            search_icon.style.cursor="default";
+            search_icon.innerHTML="<i class='bi bi-search'></i>";
+            serch_submit.value= serch.value;
+    serch_submit.dispatchEvent(new Event('input'));
+        submit.click();
+        })
+    }
+    if (serch.value != "") {
+        search_icon.innerHTML= "<i class='bi bi-x-lg'></i>";
+        search_icon.style.cursor="pointer";
+    }else{
+        search_icon.style.cursor="default";
+        search_icon.innerHTML= "<i class='bi bi-search'></i>";
+    }
+})
 
-// serch.addEventListener('input',()=>{
-//     if (search_icon.innerHTML = "<i class= 'bi bi-x-lg' ></i>") {
-//         search_icon.addEventListener('click',()=>{
-//             serch.value = "";
-//             search_icon.style.cursor="default";
-//             search_icon.innerHTML="<i class='bi bi-search'></i>";
-//             serch_submit.value= serch.value;
-//     serch_submit.dispatchEvent(new Event('input'));
-//         submit.click();
-//         })
-//     }
-//     if (serch.value != "") {
-//         search_icon.innerHTML= "<i class='bi bi-x-lg'></i>";
-//         search_icon.style.cursor="pointer";
-//     }else{
-//         search_icon.style.cursor="default";
-//         search_icon.innerHTML= "<i class='bi bi-search'></i>";
-//     }
-// })
+function remove(){
+    setTimeout(() => {         
+        let remove_filters = document.querySelectorAll('.remove_filter');
+        let remove = document.querySelector('#remove');
+remove_filters.forEach((remove_filter)=> {
+  remove_filter.addEventListener('click',()=>{
+      remove.value = remove_filter.id;
+      remove.dispatchEvent(new Event('input'));
+      submit.click();
+  })
+});
+      }, 550);
+}
 
-// function remove(){
-//     setTimeout(() => {         
-//         let remove_filters = document.querySelectorAll('.remove_filter');
-//         let remove = document.querySelector('#remove');
-// remove_filters.forEach((remove_filter)=> {
-//   remove_filter.addEventListener('click',()=>{
-//       remove.value = remove_filter.id;
-//       remove.dispatchEvent(new Event('input'));
-//       submit.click();
-//   })
-// });
-//       }, 550);
-// }
+serch.addEventListener('input',()=>{
+    serch_submit.value= serch.value;
+    serch_submit.dispatchEvent(new Event('input'));
+        submit.click();
+    remove();
+})
 
-// serch.addEventListener('input',()=>{
-//     serch_submit.value= serch.value;
-//     serch_submit.dispatchEvent(new Event('input'));
-//         submit.click();
-//     remove();
-// })
+range.addEventListener('mousedown',()=>{
+    range.step=""; 
+})
+range.addEventListener('mouseup',()=>{
+    submit.click();
+    remove();
+})
 
-// range.addEventListener('mousedown',()=>{
-//     range.step=""; 
-// })
-// range.addEventListener('mouseup',()=>{
-//     submit.click();
-//     remove();
-// })
-
-// let thumb_container = document.querySelector('.thumb_container');
-// let value_display = document.querySelector('.value_display');
-// let root = document.querySelector(':root');
-// let css_var = getComputedStyle(root);
-// let css_var_value = css_var.getPropertyValue('--thumb');
-// range.addEventListener('input',()=>{
-//     let var_value = 95 / range.max /range.max * range.value;
-// let motion_range = 95 / range.max * (range.value - 1) + var_value;
-// console.log(motion_range); 
-// value_display.innerHTML = range.value+'<div class="range_arrow"></div>';
-// value_display.style.left = motion_range+"%";
-// root.style.setProperty('--thumb', motion_range+"%");
-// })
-// let filter_button = document.querySelector('.filter_button');
-// let filter_pannel = document.querySelector('.filter_pannel');
-// let arrow_container = document.querySelector('.arrow_container');
-// let card_container = document.querySelector('.card_container');
-// let cards = document.querySelectorAll('.card');
-// let click = 0;
-// filter_button.addEventListener('click',()=>{
-//     card_container.classList.remove("justify-content-evenly");
-// card_container.style.width = "1500px";
-//     if (click == 0) {
-//         click = 1;
-//         card_container.classList.remove("justify-content-evenly");
-//         card_container.style.width = "1500px";
-//         cards.forEach((card)=> {
-//             card.style.animationName = "card_mouvment1";
-//         });
-//         card_container.style.animationName = "card_container_mouvment1";
-//         filter_pannel.style.animationName = "pannel_mouvment1";
-//         setTimeout(() => {
-//             card_container.style.width = "1006px";
-//             card_container.classList.add("justify-content-evenly");
-//         }, 1000);
-//     }else{
-//         click = 0;
-//         card_container.style.width = "1500px";
-//         card_container.classList.remove("justify-content-evenly");
-//         cards.forEach((card)=> {
-//             card.style.animationName = "card_mouvment2";
-//         });
-//         card_container.style.animationName = "card_container_mouvment2";
-//         filter_pannel.style.animationName = "pannel_mouvment2";
-//         setTimeout(() => {
-//             card_container.style.width = "100%";
-//             card_container.classList.add("justify-content-evenly");
-//         }, 1000);
-//     }
-//     arrow_container.classList.toggle('arrow_mouvment');
-// })
+let thumb_container = document.querySelector('.thumb_container');
+let value_display = document.querySelector('.value_display');
+let root = document.querySelector(':root');
+let css_var = getComputedStyle(root);
+let css_var_value = css_var.getPropertyValue('--thumb');
+range.addEventListener('input',()=>{
+    let var_value = 95 / range.max /range.max * range.value;
+let motion_range = 95 / range.max * (range.value - 1) + var_value;
+console.log(motion_range); 
+value_display.innerHTML = range.value+'<div class="range_arrow"></div>';
+value_display.style.left = motion_range+"%";
+root.style.setProperty('--thumb', motion_range+"%");
+})
+let filter_button = document.querySelector('.filter_button');
+let filter_pannel = document.querySelector('.filter_pannel');
+let arrow_container = document.querySelector('.arrow_container');
+let card_container = document.querySelector('.card_container');
+let cards = document.querySelectorAll('.card');
+let click = 0;
+filter_button.addEventListener('click',()=>{
+    card_container.classList.remove("justify-content-evenly");
+card_container.style.width = "1500px";
+    if (click == 0) {
+        click = 1;
+        card_container.classList.remove("justify-content-evenly");
+        card_container.style.width = "1500px";
+        cards.forEach((card)=> {
+            card.style.animationName = "card_mouvment1";
+        });
+        card_container.style.animationName = "card_container_mouvment1";
+        filter_pannel.style.animationName = "pannel_mouvment1";
+        setTimeout(() => {
+            card_container.style.width = "1006px";
+            card_container.classList.add("justify-content-evenly");
+        }, 1000);
+    }else{
+        click = 0;
+        card_container.style.width = "1500px";
+        card_container.classList.remove("justify-content-evenly");
+        cards.forEach((card)=> {
+            card.style.animationName = "card_mouvment2";
+        });
+        card_container.style.animationName = "card_container_mouvment2";
+        filter_pannel.style.animationName = "pannel_mouvment2";
+        setTimeout(() => {
+            card_container.style.width = "100%";
+            card_container.classList.add("justify-content-evenly");
+        }, 1000);
+    }
+    arrow_container.classList.toggle('arrow_mouvment');
+})
+}
 // end annunci
 // header
-let icon_var = 2;
 let lens = document.querySelector('.lens');
+if (lens) {
+let icon_var = 2;
 let background = document.querySelector('.background');
 let header = document.querySelector('header');
 let l = 461;
@@ -613,5 +617,6 @@ function change(){
 lens.style.top = t+"px";
 lens.style.left = l+"px";
 background.style.backgroundPosition = x+"px"+" "+y+"px";
+}
 }
 // end header

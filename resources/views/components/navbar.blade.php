@@ -2,20 +2,24 @@
 <div class="row">
     <div class="col-4">
         @if (Route::currentRouteName() != "home")
-        <h1>{{Route::currentRouteName()}}</h1> 
+        <h1 class="title">{{Route::currentRouteName()}}</h1> 
         @else      
-        <h1>double <span class="w">v</span>vin</h1>
+        <h1 class="title">double <span class="w">v</span>vin</h1>
         @endif
     </div>
     <div class="col-4 d-flex justify-content-evenly align-items-center">
+        @if (Route::currentRouteName() != "annunci")
         <div class="position-relative d-flex justify-content-center">
             <a class="nav_link" href="{{route('annunci')}}">annunci</a>
             <div class="link_hover"></div>
         </div>
+        @endif
+        @if (Route::currentRouteName() != "vendi")           
         <div class="position-relative d-flex justify-content-center">
             <a class="nav_link" href="{{route('vendi')}}">vendi</a>
             <div class="link_hover"></div>
         </div>
+        @endif
     </div>
     <div class="col-4 d-flex justify-content-evenly align-items-center">
         @guest  
@@ -36,7 +40,10 @@
             <div class="link_hover"></div>
         </div>
     </form>
-    <a class="nav_link d-flex" href="{{route('profile',['user' => Auth::user()])}}"><div class="nav_profile_icon"></div>{{Auth::user()->name}}</a>
+    <div class="position-relative d-flex justify-content-center">
+        <a class="nav_link register_link d-flex" href="{{route('profile',['user' => Auth::user()])}}">{{Auth::user()->name}}<div class="nav_profile_icon"><img class="w-100 h-100 rounded-5" src="{{Storage::url($profile->image)}}" alt=""></div><div class="register-container position-relative d-flex align-items-center overflow-hidden"><div class="register_link2 fs-5">logout</div></div></a>
+        <div class="link_hover"></div>
+    </div> 
         @endauth
     </div>
 </div>

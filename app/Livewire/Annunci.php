@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\Image;
 use App\Models\Article;
 use Livewire\Component;
+use App\Models\UsersImage;
+use Illuminate\Support\Facades\Auth;
 
 class Annunci extends Component
 {
@@ -150,7 +152,10 @@ class Annunci extends Component
         $selected_filter = $this->selected_filter;
         $max = $this->max;
         $min = $this->min;
-        return view('annunci',compact('articles','images','max','min','selected_filter'));
+        if (Auth::user()) {
+            $profile = UsersImage::find(Auth::user()->id);
+        }
+        return view('annunci',compact('articles','images','max','min','selected_filter','profile'));
     }
 
     public function render()

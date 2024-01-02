@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Image;
 use App\Models\Article;
 use App\Models\Categori;
+use App\Models\UsersImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,10 @@ class ArticleController extends Controller
      */
     public function index(Article $article)
     {
-        return view('article_detail',compact('article'));
+        if (Auth::user()) {
+            $profile = UsersImage::find(Auth::user()->id);
+        }
+        return view('article_detail',compact('article','profile'));
     }
 
     public function profile_detail(Article $article)
@@ -30,7 +34,10 @@ class ArticleController extends Controller
     public function create()
     {
         $categoris = Categori::all();
-        return view('vendi',compact('categoris'));
+        if (Auth::user()) {
+            $profile = UsersImage::find(Auth::user()->id);
+        }
+        return view('vendi',compact('categoris','profile'));
     }
 
     /**

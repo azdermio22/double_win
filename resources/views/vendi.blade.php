@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :profile=$profile>
 <form class="mt-5" method="POST" action="{{route('store')}}" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">

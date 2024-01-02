@@ -8,7 +8,7 @@
     @vite(['resources/js/app.js','resources/css/app.css'])
 </head>
 <body>
-    <x-navbar></x-navbar>
+    <x-navbar :profile=$profile></x-navbar>
     {{$slot}}
 </body>
 </html>

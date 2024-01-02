@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :profile=$profile>
     <div class="container-fluid mt-5">
         <div class="row mt-5">
             <div class="col-4 p-0 overflow-hidden fixed">
