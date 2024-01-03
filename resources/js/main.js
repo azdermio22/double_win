@@ -624,7 +624,9 @@ background.style.backgroundPosition = x+"px"+" "+y+"px";
 let img_preview = document.querySelector('.img_preview');
 let img_preview_slider = document.querySelector('.img_preview_slider');
 let preview_miniature_container = document.querySelector('.preview_miniature_container');
+let preview_miniature_slider = document.querySelector('.preview_miniature_slider');
 let img_input = document.querySelector('.img_input');
+let img_var = 400;
 img_preview.addEventListener('click',()=>{
     img_input.click();
 })
@@ -633,7 +635,29 @@ img_input.addEventListener('input',()=>{
     for (let i = 0; i < img_input.files.length; i++) {
         img_preview_slider.style.justifyContent = "left";
         img_preview_slider.innerHTML += `<img class="img_size" src="${window.URL.createObjectURL(img_input.files[i])}" alt="">`;
-        preview_miniature_container.innerHTML += `<div class="miniature_preview"><img class="h-100 w-100" src="${window.URL.createObjectURL(img_input.files[i])}" alt=""></div>`;
+        preview_miniature_slider.innerHTML += `<div class="miniature_preview"><img class="h-100 w-100" src="${window.URL.createObjectURL(img_input.files[i])}" alt=""></div>`;
     }
+    preview_miniature_container.querySelectorAll('.miniature_preview').forEach((miniature, i)=> {
+        miniature.addEventListener('click',()=>{
+            document.querySelectorAll('.miniature_preview').forEach((miniature)=> {
+                miniature.style.border = "1px solid white";
+            });
+            miniature.style.border = "1px solid red";
+            img_preview_slider.style.left = "-"+img_var*i+"px";
+        })
+    });
 })
+let categorys = document.querySelectorAll('.category');
+let category_input = document.querySelector('#category_input');
+categorys.forEach((category, i)=> {
+    category.addEventListener('click',()=>{
+        categorys.forEach((category)=> {
+            category.style.backgroundColor = "gray";
+            category.style.color = "rgb(216, 216, 216)";
+        });
+        category.style.backgroundColor = "blue";
+        category.style.color = "white";
+        category_input.value = i;
+    })
+});
 // end vendi

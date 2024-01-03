@@ -3,9 +3,30 @@
 }
 .textarea{
     resize: none;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 10px;
 }
 body{
     overflow-x: hidden;
+}
+.preview_miniature_container{
+    width: 400px;
+    height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+.category{
+    background-color: gray;
+    border-radius: 20px;
+    user-select: none;
+    cursor: pointer;
+    color: rgb(216, 216, 216);
+    border: 1px solid black;
+    padding-top: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 1px;
+    font-weight: 600;
 }
 .img_preview{
     border: 1px solid black;
@@ -19,6 +40,7 @@ body{
     align-items: center;
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 }
 .img_preview_slider{
     width: 100%;
@@ -27,7 +49,7 @@ body{
     justify-content: center;
     align-items: center;
     position: absolute;
-    overflow: hidden;
+    transition: 1s;
 }
 .miniature_preview{
     height: 100px;
