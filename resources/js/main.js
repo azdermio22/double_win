@@ -620,3 +620,20 @@ background.style.backgroundPosition = x+"px"+" "+y+"px";
 }
 }
 // end header
+// veldi
+let img_preview = document.querySelector('.img_preview');
+let img_preview_slider = document.querySelector('.img_preview_slider');
+let preview_miniature_container = document.querySelector('.preview_miniature_container');
+let img_input = document.querySelector('.img_input');
+img_preview.addEventListener('click',()=>{
+    img_input.click();
+})
+img_input.addEventListener('input',()=>{
+    img_preview_slider.innerHTML = "";
+    for (let i = 0; i < img_input.files.length; i++) {
+        img_preview_slider.style.justifyContent = "left";
+        img_preview_slider.innerHTML += `<img class="img_size" src="${window.URL.createObjectURL(img_input.files[i])}" alt="">`;
+        preview_miniature_container.innerHTML += `<div class="miniature_preview"><img class="h-100 w-100" src="${window.URL.createObjectURL(img_input.files[i])}" alt=""></div>`;
+    }
+})
+// end vendi
