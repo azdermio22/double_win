@@ -23,6 +23,7 @@ let form = document.querySelector('#form').value;
 let primary_containers = document.querySelectorAll('.primary_container');
 
 if (form == 1) {
+        document.querySelector('#email').value = "";
     let login = document.querySelector('.login');
     let register = document.querySelector('.register');
     let swich = document.querySelector('.btn_swich');
@@ -31,10 +32,9 @@ if (form == 1) {
     login.style.transform= 'translateX(0)';
     register.style.transform= 'translateX(-100%)';
     }
-
 btnr[0].addEventListener('click',()=>{
     if (form == 1) {    
-        form = 0;   
+        form = 0;  
         swich.style.animationName = 'register_swich1';
         btnr[0].style.color= 'white';
         btnr[1].style.color= 'black';
@@ -91,80 +91,78 @@ primary_containers.forEach((primary_container, i)=> {
     let eye = secondary_container.querySelector('.eye');
     let rule;
     let message;
-    let acces = 0;
-
     input.addEventListener('blur',()=>{
-             switch (i) {
-            case 0:
-                rule = input.value.length >= 3;
-                message = "inserisci almeno 3 caratteri";
-                break;
-
-            case 1:
-                rule = input.value.length >= 3;
-                message = "inserisci almeno 3 caratteri";
-                break;
-
-            case 2:
-                rule = input.value.includes("@");
-                message = "email non valida";
-                break;
-
-            case 3:
-                rule = input.value.length >= 8;
-                message = "deve contenere minimo 8 caratteri";
-                break;
-
-            case 4:
-                rule = primary_containers[3].querySelector('.secondary_container').querySelector('.register_input').value === input.value;
-                message = "la password non corrisponde";
-                break;
-
-            case 5:
-                rule = input.value.includes("@");
-                message = "email non valida";
-                break;
-
-            case 6:
-                rule = input.value.length >= 8;
-                message = "deve contenere minimo 8 caratteri";
-                break;
-                        
-            default:
-                rule = input.value.length > 2;
-                break;
-        }
-        if (rule) {
-            error.innerHTML = "";  
-        }else{
-            error.innerHTML = message;
-        }
-        let control = document.querySelectorAll('.register_input');
-        let error_control = document.querySelectorAll('.error');
-        if (control[0].value != "" && control[1].value != "" && control[2].value != "" && control[3].value != "" && control[4].value != "" && error_control[0].innerHTML == "" && error_control[1].innerHTML == "" && error_control[2].innerHTML == "" && error_control[3].innerHTML == "" && error_control[4].innerHTML == "") {
-            document.querySelectorAll('.register_submit')[0].type= "submit";
-        }
-        if (control[5].value != "" && control[6].value != "" && error_control[5].innerHTML == "" && error_control[6].innerHTML == "") {
-            document.querySelectorAll('.register_submit')[1].type= "submit";
-        }
-        if (error.innerHTML != "") {
-            secondary_container.style.color= "red";
-            secondary_container.querySelector('label').style.color= "red";
-            input.style.borderBottom = '1px solid red';
-            if (eye) {
-                eye.style.borderBottom= '1px solid red'; 
-            }  
-        }
-        if (error.innerHTML == "") {
-            secondary_container.style.color= "rgb(109, 182, 0)";
-            secondary_container.querySelector('label').style.color= "rgb(109, 182, 0)";
-            input.style.borderBottom = '1px solid rgb(109, 182, 0)';
-            if (eye) {
-                eye.style.borderBottom= '1px solid rgb(109, 182, 0)'; 
-            }  
-        }
-    })
+            switch (i) {
+                case 0:
+                    rule = input.value.length >= 3;
+                    message = "inserisci almeno 3 caratteri";
+                    break;
     
+                case 1:
+                    rule = input.value.length >= 3;
+                    message = "inserisci almeno 3 caratteri";
+                    break;
+    
+                case 2:
+                    rule = input.value.includes("@");
+                    message = "email non valida";
+                    break;
+    
+                case 3:
+                    rule = input.value.length >= 8;
+                    message = "deve contenere minimo 8 caratteri";
+                    break;
+    
+                case 4:
+                    rule = primary_containers[3].querySelector('.secondary_container').querySelector('.register_input').value === input.value;
+                    message = "la password non corrisponde";
+                    break;
+    
+                case 5:
+                    rule = input.value.includes("@");
+                    message = "email non valida";
+                    break;
+    
+                case 6:
+                    rule = input.value.length >= 8;
+                    message = "deve contenere minimo 8 caratteri";
+                    break;
+                            
+                default:
+                    rule = input.value.length > 2;
+                    break;
+            }
+            if (rule) {
+                error.innerHTML = "";  
+            }else{
+                error.innerHTML = message;
+            }
+            let control = document.querySelectorAll('.register_input');
+            let error_control = document.querySelectorAll('.error');
+            if (control[0].value != "" && control[1].value != "" && control[2].value != "" && control[3].value != "" && control[4].value != "" && error_control[0].innerHTML == "" && error_control[1].innerHTML == "" && error_control[2].innerHTML == "" || error_control[2].innerHTML == "The email has already been taken"  && error_control[3].innerHTML == "" && error_control[4].innerHTML == "") {
+                document.querySelectorAll('.register_submit')[0].type= "submit";
+            }
+            console.log(error_control[6].innerHTML == "These credentials do not match our records.");
+            if (control[5].value != "" && control[6].value != "" && error_control[5].innerHTML == "" && error_control[6].innerHTML == "" || error_control[6].innerHTML == "These credentials do not match our records.") {
+                document.querySelectorAll('.register_submit')[1].type= "submit";
+            }
+            if (error.innerHTML != "") {
+                secondary_container.style.color= "red";
+                secondary_container.querySelector('label').style.color= "red";
+                input.style.borderBottom = '1px solid red';
+                if (eye) {
+                    eye.style.borderBottom= '1px solid red'; 
+                }  
+            }
+            if (error.innerHTML == "") {
+                secondary_container.style.color= "rgb(109, 182, 0)";
+                secondary_container.querySelector('label').style.color= "rgb(109, 182, 0)";
+                input.style.borderBottom = '1px solid rgb(109, 182, 0)';
+                if (eye) {
+                    eye.style.borderBottom= '1px solid rgb(109, 182, 0)'; 
+                }  
+            }
+    })  
 });
 }
 // // end register form
@@ -622,6 +620,7 @@ background.style.backgroundPosition = x+"px"+" "+y+"px";
 // end header
 // veldi
 let img_preview = document.querySelector('.img_preview');
+if (img_preview) {
 let img_preview_slider = document.querySelector('.img_preview_slider');
 let preview_miniature_container = document.querySelector('.preview_miniature_container');
 let preview_miniature_slider = document.querySelector('.preview_miniature_slider');
@@ -632,20 +631,46 @@ img_preview.addEventListener('click',()=>{
 })
 img_input.addEventListener('input',()=>{
     img_preview_slider.innerHTML = "";
+    preview_miniature_slider.innerHTML = "";
     for (let i = 0; i < img_input.files.length; i++) {
         img_preview_slider.style.justifyContent = "left";
-        img_preview_slider.innerHTML += `<img class="img_size" src="${window.URL.createObjectURL(img_input.files[i])}" alt="">`;
+        img_preview_slider.innerHTML += `<div class="img_size"><img class="h-100 w-100" src="${window.URL.createObjectURL(img_input.files[i])}" alt=""></div>`;
         preview_miniature_slider.innerHTML += `<div class="miniature_preview"><img class="h-100 w-100" src="${window.URL.createObjectURL(img_input.files[i])}" alt=""></div>`;
     }
+    let arrow_move = 0;
+    if (img_input.files.length > 4) {
+        let left_arrow = document.querySelector('.miniature_arrow_left');
+        let right_arrow = document.querySelector('.miniature_arrow_right');
+        left_arrow.classList.remove('d-none');
+        right_arrow.classList.remove('d-none');
+        right_arrow.addEventListener('click',()=>{
+            if (arrow_move != "-"+(img_input.files.length-4)*100) {
+                arrow_move -= 100;
+            }
+            preview_miniature_slider.style.left = arrow_move+"px";
+        });
+        left_arrow.addEventListener('click',()=>{
+            if (arrow_move != 0) {
+                arrow_move += 100;
+            }
+            console.log(arrow_move);
+            preview_miniature_slider.style.left = arrow_move+"px";
+        });
+    }
+    preview_miniature_container.querySelectorAll('.miniature_preview')[0].style.border = "2px solid red";
     preview_miniature_container.querySelectorAll('.miniature_preview').forEach((miniature, i)=> {
         miniature.addEventListener('click',()=>{
             document.querySelectorAll('.miniature_preview').forEach((miniature)=> {
                 miniature.style.border = "1px solid white";
             });
-            miniature.style.border = "1px solid red";
+            miniature.style.border = "2px solid red";
             img_preview_slider.style.left = "-"+img_var*i+"px";
         })
     });
+    document.querySelector('.img_loaded').innerHTML = `${img_input.files.length} loaded`;
+    document.querySelector('.img_loaded').style.border = "1px solid black";
+    document.querySelector('.img_loaded').style.paddingLeft = "5px";
+    document.querySelector('.img_loaded').style.paddingRight = "5px";
 })
 let categorys = document.querySelectorAll('.category');
 let category_input = document.querySelector('#category_input');
@@ -660,4 +685,5 @@ categorys.forEach((category, i)=> {
         category_input.value = i;
     })
 });
+}
 // end vendi

@@ -28,6 +28,8 @@ Route::get('/article_update/{article}',[ArticleController::class,'edit'])->name(
 Route::put('/update/{article}',[ArticleController::class,'update'])->name('update');
 Route::delete('/destroy/{article}',[ArticleController::class,'destroy'])->name('destroy');
 Route::get('/annunci',[Annunci::class,'annunci'])->name('annunci');
+Route::get('/password_reset',[PublicController::class,'password_reset'])->name('password_reset');
+
 
 
 

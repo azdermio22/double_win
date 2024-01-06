@@ -33,9 +33,14 @@
               <input value="{{old('email')}}" name="email" type="email" class="register_input" id="email">
               <div class="input_border"></div>
             </div>
+            <div class="error_display">
             @error('email')
+            @if ($message != "These credentials do not match our records.")
+            <div class="d-none">{{$form = 0}}</div>
             <div class="error">{{ $message }}</div>
+            @endif
             @enderror
+          </div>
             <div class="error"></div>
             </div>
             <div class="primary_container position-relative w-100">
@@ -70,9 +75,14 @@
               <input value="{{old('email')}}" name="email" type="email" class="register_input" id="email1" aria-describedby="emailHelp">
               <div class="input_border"></div>
             </div>
+            <div class="error_display1">
             @error('email')
+            @if ($message == "These credentials do not match our records.")
+            <div class="d-none">{{$form = 1}}</div>
             <div class="error">{{ $message }}</div>
-            @enderror
+            @endif
+              @enderror
+            </div>
               <div class="error"></div>
             </div>
             <div class="primary_container position-relative w-100">
@@ -86,7 +96,7 @@
             </div>
             <div class="error"></div>
             </div>
-            <a class="mt-2" href="">password dimenticata?</a>
+            <a class="mt-2" href="{{route('password_reset')}}">password dimenticata?</a>
             <button type="button" class="register_submit mt-5">invia</button>
           </form>
           </div>

@@ -2,15 +2,21 @@
 <form class="mt-5" method="POST" action="{{route('store')}}" enctype="multipart/form-data">
     @csrf
     <div class="row">
-      <div class="col-5 d-flex justify-content-center">
+      <div class="col-5 d-flex justify-content-center mt-4">
         <div class="mb-3">
-          <label for="image" class="form-label">image</label>
-          <div class="img_preview"><div class="img_preview_slider"><i class="bi bi-file-earmark-image"></i></div></div>
-          <div class="preview_miniature_container"><div class="preview_miniature_slider d-flex position-absolute"></div></div>
+          <div class="d-flex justify-content-center"><label for="image" class="form-label d-flex">image:<div class="img_loaded"></div></label></div>
+          <div class="img_preview"><i class="bi bi-file-earmark-image"></i><div class="img_preview_slider"></div></div>
+          <div class="preview_miniature_container"><div class="miniature_arrow_left d-none"><div class="w-25"><div class="left_arrow"></div></div></div><div class="preview_miniature_slider"></div><div class="miniature_arrow_right d-none"><div class="w-25"><div class="right_arrow"></div></div></div></div>
           <input name="image[]" type="file" class="img_input form-control d-none" multiple>
         </div> 
       </div>
       <div class="col-7 d-flex flex-column justify-content-center align-items-center">
+        <div class="d-flex justify-content-evenly w-100 my-3">
+          <div>category:</div>
+          @foreach ($categoris as $categori)
+              <option class="category" value="{{$categori->id}}">{{$categori->categori}}</option>
+          @endforeach
+        </div>
         <div class="mb-3 w-75">
           <label for="name" class="form-label">name</label>
           <input value="{{old('name')}}" name="name" type="text" class="form-control" id="name">
@@ -18,11 +24,6 @@
         <div class="mb-3 w-75 d-flex flex-column">
           <label for="description" class="form-label">description</label>
           <textarea class="textarea" value="{{old('description')}}" name="description" id="description" cols="30" rows="10"></textarea>
-        </div>
-        <div class="d-flex justify-content-evenly w-100 my-3">
-          @foreach ($categoris as $categori)
-              <option class="category" value="{{$categori->id}}">{{$categori->categori}}</option>
-          @endforeach
         </div>
           <input type="text" id="category_input" class="d-none">
         <div class="mb-3 w-75">
