@@ -96,11 +96,35 @@
             </div>
             <div class="error"></div>
             </div>
-            <a class="mt-2" href="{{route('password_reset')}}">password dimenticata?</a>
+            <a class="mt-2 password_reset">password dimenticata?</a>
             <button type="button" class="register_submit mt-5">invia</button>
           </form>
-          </div>
         </div>
       </div>
+    </div>
+    <div class="password_reset_form_container d-none">
+      <form class="password_reset_form" method="POST" action="{{route('password_reset')}}">
+        @csrf
+        <div class="reset_title_container">
+          <p class="m-0">insert your email to change the password</p>
+          <div class="esc"><i class="bi bi-x"></i></div>
+        </div>
+        <div class="h-75 d-flex flex-column justify-content-evenly align-items-center">
+          <input placeholder="youremail@example.com" class="w-75" type="email" name="email">
+          <button class="password_reset_button" type="submit">invia email</button>
+        </div>
+    </form>
+    </div>
+    @if (session('message'))
+    <div class="password_reset_form_container">
+      <div class="password_reset_form">
+        <div class="reset_title_container bg-success text-center">
+          <p class="m-0 p-1">the email has been sended correctly<br>pleas check your email</p>
+          <div class="esc"><i class="bi bi-x"></i></div>
+        </div>
+        <div class="password_check"><i class="bi bi-check2-circle"></i></div>
+    </div>
+    </div>
+    @endif
       <input id="form" class="d-none" value="{{$form}}" type="number">
 </x-layout>

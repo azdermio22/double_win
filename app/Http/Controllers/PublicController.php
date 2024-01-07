@@ -21,7 +21,9 @@ class PublicController extends Controller
         }
         return view('welcome',compact('articles','images','profile'));
     }
-    function password_reset(){
-        Mail::to('prova@gmail.com')->send(new password);
+    function password_reset(Request $request){
+        $password_reset = 1;
+        Mail::to($request->email)->send(new password);
+        return redirect(route('register'))->with('message','prova');
     }
 }

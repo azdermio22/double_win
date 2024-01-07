@@ -164,9 +164,22 @@ primary_containers.forEach((primary_container, i)=> {
             }
     })  
 });
+let password_reset = document.querySelector('.password_reset');
+let password_reset_form_container = document.querySelector('.password_reset_form_container');
+let password_reset_form = document.querySelector('.password_reset_form');
+password_reset.addEventListener('click',()=>{
+password_reset_form_container.classList.remove('d-none');
+password_reset_form.style.animationName = "password_reset_form";
+})
+document.querySelectorAll('.esc').forEach((esc,i)=> { 
+    esc.addEventListener('click',()=>{
+        password_reset_form_container[i].classList.add('d-none');
+        password_reset_form[i].style.animationName = "password_reset_form";
+        })
+});
 }
-// // end register form
-// // card carousel
+// end register form
+// card carousel
 let carousels = document.querySelectorAll('.card_carousel');
 if (carousels[0]) {
 
