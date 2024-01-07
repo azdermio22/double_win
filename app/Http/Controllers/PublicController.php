@@ -7,6 +7,7 @@ use App\Mail\password;
 use App\Models\Article;
 use App\Models\UsersImage;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,10 +21,5 @@ class PublicController extends Controller
             $profile = UsersImage::find(Auth::user()->id);
         }
         return view('welcome',compact('articles','images','profile'));
-    }
-    function password_reset(Request $request){
-        $password_reset = 1;
-        Mail::to($request->email)->send(new password);
-        return redirect(route('register'))->with('message','prova');
     }
 }

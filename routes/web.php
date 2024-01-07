@@ -2,6 +2,7 @@
 
 use App\Livewire\Annunci;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
@@ -29,6 +30,7 @@ Route::put('/update/{article}',[ArticleController::class,'update'])->name('updat
 Route::delete('/destroy/{article}',[ArticleController::class,'destroy'])->name('destroy');
 Route::get('/annunci',[Annunci::class,'annunci'])->name('annunci');
 Route::post('/password_reset',[PublicController::class,'password_reset'])->name('password_reset');
+Route::post('/add_to_cart',[CartController::class,'add_to_cart'])->name('add_to_cart');
 
 
 

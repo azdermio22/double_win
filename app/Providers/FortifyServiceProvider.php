@@ -58,5 +58,9 @@ class FortifyServiceProvider extends ServiceProvider
             }
             return view('auth.register',compact('profile'))->with('form', 0);
         });
+
+        Fortify::resetPasswordView(function (Request $request) {
+            return view('auth.reset-password', ['request' => $request]);
+        });
     }
 }

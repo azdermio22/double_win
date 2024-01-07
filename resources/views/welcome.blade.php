@@ -2,6 +2,7 @@
     <header class="d-flex flex-column justify-content-center align-items-center text-center">
         <div class="lens"><div class="background"></div><div class="lens_body"></div></div>
         <h2>cerca e trova prodotti in tutto il mondo</h2>
+        <form method="POST" action="{{route('add_to_cart')}}">@csrf<button type="submit">prova</button></form>
         <div class="title_container">
             <div class="d-flex justify-content-evenly">
             <div class="header_div">prodotti:<div class="number">10.000+</div></div>
@@ -22,6 +23,11 @@
                 @foreach ($articles as $article)
                 @if ($article->categori_id == 2)
                 <div class="card col-3 p-0 my-3 text-center overflow-hidden" style="width: 18rem;">
+                    <form method="POST" action="{{route('add_to_cart')}}">
+                    @csrf
+                    <input type="number" value="{{$article->id}}" name="article" hidden>
+                    <button class="cart_button" type="submit"><div class="cart_icon"><i class="bi bi-cart-plus"></i></div></button>
+                </form>
                     <div class="d-flex card_carousel">
                     @foreach ($images as $image)
                     @if ($image->article_id == $article->id)   

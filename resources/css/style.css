@@ -671,6 +671,26 @@ header{
 }
 
 /* card*/
+.cart_button{
+     height: 100px;
+     width: 100px;
+     background-color: orange;
+     position: absolute;
+     z-index: 2;
+     transform: rotate(45deg);
+     top: -50px;
+     right: -50px;
+     outline: none;
+     border: none;
+}
+.cart_icon{
+    color: white;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%) rotate(-45deg);
+    font-size: 30px;
+}
 .btn_card{
     height: 40px;
     width: 120px;

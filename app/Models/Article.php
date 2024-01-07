@@ -35,4 +35,8 @@ class Article extends Model
     public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
+
+    public function users(): HasMany {
+        return $this->hasMany(User::class);
+    }
 }

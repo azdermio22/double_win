@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="password_reset_form_container d-none">
-      <form class="password_reset_form" method="POST" action="{{route('password_reset')}}">
+      <form class="password_reset_form" method="POST" action="/forgot-password">
         @csrf
         <div class="reset_title_container">
           <p class="m-0">insert your email to change the password</p>
