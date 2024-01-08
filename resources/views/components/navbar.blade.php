@@ -39,6 +39,10 @@
         </div>        
         @endguest
         @auth
+        <div class="position-relative d-flex justify-content-center">
+            <a class="register_link nav_link fs-3 d-flex align-items-center" href="{{route('cart')}}"><i class="bi bi-cart-fill"></i><div class="register-container position-relative d-flex align-items-center overflow-hidden"><div class="register_link2 fs-5">cart</div></div></a>
+            <div class="link_hover"></div>
+        </div>  
         <form method="POST" action="{{route('logout')}}">
         @csrf
         <div class="position-relative d-flex justify-content-center">

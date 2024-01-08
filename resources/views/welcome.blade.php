@@ -2,7 +2,6 @@
     <header class="d-flex flex-column justify-content-center align-items-center text-center">
         <div class="lens"><div class="background"></div><div class="lens_body"></div></div>
         <h2>cerca e trova prodotti in tutto il mondo</h2>
-        <form method="POST" action="{{route('add_to_cart')}}">@csrf<button type="submit">prova</button></form>
         <div class="title_container">
             <div class="d-flex justify-content-evenly">
             <div class="header_div">prodotti:<div class="number">10.000+</div></div>

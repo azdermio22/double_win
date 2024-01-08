@@ -700,3 +700,38 @@ categorys.forEach((category, i)=> {
 });
 }
 // end vendi
+// cart
+let add = document.querySelectorAll('.add');
+let remov = document.querySelectorAll('.remove');
+let inputs = document.querySelectorAll('.quantity');
+let price = document.querySelectorAll('.price');
+let max = document.querySelectorAll('.max');
+inputs.forEach((input, i)=> {
+    add[i].addEventListener('click',()=>{
+        input.value ++;
+        max[i].classList.remove('d-none');
+    })
+    let counter = 0;
+    remov[i].addEventListener('click',()=>{
+        if (input.value > 1) {        
+            input.value --;
+            max[i].classList.remove('d-none');
+        }else{
+            if (counter == 0) {            
+                let div = document.createElement('div');
+                div.classList.add('message')
+                div.innerHTML = "<p class='m-0'>do you want to delect this article?</p><button class=yes>yes</button><button class=no>no</button>";
+                price[i].appendChild(div);
+
+                let no = document.querySelector('.no');
+
+                no.addEventListener('click',()=>{
+                    price[i].removeChild(div);
+                    counter--;
+                })
+                counter++;
+            }
+        }
+    })
+});
+// end cart 
