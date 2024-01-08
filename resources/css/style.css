@@ -1082,6 +1082,9 @@ cursor: pointer;
     background-color: rgb(238, 238, 238);
     margin-top: 5px;
     margin-bottom: 5px;
+    position: relative;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
 }
 .margin{
     margin-top: 70px;
@@ -1091,18 +1094,43 @@ cursor: pointer;
     width: 80px;
     overflow: hidden;
 }
-.quantity{
-    height: 30px;
-    width: 30px;
-    user-select: none;
-    border: none;
-    margin-left: 10px;
-}
 .max{
     color: rgb(146, 146, 146);
     margin: 0;
     position: absolute;
-    right: -50px;
+    right: -55px;
+}
+.cart_delete{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(128, 128, 128, 0.3);
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-size: 25px;
+    cursor: pointer;
+}
+.quantity_container{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.quantity_carousel{
+    position: absolute;
+    animation-duration: 0.5s;
+}
+.quantity{
+    height: 30px;
+    width: 30px;
+    border-radius: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .yes{
     border: none;
@@ -1138,6 +1166,7 @@ cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
     margin: 2px;
 }
 .remove{
@@ -1151,5 +1180,30 @@ cursor: pointer;
     justify-content: center;
     align-items: center;
     margin: 2px;
+    user-select: none;
+}
+@keyframes quantity_animation {
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(-50%);
+    }
+}
+@keyframes delete_animation {
+    0%{
+        transform: translate(0);
+    }
+    100%{
+        transform: translate(120%);
+    }
+}
+@keyframes quantity_animation_reverse {
+    0%{
+        transform: translateY(-50%);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
 /* end cart */

@@ -703,19 +703,45 @@ categorys.forEach((category, i)=> {
 // cart
 let add = document.querySelectorAll('.add');
 let remov = document.querySelectorAll('.remove');
-let inputs = document.querySelectorAll('.quantity');
+let inputs = document.querySelectorAll('.quantity_container');
 let price = document.querySelectorAll('.price');
 let max = document.querySelectorAll('.max');
+let quantity_carousel = document.querySelectorAll('.quantity_carousel');
+let quantity_input = document.querySelectorAll('.quantity_input');
+let submit = document.querySelectorAll('.submit');
+let remove_buttons = document.querySelectorAll('.cart_delete');
+let remove_submit = document.querySelectorAll('.remove_submit');
+let cart_articles = document.querySelectorAll('.cart_article');
+
 inputs.forEach((input, i)=> {
+    let value = quantity_carousel[i].querySelectorAll('.quantity');
     add[i].addEventListener('click',()=>{
-        input.value ++;
+        quantity_input[i].value++;
+        setTimeout(() => {
+            quantity_input[i].dispatchEvent(new Event('input'));
+            submit[i].click();
+        }, 300);
         max[i].classList.remove('d-none');
+        quantity_carousel[i].style.animationName = 'quantity_animation';
+        value[1].innerHTML++;
+        setTimeout(() => {
+            quantity_carousel[i].style.animationName = "";
+            value[0].innerHTML++;
+        }, 450);
     })
     let counter = 0;
     remov[i].addEventListener('click',()=>{
-        if (input.value > 1) {        
-            input.value --;
+        if (value[0].innerHTML > 1) {        
+            quantity_input[i].value--;
+            quantity_input[i].dispatchEvent(new Event('input'));
+            submit[i].click();
             max[i].classList.remove('d-none');
+            quantity_carousel[i].style.animationName = 'quantity_animation_reverse';
+        quantity_carousel[i].querySelectorAll('.quantity')[0].innerHTML--;
+        setTimeout(() => {
+            quantity_carousel[i].style.animationName = "";
+            quantity_carousel[i].querySelectorAll('.quantity')[1].innerHTML--;
+        }, 450);
         }else{
             if (counter == 0) {            
                 let div = document.createElement('div');
@@ -733,5 +759,11 @@ inputs.forEach((input, i)=> {
             }
         }
     })
+    remove_buttons[i].addEventListener('click',()=>{
+        // remove_submit[i].click();
+        cart_articles[i].style.backgroundColor = "red";
+        cart_articles[i].style.animationName = "delete_animation";
+    })
 });
+
 // end cart 

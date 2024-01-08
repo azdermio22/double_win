@@ -15,7 +15,9 @@ class CartController extends Controller
         UsersArticle::create([
             'user_id' => Auth::user()->id,
             'article_id' => $request->article,
+            'quantity' => 1,
         ]);
+        return redirect(route('home'));
     }
 
     function cart(){

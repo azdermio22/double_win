@@ -16,17 +16,36 @@
                             <div class="col-3 d-flex justify-content-center align-items-center">
                                 <div class="d-flex align-items-center position-relative">
                                     <div class="d-flex flex-column">
-                                        <button class="add">+</button><button class="remove">-</button>
+                                        <button class="add"><i class="bi bi-plus"></i></button><button class="remove"><i class="bi bi-dash"></i></button>
                                     </div>
-                                    <input class="quantity" type="text" value="1" disabled>
+                                    <livewire:quantity :id="$article->id"></livewire:quantity>
+                                    <div class="quantity_container">
+                                        <div class="quantity_carousel">
+                                            <div class="quantity">1</div>
+                                            <div class="quantity">1</div>
+                                        </div>
+                                    </div>
                                     <p class="max d-none">max: 13</p>
                                 </div>
                             </div>
                             <div class="col-3 d-flex justify-content-center align-items-center fs-4 price"><p>{{$article->price}}$</p></div>
                         </div>
                     </div>
+                    <div class="cart_delete"><i class="bi bi-x"></i></div>
                 </div>
             </div>
         @endforeach
+        <hr>
+        <div class="row justify-content-center">
+            <div class="cart_article">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-4"></div>
+                        <div class="col-4"></div>
+                        <div class="col-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </x-layout>
