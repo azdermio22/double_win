@@ -281,6 +281,14 @@ btn_card.forEach((btn, i)=> {
     });
 });
 }
+
+let cart_btn = document.querySelectorAll('.cart_button');
+cart_btn.forEach((btn, i)=> {
+    btn.addEventListener('click',()=>{
+        document.querySelectorAll('.cart_icon')[i].style.fontSize = "35px";
+    })
+});
+//end card carousel
 // detail
 let carousel_detail = document.querySelector('.carousel_detail');
 if (carousel_detail) {
@@ -631,7 +639,7 @@ background.style.backgroundPosition = x+"px"+" "+y+"px";
 }
 }
 // end header
-// veldi
+// vendi
 let img_preview = document.querySelector('.img_preview');
 if (img_preview) {
 let img_preview_slider = document.querySelector('.img_preview_slider');
@@ -704,7 +712,7 @@ categorys.forEach((category, i)=> {
 let add = document.querySelectorAll('.add');
 let remov = document.querySelectorAll('.remove');
 let inputs = document.querySelectorAll('.quantity_container');
-let price = document.querySelectorAll('.price');
+let price_container = document.querySelectorAll('.price_container');
 let max = document.querySelectorAll('.max');
 let quantity_carousel = document.querySelectorAll('.quantity_carousel');
 let quantity_input = document.querySelectorAll('.quantity_input');
@@ -712,11 +720,20 @@ let submit = document.querySelectorAll('.submit');
 let remove_buttons = document.querySelectorAll('.cart_delete');
 let remove_submit = document.querySelectorAll('.remove_submit');
 let cart_articles = document.querySelectorAll('.cart_article');
+let img_slider = document.querySelectorAll('.cart_img_slider');
+let prices = document.querySelectorAll('.price');
+let total_price = 0;
+let total_article = 0;
 
 inputs.forEach((input, i)=> {
+    prices[i].innerHTML *= quantity_carousel[i].querySelectorAll('.quantity')[0].innerHTML;
     let value = quantity_carousel[i].querySelectorAll('.quantity');
     add[i].addEventListener('click',()=>{
+        quantity_input[i].value = quantity_carousel[i].querySelectorAll('.quantity')[i].innerHTML;
         quantity_input[i].value++;
+        total_article ++;
+        prices[i].innerHTML *= total_article;
+        update_value();
         setTimeout(() => {
             quantity_input[i].dispatchEvent(new Event('input'));
             submit[i].click();
@@ -731,8 +748,11 @@ inputs.forEach((input, i)=> {
     })
     let counter = 0;
     remov[i].addEventListener('click',()=>{
-        if (value[0].innerHTML > 1) {        
+        if (value[0].innerHTML > 1) { 
+            quantity_input[i].value = quantity_carousel[i].querySelectorAll('.quantity')[i].innerHTML;       
             quantity_input[i].value--;
+            total_article--;
+            update_value();
             quantity_input[i].dispatchEvent(new Event('input'));
             submit[i].click();
             max[i].classList.remove('d-none');
@@ -747,12 +767,12 @@ inputs.forEach((input, i)=> {
                 let div = document.createElement('div');
                 div.classList.add('message')
                 div.innerHTML = "<p class='m-0'>do you want to delect this article?</p><button class=yes>yes</button><button class=no>no</button>";
-                price[i].appendChild(div);
+                price_container[i].appendChild(div);
 
                 let no = document.querySelector('.no');
 
                 no.addEventListener('click',()=>{
-                    price[i].removeChild(div);
+                    price_container[i].removeChild(div);
                     counter--;
                 })
                 counter++;
@@ -760,10 +780,33 @@ inputs.forEach((input, i)=> {
         }
     })
     remove_buttons[i].addEventListener('click',()=>{
-        // remove_submit[i].click();
+        remove_submit[i].click();
         cart_articles[i].style.backgroundColor = "red";
         cart_articles[i].style.animationName = "delete_animation";
     })
+    let movement = -80;
+    if (img_slider[i].querySelectorAll('.cart_img').length < 2) {
+        movement = 0;
+    }
+    let counter1 = 2;
+    setInterval(() => {
+        img_slider[i].style.transform = 'translate('+movement+'px'+')';
+        if (counter1 < img_slider[i].querySelectorAll('.cart_img').length) {
+            movement -= 80;
+            counter1++;
+        }else{
+            movement = 0;
+            counter1 = 1;
+        }
+    }, 15000);
 });
-
+ prices.forEach((price, i)=> {
+    total_price += +price.innerHTML;
+    total_article += +quantity_carousel[i].querySelector('.quantity').innerHTML;
+});
+function update_value(){
+    document.querySelector('.total_price').innerHTML = total_price+"$";
+    document.querySelector('.total_article').innerHTML = total_article;
+}
+update_value();
 // end cart 

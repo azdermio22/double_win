@@ -30,7 +30,6 @@ Route::put('/update/{article}',[ArticleController::class,'update'])->name('updat
 Route::delete('/destroy/{article}',[ArticleController::class,'destroy'])->name('destroy');
 Route::get('/annunci',[Annunci::class,'annunci'])->name('annunci');
 Route::post('/password_reset',[PublicController::class,'password_reset'])->name('password_reset');
-Route::post('/add_to_cart',[CartController::class,'add_to_cart'])->name('add_to_cart');
 Route::get('/cart',[CartController::class,'cart'])->name('cart')->middleware('auth');
 
 

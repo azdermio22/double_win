@@ -1089,10 +1089,11 @@ cursor: pointer;
 .margin{
     margin-top: 70px;
 }
-.cart_img{
+.cart_img_container{
     height: 80px;
     width: 80px;
     overflow: hidden;
+    position: relative;
 }
 .max{
     color: rgb(146, 146, 146);
@@ -1181,6 +1182,15 @@ cursor: pointer;
     align-items: center;
     margin: 2px;
     user-select: none;
+}
+.cart_img_slider{
+    position: absolute;
+    display: flex;
+    transition: 1s;
+}
+.cart_img{
+    height: 80px;
+    width: 80px;
 }
 @keyframes quantity_animation {
     0%{
