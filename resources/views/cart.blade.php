@@ -24,6 +24,7 @@
                                     </div>
                                     <livewire:quantity :id="$article->id"></livewire:quantity>
                                     <div class="quantity_container">
+                                        <div class="quantity_container_effect"></div>
                                         <div class="quantity_carousel">
                                             <div class="quantity">{{$user_articles[$i]}}</div>
                                             <div class="quantity">{{$user_articles[$i]}}</div>
@@ -32,7 +33,7 @@
                                     <p class="max d-none">max: 13</p>
                                 </div>
                             </div>
-                            <div class="col-3 d-flex justify-content-center align-items-center fs-4 price_container"><p class="price">{{$article->price}}</p><p>$</p></div>
+                            <div class="col-3 d-flex justify-content-center align-items-center fs-4 price_container position-relative"><p class="price">{{$article->price * $user_articles[$i]}}</p><p>$</p></div>
                         </div>
                     </div>
                     <div class="cart_delete"><i class="bi bi-x"></i></div>
@@ -40,16 +41,16 @@
             </div>
         @endforeach
         <hr>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-3">
             <div class="cart_article">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-4"></div>
-                        <div class="col-4">
+                        <div class="col-4 d-flex justify-content-center align-items-center flex-column fs-4">
                             <div>article:</div>
                             <div class="total_article"></div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-4 d-flex justify-content-center align-items-center flex-column fs-4">
                             <p>price:</p>
                             <div class="total_price"></div>
                         </div>

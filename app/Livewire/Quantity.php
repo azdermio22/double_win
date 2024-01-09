@@ -16,13 +16,17 @@ class Quantity extends Component
     }
     function update(){
         $article = UsersArticle::all()->where('article_id',$this->id);
-        $article[0]->update([
-            'quantity' => $this->quantity,
-        ]);
+        foreach ($article as $article) {
+            $article->update([
+                'quantity' => $this->quantity,
+            ]);
+        }
     }
 
     function remove(){
         $article = UsersArticle::all()->where('article_id',$this->id);
-        $article[0]->delete();
+        foreach ($article as $article) {
+            $article->delete();
+        }
     }
 }

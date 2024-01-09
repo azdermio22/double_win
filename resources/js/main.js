@@ -647,6 +647,14 @@ let preview_miniature_container = document.querySelector('.preview_miniature_con
 let preview_miniature_slider = document.querySelector('.preview_miniature_slider');
 let img_input = document.querySelector('.img_input');
 let img_var = 400;
+let form_categorys = document.querySelectorAll('.category');
+
+form_categorys.forEach((category, i)=> {
+    category.addEventListener('click',()=>{
+        form[i].classList.remove('d-none');
+    })
+});
+
 img_preview.addEventListener('click',()=>{
     img_input.click();
 })
@@ -707,8 +715,14 @@ categorys.forEach((category, i)=> {
     })
 });
 }
+let change_form = document.querySelector('.change_form');
+change_form.addEventListener('click',()=>{
+    document.querySelector('.form_slider').style.transform = "translate(-25%)";
+})
 // end vendi
 // cart
+let cart_articles = document.querySelectorAll('.cart_article');
+if (cart_articles[0]) {
 let add = document.querySelectorAll('.add');
 let remov = document.querySelectorAll('.remove');
 let inputs = document.querySelectorAll('.quantity_container');
@@ -719,25 +733,19 @@ let quantity_input = document.querySelectorAll('.quantity_input');
 let submit = document.querySelectorAll('.submit');
 let remove_buttons = document.querySelectorAll('.cart_delete');
 let remove_submit = document.querySelectorAll('.remove_submit');
-let cart_articles = document.querySelectorAll('.cart_article');
 let img_slider = document.querySelectorAll('.cart_img_slider');
 let prices = document.querySelectorAll('.price');
 let total_price = 0;
 let total_article = 0;
 
 inputs.forEach((input, i)=> {
-    prices[i].innerHTML *= quantity_carousel[i].querySelectorAll('.quantity')[0].innerHTML;
     let value = quantity_carousel[i].querySelectorAll('.quantity');
+    let single_price = prices[i].innerHTML / quantity_carousel[i].querySelectorAll('.quantity')[1].innerHTML;
     add[i].addEventListener('click',()=>{
-        quantity_input[i].value = quantity_carousel[i].querySelectorAll('.quantity')[i].innerHTML;
-        quantity_input[i].value++;
-        total_article ++;
-        prices[i].innerHTML *= total_article;
-        update_value();
-        setTimeout(() => {
+            quantity_input[i].value = quantity_carousel[i].querySelectorAll('.quantity')[1].innerHTML;
+            quantity_input[i].value++;
             quantity_input[i].dispatchEvent(new Event('input'));
-            submit[i].click();
-        }, 300);
+            submit[i].click(); 
         max[i].classList.remove('d-none');
         quantity_carousel[i].style.animationName = 'quantity_animation';
         value[1].innerHTML++;
@@ -745,23 +753,31 @@ inputs.forEach((input, i)=> {
             quantity_carousel[i].style.animationName = "";
             value[0].innerHTML++;
         }, 450);
+        total_article ++;
+        prices[i].innerHTML = single_price * quantity_carousel[i].querySelectorAll('.quantity')[1].innerHTML;
+        update_value();
     })
     let counter = 0;
     remov[i].addEventListener('click',()=>{
+        let single_price = prices[i].innerHTML / quantity_carousel[i].querySelectorAll('.quantity')[0].innerHTML;
+
         if (value[0].innerHTML > 1) { 
-            quantity_input[i].value = quantity_carousel[i].querySelectorAll('.quantity')[i].innerHTML;       
+            quantity_input[i].value = quantity_carousel[i].querySelectorAll('.quantity')[1].innerHTML;       
             quantity_input[i].value--;
             total_article--;
+            prices[i].innerHTML -= single_price;
             update_value();
             quantity_input[i].dispatchEvent(new Event('input'));
             submit[i].click();
             max[i].classList.remove('d-none');
             quantity_carousel[i].style.animationName = 'quantity_animation_reverse';
         quantity_carousel[i].querySelectorAll('.quantity')[0].innerHTML--;
+
         setTimeout(() => {
             quantity_carousel[i].style.animationName = "";
             quantity_carousel[i].querySelectorAll('.quantity')[1].innerHTML--;
         }, 450);
+        
         }else{
             if (counter == 0) {            
                 let div = document.createElement('div');
@@ -783,6 +799,9 @@ inputs.forEach((input, i)=> {
         remove_submit[i].click();
         cart_articles[i].style.backgroundColor = "red";
         cart_articles[i].style.animationName = "delete_animation";
+        setTimeout(() => {
+            cart_articles[i].style.height = "0";
+        }, 650);
     })
     let movement = -80;
     if (img_slider[i].querySelectorAll('.cart_img').length < 2) {
@@ -798,7 +817,7 @@ inputs.forEach((input, i)=> {
             movement = 0;
             counter1 = 1;
         }
-    }, 15000);
+    }, 10000);
 });
  prices.forEach((price, i)=> {
     total_price += +price.innerHTML;
@@ -809,4 +828,5 @@ function update_value(){
     document.querySelector('.total_article').innerHTML = total_article;
 }
 update_value();
+}
 // end cart 
