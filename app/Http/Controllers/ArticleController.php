@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\jewels;
 use App\Models\Veicle;
 use App\Models\Article;
+use App\Models\Clothes;
 use App\Models\Categori;
 use App\Models\UsersImage;
 use Illuminate\Http\Request;
@@ -21,7 +23,18 @@ class ArticleController extends Controller
         if (Auth::user()) {
             $profile = UsersImage::find(Auth::user()->id);
         }
-        return view('article_detail',compact('article','profile'));
+        switch ($article->categori_id) {
+            case '1':
+                $more_info = Clothes::all()->where('article_id',$article->id);
+                break;
+            case '2':
+                $more_info = Veicle::all()->where('article_id',$article->id);
+                break;
+            case '3':
+                $more_info = jewels::all()->where('article_id',$article->id);
+                break;
+        }
+        return view('article_detail',compact('article','profile','more_info'));
     }
 
     public function profile_detail(Article $article)
@@ -54,7 +67,13 @@ class ArticleController extends Controller
             'categori_id' => $request->category,
             'user_id' => Auth::user()->id,
         ]);
-        if ($request->category == 2) {
+        if ($request->category == 1) {
+            $more_info = Clothes::create([
+                'size' => $request->size,
+                'brand' => $request->brand,
+                'article_id' => $article->id,
+            ]);
+        }else if ($request->category == 2) {
             $more_info = Veicle::create([
                 'volume' => $request->volume,
                 'displacement' => $request->displacement,
@@ -62,6 +81,13 @@ class ArticleController extends Controller
                 'brand' => $request->brand,
                 'km' => $request->km,
                 'powering' => $request->powering,
+                'article_id' => $article->id,
+            ]); 
+        }else if ($request->category == 3) {
+            $more_info = jewels::create([
+                'material' => $request->material,
+                'certificate' => $request->certificate,
+                'article_id' => $article->id,
             ]);
         }
         foreach ($request->image as $image) {

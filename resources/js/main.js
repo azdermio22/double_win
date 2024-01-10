@@ -222,32 +222,37 @@ carousels.forEach((carousel, i)=> {
         prova = 1;
         if (counter == 0) {
             counter++;
+
         miniatures_containers[0].style.border = '2px solid red';
         miniatures_containers[0].style.padding = '0';
-        interval = setInterval(() => {
-            carousel.style.transform= `translateX(${per}%)`;
-                miniatures_containers.forEach((miniature)=> {
-                    miniature.style.border = 'none';
-                    miniature.style.padding = '1px';
-                });
-            miniatures_containers[mini].style.border = '2px solid red';
-            miniatures_containers[mini].style.padding = '0';
-            if (images[reset]) {    
-                per -= 100;
-                reset ++;
-                mini++;
-            }else{
-                per = 0;
-                reset = 1;
-                mini = 0;
-            }
-        }, 3000);
+
+        if (images.length > 1) {
+            interval = setInterval(() => {
+                carousel.style.transform= `translateX(${per}%)`;
+    
+                    miniatures_containers.forEach((miniature)=> {
+                        miniature.style.border = 'none';
+                        miniature.style.padding = '1px';
+                    });
+    
+                miniatures_containers[mini].style.border = '2px solid red';
+                miniatures_containers[mini].style.padding = '0';
+                if (images[reset]) {    
+                    per -= 100;
+                    reset ++;
+                    mini++;
+                }else{
+                    per = 0;
+                    reset = 1;
+                    mini = 0;
+                }
+            }, 5000);
+        }
     }
 });
     cards[i].addEventListener('mouseout',()=>{
         prova = 0;
-        setTimeout(() => {
-            console.log(prova);           
+        setTimeout(() => {           
             if (counter == 1 && prova == 0) {
                 counter--;
                 clearInterval(interval);
@@ -285,7 +290,10 @@ btn_card.forEach((btn, i)=> {
 let cart_btn = document.querySelectorAll('.cart_button');
 cart_btn.forEach((btn, i)=> {
     btn.addEventListener('click',()=>{
-        document.querySelectorAll('.cart_icon')[i].style.fontSize = "35px";
+        document.querySelectorAll('.cart_icon')[i].style.animationName = "add_to_cart_animation";
+        setTimeout(() => {
+            document.querySelectorAll('.cart_icon')[i].style.animationName = "";
+        }, 1000);
     })
 });
 //end card carousel
@@ -651,14 +659,21 @@ let form_categorys = document.querySelectorAll('.category');
 let form = document.querySelectorAll('.form');
 
 form_categorys.forEach((category, i)=> {
+
     category.addEventListener('click',()=>{
+
         document.querySelector('#category_input').value = category.value;
-        form[1].classList.remove('d-none');
+        form[i].classList.remove('d-none');
+        form[i].querySelectorAll('input').forEach((input)=> {
+            input.disabled = false;
+        });
         document.querySelector('.form_slider').style.transform = "translate(-25%)";
+
         form_categorys.forEach((category)=> {
             category.style.backgroundColor = "gray";
             category.style.color = "rgb(216, 216, 216)";
         });
+
         category.style.backgroundColor = "blue";
         category.style.color = "white";
     })

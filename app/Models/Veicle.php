@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Article;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Veicle extends Model
 {
@@ -16,5 +17,11 @@ class Veicle extends Model
         'brand',
         'km',
         'powering',
+        'article_id',
     ];
+
+    public function article(): BelongsTo
+    {
+        return $this->belongsTo(Article::class);
+    }
 }

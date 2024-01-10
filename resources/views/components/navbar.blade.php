@@ -52,10 +52,10 @@
     </form>
     @if (Route::currentRouteName() != "profile")       
     <div class="position-relative d-flex justify-content-center">
-        @if ($profile != 0)    
+        @if ($profile)    
         <a class="nav_link profile_link d-flex" href="{{route('profile',['user' => Auth::user()])}}"><div class="profile_name">{{Auth::user()->name}}</div><div class="nav_profile_icon"><img class="w-100 h-100 rounded-5" src="{{Storage::url($profile->image)}}" alt=""><div class="profile_swich"><div class="profile_swich_content">profile</div></div></div></a>
         @else
-        <a class="nav_link profile_link d-flex" href="{{route('profile',['user' => Auth::user()])}}"><div class="profile_name">{{Auth::user()->name}}</div><div class="nav_profile_icon"><div class="profile_swich"><div class="profile_swich_content">profile</div></div></div></a>
+        <a class="nav_link profile_link d-flex" href="{{route('profile',['user' => Auth::user()])}}"><div class="profile_name">{{Auth::user()->name}}</div><div class="nav_profile_icon"><img class="w-100 h-100 rounded-5" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png" alt=""><div class="profile_swich"><div class="profile_swich_content">profile</div></div></div></a>
         @endif
         <div class="profile_link_hover"></div>
     </div> 

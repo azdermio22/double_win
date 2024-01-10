@@ -12,9 +12,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 p-0">
-                            <div class="d-flex h-100 w-100 p-0">
+                    <div class="row miniature_slider_container">
+                        <div class="w-100 h-100 p-0 position_relative">
+                            <div class="miniature_detail_slider">
                                 @foreach ($article->images as $image)
                                 <div class="miniature_detail">
                                 <img class="h-100 w-100" src="{{Storage::url($image->images)}}" alt="">
@@ -45,6 +45,33 @@
                 <div class="my-3">
                     categoria: {{$article->categori->categori}}
                 </div>
+                @if ($article->categori_id == 1)
+                <div class="my-3">
+                    @foreach ($more_info as $info)
+                        <p>taglia:{{$info->size}}</p>
+                        <p>marca:{{$info->brend}}</p>
+                    @endforeach
+               </div>
+                @elseif ($article->categori_id == 2)
+                <div class="my-3">
+                    @foreach ($more_info as $info)
+                        <p>cilindrata:{{$info->volume}}</p>
+                        <p>marca:{{$info->brand}}</p>
+                        <p>disposizzione:{{$info->displacement}}</p>
+                        <p>alimentazzione:{{$info->powering}}</p>
+                        <p>km:{{$info->km}}</p>
+                        <p>modello:{{$info->model}}</p>
+                    @endforeach
+               </div>
+                @elseif ($article->categori_id == 3)
+                <div class="my-3">
+                    @foreach ($more_info as $info)
+                        <p>materiale:{{$info->material}}</p>
+                        <p>certificato:{{$info->certificate}}</p>
+                    @endforeach
+               </div>
+                @endif
+                
                 <a href="{{route('article_update',compact('article'))}}"><button type="submit">update</button></a>
                 <form method="POST" action="{{route('destroy',compact('article'))}}">
                     @method('DELETE')
