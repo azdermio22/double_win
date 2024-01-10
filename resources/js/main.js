@@ -648,10 +648,19 @@ let preview_miniature_slider = document.querySelector('.preview_miniature_slider
 let img_input = document.querySelector('.img_input');
 let img_var = 400;
 let form_categorys = document.querySelectorAll('.category');
+let form = document.querySelectorAll('.form');
 
 form_categorys.forEach((category, i)=> {
     category.addEventListener('click',()=>{
-        form[i].classList.remove('d-none');
+        document.querySelector('#category_input').value = category.value;
+        form[1].classList.remove('d-none');
+        document.querySelector('.form_slider').style.transform = "translate(-25%)";
+        form_categorys.forEach((category)=> {
+            category.style.backgroundColor = "gray";
+            category.style.color = "rgb(216, 216, 216)";
+        });
+        category.style.backgroundColor = "blue";
+        category.style.color = "white";
     })
 });
 
@@ -701,24 +710,7 @@ img_input.addEventListener('input',()=>{
     document.querySelector('.img_loaded').style.paddingLeft = "5px";
     document.querySelector('.img_loaded').style.paddingRight = "5px";
 })
-let categorys = document.querySelectorAll('.category');
-let category_input = document.querySelector('#category_input');
-categorys.forEach((category, i)=> {
-    category.addEventListener('click',()=>{
-        categorys.forEach((category)=> {
-            category.style.backgroundColor = "gray";
-            category.style.color = "rgb(216, 216, 216)";
-        });
-        category.style.backgroundColor = "blue";
-        category.style.color = "white";
-        category_input.value = i;
-    })
-});
 }
-let change_form = document.querySelector('.change_form');
-change_form.addEventListener('click',()=>{
-    document.querySelector('.form_slider').style.transform = "translate(-25%)";
-})
 // end vendi
 // cart
 let cart_articles = document.querySelectorAll('.cart_article');

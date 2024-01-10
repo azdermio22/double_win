@@ -12,6 +12,7 @@
       </div>
       <div class="col-7 d-flex flex-column justify-content-center align-items-center position-relative overflow-hidden">
         <div class="form_slider">
+
           <div class="h-100 form d-flex justify-content-center align-items-center flex-column">
         <div class="mb-3 w-75">
           <label for="name" class="form-label">name</label>
@@ -21,7 +22,6 @@
           <label for="description" class="form-label">description</label>
           <textarea class="textarea" value="{{old('description')}}" name="description" id="description" cols="30" rows="10"></textarea>
         </div>
-          <input type="text" id="category_input" class="d-none">
         <div class="mb-3 w-75">
             <label for="price" class="form-label">price</label>
             <input value="{{old('price')}}" name="price" type="number" class="form-control" id="price">
@@ -32,27 +32,61 @@
                 <option class="category" value="{{$categori->id}}">{{$categori->categori}}</option>
             @endforeach
           </div>
-          <div class="change_form"> prova</div>
+          <input type="number" name="category" id="category_input" hidden>
         </div>
-          <div class="form h-100 d-flex justify-content-center align-items-center flex-column">
+
+        {{-- <div class="form h-100 d-flex justify-content-center align-items-center flex-column d-none">
+          <div class="mb-3 w-75">
+            <label for="name" class="form-label">taglia</label>
+            <input value="{{old('name')}}" name="name" type="text" class="form-control" id="name">
+          </div>
+          <div class="mb-3 w-75">
+            <label for="name" class="form-label">marca</label>
+            <input value="{{old('name')}}" name="name" type="text" class="form-control" id="name">
+          </div>     
+            <button type="submit" class="btn btn-primary">load article</button>
+        </div> --}}
+
+          <div class="form h-100 d-flex justify-content-center align-items-center flex-column d-none">
             <div class="mb-3 w-75">
               <label for="name" class="form-label">cilindrata</label>
-              <input value="{{old('name')}}" name="name" type="text" class="form-control" id="name">
+              <input value="{{old('name')}}" name="volume" type="text" class="form-control" id="name">
             </div>
             <div class="mb-3 w-75">
               <label for="name" class="form-label">modello</label>
-              <input value="{{old('name')}}" name="name" type="text" class="form-control" id="name">
+              <input value="{{old('name')}}" name="model" type="text" class="form-control" id="name">
             </div>
             <div class="mb-3 w-75">
               <label for="name" class="form-label">chilometri</label>
+              <input value="{{old('name')}}" name="km" type="text" class="form-control" id="name">
+            </div>
+            <div class="mb-3 w-75">
+              <label for="name" class="form-label">marca</label>
+              <input value="{{old('name')}}" name="brand" type="text" class="form-control" id="name">
+            </div> 
+            <div class="mb-3 w-75">
+              <label for="name" class="form-label">alimentazzione</label>
+              <input value="{{old('name')}}" name="powering" type="text" class="form-control" id="name">
+            </div> 
+            <div class="mb-3 w-75">
+              <label for="name" class="form-label">disposizzione</label>
+              <input value="{{old('name')}}" name="displacement" type="text" class="form-control" id="name">
+            </div>      
+              <button type="submit" class="btn btn-primary">load article</button>
+          </div>
+
+          {{-- <div class="form h-100 d-flex justify-content-center align-items-center flex-column d-none">
+            <div class="mb-3 w-75">
+              <label for="name" class="form-label">materiale/i</label>
               <input value="{{old('name')}}" name="name" type="text" class="form-control" id="name">
             </div>
             <div class="mb-3 w-75">
-              <label for="name" class="form-label">carburante</label>
+              <label for="name" class="form-label">certificato di autenticità</label>
               <input value="{{old('name')}}" name="name" type="text" class="form-control" id="name">
-            </div>       
+            </div>      
               <button type="submit" class="btn btn-primary">load article</button>
-          </div>
+          </div> --}}
+
         </div>
       </div>
     </div>

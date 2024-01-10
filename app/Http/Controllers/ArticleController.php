@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Models\Veicle;
 use App\Models\Article;
 use App\Models\Categori;
 use App\Models\UsersImage;
@@ -53,6 +54,16 @@ class ArticleController extends Controller
             'categori_id' => $request->category,
             'user_id' => Auth::user()->id,
         ]);
+        if ($request->category == 2) {
+            $more_info = Veicle::create([
+                'volume' => $request->volume,
+                'displacement' => $request->displacement,
+                'model' => $request->model,
+                'brand' => $request->brand,
+                'km' => $request->km,
+                'powering' => $request->powering,
+            ]);
+        }
         foreach ($request->image as $image) {
             Image::create([
                 'images' => $image->store('public/img'),

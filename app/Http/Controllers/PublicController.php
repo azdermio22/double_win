@@ -16,6 +16,7 @@ class PublicController extends Controller
     function home() {
         $articles = Article::all();
         $images = Image::all();
+
         $profile = 0;
         if (Auth::user()) {
             $profile = UsersImage::find(Auth::user()->id);
