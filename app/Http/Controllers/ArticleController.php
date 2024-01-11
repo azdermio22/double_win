@@ -8,9 +8,11 @@ use App\Models\Veicle;
 use App\Models\Article;
 use App\Models\Clothes;
 use App\Models\Categori;
+use Stripe\StripeClient;
 use App\Models\UsersImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -96,6 +98,17 @@ class ArticleController extends Controller
                 'article_id' => $article->id,
             ]);
         }
+        $stripe = new StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+        $stripe->products->create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'default_price_data' => [
+                'currency' => 'eur',
+                'unit_amount' => $request->price * 100,
+            ],
+            'images' => [Storage::url($request->image[0])],
+        ]);
+
         return redirect (route('home'));
     }
 

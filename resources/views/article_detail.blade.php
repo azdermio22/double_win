@@ -32,7 +32,7 @@
                     <span class="espandi">espandi</span>
                 </div>
                 <h2 class="my-4">{{$article->price}}$</h2>
-                <a href=""><button class="mb-4">aquista ora</button></a>
+                <a href="{{route('checkout')}}"><button class="mb-4">aquista ora</button></a>
             </div>
             <div class="col-2 info">
                 <p class="text-center my-3">informazzioni articolo:</p>

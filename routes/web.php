@@ -1,7 +1,10 @@
 <?php
 
+use Stripe\Stripe;
 use App\Livewire\Annunci;
+use Stripe\Climate\Order;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BuyController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
@@ -31,6 +34,9 @@ Route::delete('/destroy/{article}',[ArticleController::class,'destroy'])->name('
 Route::get('/annunci',[Annunci::class,'annunci'])->name('annunci');
 Route::post('/password_reset',[PublicController::class,'password_reset'])->name('password_reset');
 Route::get('/cart',[CartController::class,'cart'])->name('cart')->middleware('auth');
+// elimina importazzioni
+
+Route::get('/product-checkout',[BuyController::class, 'checkout'])->name('checkout');
 
 
 
