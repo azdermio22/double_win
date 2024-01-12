@@ -18,6 +18,8 @@ return new class extends Migration
             $table->float('price');
             $table->foreignId('categori_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->string('stripe_id');
+            $table->string('stripe_id_price');
             $table->timestamps();
         });
     }

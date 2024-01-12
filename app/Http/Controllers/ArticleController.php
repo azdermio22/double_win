@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Stripe\Stripe;
 use App\Models\Image;
 use App\Models\jewels;
 use App\Models\Veicle;
@@ -62,12 +63,26 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+
+        $stripe = new StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+        $product = $stripe->products->create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'default_price_data' => [
+                'currency' => 'eur',
+                'unit_amount' => $request->price * 100,
+            ],
+            'images' => [],
+        ]);
+
         $article = Article::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
             'categori_id' => $request->category,
             'user_id' => Auth::user()->id,
+            'stripe_id' => $product->id,
+            'stripe_id_price' => $product->default_price,
         ]);
         if ($request->category == 1) {
             $more_info = Clothes::create([
@@ -98,16 +113,6 @@ class ArticleController extends Controller
                 'article_id' => $article->id,
             ]);
         }
-        $stripe = new StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
-        $stripe->products->create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'default_price_data' => [
-                'currency' => 'eur',
-                'unit_amount' => $request->price * 100,
-            ],
-            'images' => [Storage::url($request->image[0])],
-        ]);
 
         return redirect (route('home'));
     }
@@ -126,7 +131,11 @@ class ArticleController extends Controller
     public function edit(Article $article)
     {
         $categoris = Categori::all();
-        return view('update',compact('article','categoris'));
+        $profile = 0;
+        if (Auth::user()) {
+            $profile = UsersImage::find(Auth::user()->id);
+        }
+        return view('update',compact('article','categoris','profile'));
     }
 
     /**
@@ -134,6 +143,27 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
+        $stripe = new \Stripe\StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+        $stripe->products->update(
+            $article->stripe_id,
+            [
+                'name' => $request->name,
+                'description' => $request->description,
+
+            ],
+);
+$stripe = new \Stripe\StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+$stripe->plans->delete(
+    $article->stripe_id_price,
+    []
+);
+
+$price = $stripe->prices->create([
+    'product' => $article->stripe_id,
+    'unit_amount' => $request->price * 100,
+    'currency' => 'usd',
+]);
+
         $article->update([
             'name' => $request->name,
             'description' => $request->description,
@@ -141,6 +171,31 @@ class ArticleController extends Controller
             'categori' => $request->categori,
             'image' => $request->name,
         ]);
+
+        if ($request->category == 1) {
+            Clothes::all()->where('article_id', $article->id)[0]->update([
+                'size' => $request->size,
+                'brand' => $request->brand,
+                'article_id' => $article->id,
+            ]);
+        }else if ($request->category == 2) {
+            $more_info = Veicle::all()->where('article_id', $article->id)[0]->update([
+                'volume' => $request->volume,
+                'displacement' => $request->displacement,
+                'model' => $request->model,
+                'brand' => $request->brand,
+                'km' => $request->km,
+                'powering' => $request->powering,
+                'article_id' => $article->id,
+            ]); 
+        }else if ($request->category == 3) {
+            $more_info = jewels::all()->where('article_id', $article->id)[0]->update([
+                'material' => $request->material,
+                'certificate' => $request->certificate,
+                'article_id' => $article->id,
+            ]);
+        }
+
         $prova = Image::where('article_id', $article->id)->get();
         foreach ($prova as $prov) {
             $prov->delete();
@@ -151,7 +206,7 @@ class ArticleController extends Controller
                 'article_id' => $article->id,
             ]);
         }
-        return redirect(route('profile'));
+        return redirect(route('home'));
     }
 
     /**

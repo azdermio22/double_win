@@ -21,6 +21,8 @@ class Article extends Model
         'price',
         'categori_id',
         'user_id',
+        'stripe_id',
+        'stripe_id_price',
     ];
 
     public function images(): HasMany

@@ -36,7 +36,7 @@ Route::post('/password_reset',[PublicController::class,'password_reset'])->name(
 Route::get('/cart',[CartController::class,'cart'])->name('cart')->middleware('auth');
 // elimina importazzioni
 
-Route::get('/product-checkout',[BuyController::class, 'checkout'])->name('checkout');
+Route::get('/product-checkout/{article}',[BuyController::class, 'checkout'])->name('checkout');
 
 
 
