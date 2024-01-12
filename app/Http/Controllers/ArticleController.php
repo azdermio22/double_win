@@ -149,13 +149,9 @@ class ArticleController extends Controller
             [
                 'name' => $request->name,
                 'description' => $request->description,
+                'default_price' => $article->stripe_id_price, ['active' => false],
 
             ],
-);
-$stripe = new \Stripe\StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
-$stripe->plans->delete(
-    $article->stripe_id_price,
-    []
 );
 
 $price = $stripe->prices->create([
@@ -163,6 +159,7 @@ $price = $stripe->prices->create([
     'unit_amount' => $request->price * 100,
     'currency' => 'usd',
 ]);
+
 
         $article->update([
             'name' => $request->name,
@@ -173,27 +170,33 @@ $price = $stripe->prices->create([
         ]);
 
         if ($request->category == 1) {
-            Clothes::all()->where('article_id', $article->id)[0]->update([
-                'size' => $request->size,
-                'brand' => $request->brand,
-                'article_id' => $article->id,
-            ]);
+            foreach (Clothes::all()->where('article_id', $article->id) as $info) {
+                $info->update([
+                    'size' => $request->size,
+                    'brand' => $request->brand,
+                    'article_id' => $article->id,
+                ]);
+            }
         }else if ($request->category == 2) {
-            $more_info = Veicle::all()->where('article_id', $article->id)[0]->update([
-                'volume' => $request->volume,
-                'displacement' => $request->displacement,
-                'model' => $request->model,
-                'brand' => $request->brand,
-                'km' => $request->km,
-                'powering' => $request->powering,
-                'article_id' => $article->id,
-            ]); 
+            foreach (Veicle::all()->where('article_id', $article->id) as $info) {
+               $info->update([
+                    'volume' => $request->volume,
+                    'displacement' => $request->displacement,
+                    'model' => $request->model,
+                    'brand' => $request->brand,
+                    'km' => $request->km,
+                    'powering' => $request->powering,
+                    'article_id' => $article->id,
+                ]); 
+            }
         }else if ($request->category == 3) {
-            $more_info = jewels::all()->where('article_id', $article->id)[0]->update([
-                'material' => $request->material,
-                'certificate' => $request->certificate,
-                'article_id' => $article->id,
-            ]);
+            foreach (jewels::all()->where('article_id', $article->id) as $info) {
+                $info->update([
+                    'material' => $request->material,
+                    'certificate' => $request->certificate,
+                    'article_id' => $article->id,
+                ]);
+            }
         }
 
         $prova = Image::where('article_id', $article->id)->get();
@@ -214,6 +217,14 @@ $price = $stripe->prices->create([
      */
     public function destroy(Article $article)
     {
+
+        $stripe = new \Stripe\StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+        $stripe->products->delete(
+            $article->stripe_id, 
+        [
+            'delete' => true,
+        ]);
+
         $images = Image::all();
         foreach ($images as $image) {
             if ($image->article_id == $article->id) {
