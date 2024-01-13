@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('brand');
             $table->integer('km');
             $table->string('powering');
-            $table->foreignId('article_id')->constrained();
+            $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

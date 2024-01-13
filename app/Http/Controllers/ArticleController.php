@@ -144,21 +144,29 @@ class ArticleController extends Controller
     public function update(Request $request, Article $article)
     {
         $stripe = new \Stripe\StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+
+        $price = $stripe->prices->create([
+            'product' => $article->stripe_id,
+            'unit_amount' => $request->price * 100,
+            'currency' => 'usd',
+        ]);
         $stripe->products->update(
             $article->stripe_id,
             [
                 'name' => $request->name,
                 'description' => $request->description,
-                'default_price' => $article->stripe_id_price, ['active' => false],
+                'default_price' => $price->id,
 
             ],
 );
 
-$price = $stripe->prices->create([
-    'product' => $article->stripe_id,
-    'unit_amount' => $request->price * 100,
-    'currency' => 'usd',
-]);
+$stripe->prices->update(
+  $article->stripe_id_price,
+  [
+    'active' => false,
+  ]
+);
+
 
 
         $article->update([
@@ -167,6 +175,7 @@ $price = $stripe->prices->create([
             'price' => $request->price,
             'categori' => $request->categori,
             'image' => $request->name,
+            'stripe_id_price' => $price->id,
         ]);
 
         if ($request->category == 1) {
@@ -217,13 +226,13 @@ $price = $stripe->prices->create([
      */
     public function destroy(Article $article)
     {
-
         $stripe = new \Stripe\StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
-        $stripe->products->delete(
-            $article->stripe_id, 
-        [
-            'delete' => true,
-        ]);
+        $stripe->products->update(
+            $article->stripe_id,
+            [
+                'active' => false,
+            ],
+);
 
         $images = Image::all();
         foreach ($images as $image) {

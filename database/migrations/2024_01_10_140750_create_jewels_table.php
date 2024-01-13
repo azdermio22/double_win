@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('material');
             $table->string('certificate');
-            $table->foreignId('article_id')->constrained();
+            $table->foreignId('article_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
