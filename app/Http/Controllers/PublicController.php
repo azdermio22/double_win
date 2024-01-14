@@ -23,4 +23,7 @@ class PublicController extends Controller
         }
         return view('welcome',compact('articles','images','profile'));
     }
+    function dashboard(){
+        return view('dashboard');
+    }
 }

@@ -37,6 +37,9 @@ Route::get('/cart',[CartController::class,'cart'])->name('cart')->middleware('au
 // elimina importazzioni
 
 Route::get('/product-checkout/{article}',[BuyController::class, 'checkout'])->name('checkout');
+Route::get('/product-checkout-sucess',[BuyController::class, 'checkout_sucess'])->name('chekout_sucess');
+Route::get('/product-checkout-error',[BuyController::class, 'checkout_error'])->name('chekout_error');
+Route::get('/dashboard',[PublicController::class, 'dashboard'])->name('dashboard');
 
 
 

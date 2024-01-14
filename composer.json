@@ -10,6 +10,7 @@
         "laravel/cashier": "^15.1",
         "laravel/fortify": "*",
         "laravel/framework": "^10.10",
+        "laravel/pulse": "dev-master",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.2"
