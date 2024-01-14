@@ -63,8 +63,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-
-        $stripe = new StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+        $stripe = new StripeClient(env("STRIPE_SECRET"));
         $product = $stripe->products->create([
             'name' => $request->name,
             'description' => $request->description,
@@ -143,7 +142,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        $stripe = new \Stripe\StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+        $stripe = new \Stripe\StripeClient(env("STRIPE_SECRET"));
 
         $price = $stripe->prices->create([
             'product' => $article->stripe_id,
@@ -226,7 +225,7 @@ $stripe->prices->update(
      */
     public function destroy(Article $article)
     {
-        $stripe = new \Stripe\StripeClient('sk_test_51OXJgbBrlHeHDL7xnGkZEniwVukhbfNlY16RpF5CTMVZkwLV8ARCjqsmGXTbJOkSRKFL0px2SNFoYI3Wr1uhAsr6007JykmZuc');
+        $stripe = new \Stripe\StripeClient(env("STRIPE_SECRET"));
         $stripe->products->update(
             $article->stripe_id,
             [
