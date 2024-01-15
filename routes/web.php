@@ -3,12 +3,15 @@
 use Stripe\Stripe;
 use App\Livewire\Annunci;
 use Stripe\Climate\Order;
+use App\Http\Middleware\login;
+use App\Http\Middleware\logout;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BuyController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,12 +37,11 @@ Route::delete('/destroy/{article}',[ArticleController::class,'destroy'])->name('
 Route::get('/annunci',[Annunci::class,'annunci'])->name('annunci');
 Route::post('/password_reset',[PublicController::class,'password_reset'])->name('password_reset');
 Route::get('/cart',[CartController::class,'cart'])->name('cart')->middleware('auth');
-// elimina importazzioni
-
 Route::get('/product-checkout/{article}',[BuyController::class, 'checkout'])->name('checkout');
 Route::get('/product-checkout-sucess',[BuyController::class, 'checkout_sucess'])->name('chekout_sucess');
 Route::get('/product-checkout-error',[BuyController::class, 'checkout_error'])->name('chekout_error');
 Route::get('/dashboard',[PublicController::class, 'dashboard'])->name('dashboard');
+Route::post('/logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout2')->middleware(logout::class);
 
 
 

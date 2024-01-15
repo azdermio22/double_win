@@ -43,13 +43,14 @@
             <a class="register_link nav_link fs-3 d-flex align-items-center" href="{{route('cart')}}"><i class="bi bi-cart-fill"></i><div class="register-container position-relative d-flex align-items-center overflow-hidden"><div class="register_link2 fs-5">cart</div></div></a>
             <div class="link_hover"></div>
         </div>  
-        <form method="POST" action="{{route('logout')}}">
+        <form method="POST" action="{{route('logout2')}}">
         @csrf
         <div class="position-relative d-flex justify-content-center">
             <button class="nav_link logout fs-3 register_link d-flex align-items-center" type="submit"><i class="bi bi-box-arrow-left"></i><div class="register-container position-relative d-flex align-items-center overflow-hidden"><div class="register_link2 fs-5">logout</div></div></button>
             <div class="link_hover"></div>
         </div>
     </form>
+    <a href="{{route('dashboard')}}"><i class="bi bi-gear-fill"></i></a>
     @if (Route::currentRouteName() != "profile")       
     <div class="position-relative d-flex justify-content-center">
         @if ($profile)    

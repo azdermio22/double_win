@@ -492,7 +492,7 @@ width: 35px;
     font-weight: 600;
 
 }
-header{
+.header{
     height: 100vh;
     background-image: url('https://img.freepik.com/premium-vector/background-with-traveling-icons-traveling-holidays-icon-background_645658-2049.jpg');
     background-size: 34% 34%;
@@ -1274,3 +1274,12 @@ cursor: pointer;
     width: 900px;
 }
 /* end vendi */
+/* dashboard */
+.user_dashboard{
+height: 350px;
+width: 617px;
+background-color: white;
+box-shadow: 0px 0px 5px 1px gray;
+border-radius: 15px;
+}
+/* end dashboard */

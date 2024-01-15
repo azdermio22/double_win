@@ -1,5 +1,5 @@
 <x-layout :profile=$profile>
-    <header class="d-flex flex-column justify-content-center align-items-center text-center">
+    <header class="d-flex flex-column justify-content-center align-items-center text-center header">
         <div class="lens"><div class="background"></div><div class="lens_body"></div></div>
         <h2>cerca e trova prodotti in tutto il mondo</h2>
         <div class="title_container">

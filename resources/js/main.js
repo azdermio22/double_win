@@ -1,3 +1,5 @@
+window.addEventListener('beforeunload',()=>{
+})
 // register form
 let passwords = document.querySelectorAll('.password');
 if (passwords[0]) {
@@ -837,3 +839,25 @@ function update_value(){
 update_value();
 }
 // end cart 
+// dashboard
+let last_login = document.querySelectorAll('.last_login');
+let last_logout = document.querySelectorAll('.last_logout');
+let permanence_times = document.querySelectorAll('.permanence_time');
+permanence_times.forEach((time,i)=> {
+    let login = last_login[i].innerHTML.replace(/[-:' ']/g,'',);
+    let logout = last_logout[i].innerHTML.replace(/[-:' ']/g,'',);
+    let time_spend = `${logout-login}`;
+    console.log(time_spend);
+    time_spend = time_spend.split('');
+    while (time_spend.length < 5) {
+        time_spend.unshift('0');
+    }
+    time_spend.splice(1, 0,':');
+    time_spend.splice(4, 0,':');
+    let time_spend_string = "";
+    time_spend.forEach((letter)=> { 
+        time_spend_string += letter;
+    });
+    time.innerHTML = time_spend_string;
+});
+// end dashboard
