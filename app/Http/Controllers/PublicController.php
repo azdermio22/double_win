@@ -38,7 +38,7 @@ class PublicController extends Controller
             $profile = UsersImage::find(Auth::user()->id);
         }
         $users = User::all();
-        $user_time = UserTime::all();
+        $user_time = UserTime::all()->sortByDesc('id');
         return view('dashboard',compact('profile','users','user_time'));
     }
     function logout(){

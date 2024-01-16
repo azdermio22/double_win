@@ -844,20 +844,41 @@ let last_login = document.querySelectorAll('.last_login');
 let last_logout = document.querySelectorAll('.last_logout');
 let permanence_times = document.querySelectorAll('.permanence_time');
 permanence_times.forEach((time,i)=> {
-    let login = last_login[i].innerHTML.replace(/[-:' ']/g,'',);
-    let logout = last_logout[i].innerHTML.replace(/[-:' ']/g,'',);
-    let time_spend = `${logout-login}`;
-    console.log(time_spend);
-    time_spend = time_spend.split('');
-    while (time_spend.length < 5) {
-        time_spend.unshift('0');
-    }
-    time_spend.splice(1, 0,':');
-    time_spend.splice(4, 0,':');
-    let time_spend_string = "";
-    time_spend.forEach((letter)=> { 
-        time_spend_string += letter;
-    });
-    time.innerHTML = time_spend_string;
+    let login = last_login[i].innerHTML.split(/[-, ,:]+/);
+    let logout = last_logout[i].innerHTML.split(/[-, ,:]+/);
+    let y = login[0] -logout[0];
+    let m = login[1] -logout[1];
+    let d = login[2] -logout[2];
+    let h = login[3] -logout[3];
+    let min = login[4] -logout[4];
+    let s = login[5] -logout[5];
+    let time_spend = `${y}:`+`${m}:`+`${d}:`+`${h}:`+`${min}:`+`${s}`;
+    time.innerHTML = time_spend.replace('-','');
+});
+let user_expands = document.querySelectorAll('.user_expand');
+let expand = document.querySelectorAll('.expand');
+user_expands.forEach((user_expand,i)=> {
+    expand[i].addEventListener('click',()=>{
+        console.log('ok');
+        user_expand.classList.toggle('position-absolute');
+    })
+});
+let oflines = document.querySelectorAll('.ofline')
+oflines.forEach((ofline)=> {
+
+   let ofline_array = ofline.innerHTML.split(/[-, ,:]+/);
+let y = new Date().getFullYear() - ofline_array[0];
+let m = new Date().getMonth();
+if (m == 0) {
+    m = 1;
+}
+m -= ofline_array[1];
+let d = new Date().getDate() - ofline_array[2];
+let h = new Date().getHours()  - ofline_array[3];
+let min = new Date().getMinutes() - ofline_array[4];
+let s = new Date().getSeconds() - ofline_array[5];
+let current_data = `${y}:`+`${m}:`+`${d}:`+`${h}:`+`${min}:`+`${s}`;
+current_data = current_data.replace('-','');
+ofline.innerHTML = current_data;
 });
 // end dashboard

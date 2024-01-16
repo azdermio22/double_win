@@ -20,8 +20,8 @@ class logout
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::user()) {
-            $last_timer = UserTime::all()->where('user_id', Auth::user()->id);
-            $last_timer[count($last_timer)-1]->update(['last_logout' => Carbon::now('CET')]);
+            $last_timer = UserTime::all()->where('user_id', Auth::user()->id)->where( 'last_logout', null)->first();
+            $last_timer->update(['last_logout' => Carbon::now('CET')]);
         }
         return $next($request);
     }

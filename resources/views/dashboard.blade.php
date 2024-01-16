@@ -14,12 +14,31 @@
         <div class="user_dashboard">
             <div class="container-fluid">
                 @foreach ($users as $user)
+                <div class="user_container">
+                    <div class="user_expand position-absolute w-100">
+                @foreach ($user_time as $i => $time)
+                    @if ($time->user_id == $user->id)            
                 <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4">{{$user->name}}</div>
-                    <div class="col-4 permanence_time"><div class="last_login">{{$user->last_login}}</div><div class="last_logout">{{$user->last_logout}}</div></div>
-                    <div class="col-4"></div>
-                </div>
+                    <div class="col-3"><button class="expand">espandi</button></div>
+                    <div class="col-3">{{$user->name}}</div>
+                    @if ($time->last_logout != null)
+                    <div class="col-3 permanence_time">
+                        <div class="last_login">{{$time->last_login}}</div>
+                        <div class="last_logout">{{$time->last_logout}}</div>
+                    </div>
+                        @else
+                        <div class="col-3"></div>
+                        @endif
+                        @if ($time->last_logout != null)                       
+                        <div class="col-3 ofline">{{$time->last_logout}}</div>
+                        @else
+                        <div class="col-3">online</div>
+                        @endif
+                    </div>
+                    @endif
+                @endforeach
+            </div>
+            </div>
                 @endforeach
             </div>
         </div>
