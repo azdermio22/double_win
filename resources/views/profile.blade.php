@@ -12,8 +12,8 @@
                     @endif
                     @endforeach
                 </div>
-                <button class="invia d-none" type="submit">annulla</button>
-                    <div class="modifi">modifica profilo<i class="bi bi-pencil-fill"></i></div>
+                <div class="btn_a invia d-none"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient d-flex"><button class="bg-transparent border-0"  type="submit">annulla</button></i></span></div></div>
+                <div class="btn_a modifi"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient d-flex">modifica<i class="bi bi-pencil-fill"></i></span></div></div>
             </div>
             <div class="col-8 d-flex justify-content-center flex-column position-relative">
                 <h3 class="table_title">dati personali:</h3>
@@ -83,7 +83,7 @@
                   <p class="card_text">{{$article->description}}</p>
                   <h5>{{$article->price}}</h5>
                   <div class="d-flex justify-content-center"> 
-                      <a href="{{route('profile_detail',compact('article'))}}" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">dettagli</span></div></a>
+                      <a href="{{route('detail',compact('article'))}}" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">dettagli</span></div></a>
                   </div>
                 </div>
             </div>

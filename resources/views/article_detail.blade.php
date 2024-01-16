@@ -21,7 +21,6 @@
                                 </div>
                                 @endforeach
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -32,7 +31,7 @@
                     <span class="espandi">espandi</span>
                 </div>
                 <h2 class="my-4">{{$article->price}}$</h2>
-                <a href="{{route('checkout',compact('article'))}}"><button class="mb-4">aquista ora</button></a>
+                <a href="{{route('checkout',compact('article'))}}" class="btn_a"><div class="bg_bt"></div><div class="btn_card"><span class="text_gradient">aquista ora</span></div></a>
             </div>
             <div class="col-2 info">
                 <p class="text-center my-3">informazzioni articolo:</p>
@@ -71,13 +70,16 @@
                     @endforeach
                </div>
                 @endif
-                
-                <a href="{{route('article_update',compact('article'))}}"><button type="submit">update</button></a>
-                <form method="POST" action="{{route('destroy',compact('article'))}}">
-                    @method('DELETE')
-                @csrf
-                <button type="submit">delete</button>
-            </form>
+                @if (Auth::user()->id == $article->user_id)
+                <div class="d-flex w-100 justify-content-evenly">    
+                    <a href="{{route('article_update',compact('article'))}}"><button class="update" type="submit">update</button></a>
+                    <form method="POST" action="{{route('destroy',compact('article'))}}">
+                        @method('DELETE')
+                    @csrf
+                    <button class="delete" type="submit">delete</button>
+                </form>
+            </div>
+                    @endif
             </div>
         </div>
     </div>

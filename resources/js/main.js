@@ -1,5 +1,3 @@
-window.addEventListener('beforeunload',()=>{
-})
 // register form
 let passwords = document.querySelectorAll('.password');
 if (passwords[0]) {
@@ -183,7 +181,28 @@ document.querySelectorAll('.esc').forEach((esc,i)=> {
 // end register form
 // card carousel
 let carousels = document.querySelectorAll('.card_carousel');
+
+function button(){
+    let bg_bt = document.querySelectorAll('.bg_bt');
+let btn_card = document.querySelectorAll('.btn_card');
+let text_gradient = document.querySelectorAll('.text_gradient');
+
+btn_card.forEach((btn, i)=> {
+    btn.addEventListener('mouseover',()=>{
+        bg_bt[i].style.animationName= 'btn_card';
+        text_gradient[i].style.background = 'white';
+        text_gradient[i].style.webkitBackgroundClip= '';
+    });
+    btn.addEventListener('mouseout',()=>{
+        bg_bt[i].style.animationName= '';
+        text_gradient[i].style.background = '-webkit-linear-gradient(orange,red)';
+        text_gradient[i].style.webkitBackgroundClip= 'text';
+    });
+});
+}
 if (carousels[0]) {
+
+    button();
 
     let texts = document.querySelectorAll('.card_text');
     texts.forEach((text)=> {     
@@ -270,23 +289,6 @@ carousels.forEach((carousel, i)=> {
         }, 1);
     }) 
 });
-
-let bg_bt = document.querySelectorAll('.bg_bt');
-let btn_card = document.querySelectorAll('.btn_card');
-let text_gradient = document.querySelectorAll('.text_gradient');
-
-btn_card.forEach((btn, i)=> {
-    btn.addEventListener('mouseover',()=>{
-        bg_bt[i].style.animationName= 'btn_card';
-        text_gradient[i].style.background = 'white';
-        text_gradient[i].style.webkitBackgroundClip= '';
-    });
-    btn.addEventListener('mouseout',()=>{
-        bg_bt[i].style.animationName= '';
-        text_gradient[i].style.background = '-webkit-linear-gradient(orange,red)';
-        text_gradient[i].style.webkitBackgroundClip= 'text';
-    });
-});
 }
 
 let cart_btn = document.querySelectorAll('.cart_button');
@@ -302,6 +304,7 @@ cart_btn.forEach((btn, i)=> {
 // detail
 let carousel_detail = document.querySelector('.carousel_detail');
 if (carousel_detail) {
+    button();
 let reset_d = carousel_detail.querySelectorAll('img');
 let miniature_detail = document.querySelectorAll('.miniature_detail');
 let per_d = -100;
@@ -430,6 +433,7 @@ invia.addEventListener('click',()=>{
         }
     });
 })
+ inputs = document.querySelectorAll('input');
 inputs.forEach((input)=> {
     input.addEventListener('input',()=>{
         invia.innerHTML= "salva";
@@ -852,14 +856,38 @@ permanence_times.forEach((time,i)=> {
     let h = login[3] -logout[3];
     let min = login[4] -logout[4];
     let s = login[5] -logout[5];
-    let time_spend = `${y}:`+`${m}:`+`${d}:`+`${h}:`+`${min}:`+`${s}`;
+    if (y == 0) {
+        y = '';
+    }else if (y < 10 && y > -10) {
+        y = "0"+y+":";
+    }
+    if (m == 0 && m > -10) {
+        m = '';
+    }else if (m < 10) {
+        m = "0"+m+":";
+    }
+    if (d == 0 && d > -10) {
+        d = '';
+    }else if (d < 10) {
+        d = "0"+d+":";
+    }
+     if (h < 10 && h > -10) {
+        h = "0"+h;
+    }
+    if (min < 10 && m > -10) {
+        min = "0"+min;
+    }
+     if (s < 10 && s > -10) {
+        s = "0"+s;
+    }
+    let time_spend = `${y}`+`${m}`+`${d}`+`${h}:`+`${min}:`+`${s}`;
+    time_spend = time_spend.replace('-','');
     time.innerHTML = time_spend.replace('-','');
 });
 let user_expands = document.querySelectorAll('.user_expand');
-let expand = document.querySelectorAll('.expand');
+let expand = document.querySelectorAll('.user_container');
 user_expands.forEach((user_expand,i)=> {
     expand[i].addEventListener('click',()=>{
-        console.log('ok');
         user_expand.classList.toggle('position-absolute');
     })
 });
@@ -877,7 +905,31 @@ let d = new Date().getDate() - ofline_array[2];
 let h = new Date().getHours()  - ofline_array[3];
 let min = new Date().getMinutes() - ofline_array[4];
 let s = new Date().getSeconds() - ofline_array[5];
-let current_data = `${y}:`+`${m}:`+`${d}:`+`${h}:`+`${min}:`+`${s}`;
+if (y == 0 && y > -10) {
+    y = '';
+}else if (y < 10) {
+    y = "0"+y+":";
+}
+if (m == 0 && m > -10) {
+    m = '';
+}else if (m < 10) {
+    m = "0"+m+":";
+}
+if (d == 0 && d > -10) {
+    d = '';
+}else if (d < 10) {
+    d = "0"+d+":";
+}
+ if (h < 10 && h > -10) {
+    h = "0"+h;
+}
+if (min < 10 && min > -10) {
+    min = "0"+min;
+}
+ if (s < 10 && s > -10) {
+    s = "0"+s;
+}
+let current_data = `${y}`+`${m}`+`${d}`+`${h}:`+`${min}:`+`${s}`;
 current_data = current_data.replace('-','');
 ofline.innerHTML = current_data;
 });

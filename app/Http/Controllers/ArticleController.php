@@ -39,13 +39,6 @@ class ArticleController extends Controller
         }
         return view('article_detail',compact('article','profile','more_info'));
     }
-
-    public function profile_detail(Article $article)
-    {
-        $var = 0;
-        return view('article_detail',compact('article','var'));
-    }
-
     /**
      * Show the form for creating a new resource.
      */

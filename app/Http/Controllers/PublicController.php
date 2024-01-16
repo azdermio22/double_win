@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Image;
 use App\Mail\password;
 use App\Models\Article;
+use App\Models\UserBuy;
 use App\Models\UserTime;
 use App\Models\UsersImage;
 use Illuminate\Http\Request;
@@ -39,7 +40,10 @@ class PublicController extends Controller
         }
         $users = User::all();
         $user_time = UserTime::all()->sortByDesc('id');
-        return view('dashboard',compact('profile','users','user_time'));
+        $user_image = UsersImage::all();
+        $user_buy = UserBuy::all();
+        $articles = Article::all();
+        return view('dashboard',compact('profile','users','user_time','user_image','user_buy','articles'));
     }
     function logout(){
         return redirect(route('logout'));

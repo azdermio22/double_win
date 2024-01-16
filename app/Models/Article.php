@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\Image;
 use App\Models\Veicle;
+use App\Models\UserBuy;
 use App\Models\Categori;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -46,5 +47,10 @@ class Article extends Model
     public function veicle(): BelongsTo
     {
         return $this->belongsTo(Veicle::class);
+    }
+
+    public function userbuy()
+    {
+        return $this->belongsToMany(UserBuy::class);
     }
 }
