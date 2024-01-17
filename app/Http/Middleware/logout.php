@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\UserBuy;
 use App\Models\UserTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

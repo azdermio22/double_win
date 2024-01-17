@@ -39,8 +39,9 @@ Route::get('/cart',[CartController::class,'cart'])->name('cart')->middleware('au
 Route::get('/product-checkout/{article}',[BuyController::class, 'checkout'])->name('checkout');
 Route::get('/product-checkout-sucess/{article}',[BuyController::class, 'checkout_sucess'])->name('chekout_sucess');
 Route::get('/product-checkout-error',[BuyController::class, 'checkout_error'])->name('chekout_error');
-Route::get('/dashboard',[PublicController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard',[PublicController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 Route::post('/logout',[AuthenticatedSessionController::class, 'destroy'])->name('logout2')->middleware(logout::class);
+
 
 
 

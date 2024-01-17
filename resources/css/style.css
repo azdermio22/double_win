@@ -1313,14 +1313,19 @@ border-radius: 15px;
     height: 30px;
     width: 30px;
     border-radius: 100%;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png');
+    background-size: cover;
 }
 .user_container{
     overflow: hidden;
     position: relative;
-    min-height: 45px;
+    min-height: 47px;
     width: 100%;
     margin-top: 5px;
     background-color: rgb(243, 243, 243);
     cursor: pointer;
+}
+.user_expand{
+    top: 0;
 }
 /* end dashboard */

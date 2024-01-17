@@ -24,6 +24,7 @@
                     </div>
                 </div>
             </div>
+            </div>
             <div class="col-6 d-flex align-items-center flex-column description">
                 <h1 class="my-4">{{$article->name}}</h1>
                 <div class="position-relative">

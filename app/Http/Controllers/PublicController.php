@@ -19,17 +19,38 @@ class PublicController extends Controller
     function home() {
         $articles = Article::all();
         $images = Image::all();
-
         $profile = 0;
         if (Auth::user()) {
             $profile = UsersImage::find(Auth::user()->id);
-
-                $prova = UserTime::create([
+            $create = 0;
+            $user_time = UserTime::all()->where('user_id', Auth::user()->id);
+            $user_time_index = [];
+            if (count($user_time) > 0) {
+                foreach ($user_time as $time) {
+                    array_push($user_time_index, $time);
+                }
+                for ($i=0; $i < count($user_time); $i++) { 
+                    if ($user_time_index[$i]->last_logout != null) {
+                        $create = 1;
+                    }else{
+                        $create = 0;
+                        $i = count($user_time_index);
+                    }
+                }
+                if ($create == 1) {
+                    UserTime::create([
+                        'user_id' => Auth::user()->id,
+                        'last_login' => Carbon::now('CET'),
+                        'last_logout' => null,
+                    ]);
+                }
+            }else{
+                UserTime::create([
+                    'user_id' => Auth::user()->id,
                     'last_login' => Carbon::now('CET'),
                     'last_logout' => null,
-                    'user_id' => Auth::user()->id,
                 ]);
-
+            }
         }
         return view('welcome',compact('articles','images','profile'));
     }
@@ -41,9 +62,9 @@ class PublicController extends Controller
         $users = User::all();
         $user_time = UserTime::all()->sortByDesc('id');
         $user_image = UsersImage::all();
-        $user_buy = UserBuy::all();
+        $user_buys = UserBuy::all();
         $articles = Article::all();
-        return view('dashboard',compact('profile','users','user_time','user_image','user_buy','articles'));
+        return view('dashboard',compact('profile','users','user_time','user_image','user_buys','articles'));
     }
     function logout(){
         return redirect(route('logout'));

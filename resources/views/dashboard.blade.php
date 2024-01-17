@@ -25,35 +25,47 @@
                     <div class="user_expand position-absolute w-100">
                 @foreach ($user_time as $i => $time)
                     @if ($time->user_id == $user->id)            
-                <div class="row p-2 justify-content-center">
-                    @foreach ($user_image as $image)                     
-                    @if ($image->user_id == $user->id)
-                    <div class="col-3"><div class="das_img_container"><img class="h-100 w-100 rounded-circle" src="{{Storage::url($image->image)}}" alt=""></div></div>
-                    @else
-                    <div class="col-3"><div class="das_img_container"><img class="h-100 w-100 rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Windows_10_Default_Profile_Picture.svg/2048px-Windows_10_Default_Profile_Picture.svg.png" alt=""></div></div>
-                    @endif
-                    @endforeach
-                    <div class="col-3">{{$user->name}}</div>
+                <div class="row p-2 justify-content-center align-items-center">
+                    <div class="col-3 d-flex align-items-center">
+                        <div class="das_img_container">
+                        @foreach ($user_image as $image)                     
+                        @if ($image->user_id == $user->id)
+                        <img class="h-100 w-100 rounded-circle" src="{{Storage::url($image->image)}}" alt="">
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                    <div class="col-3 d-flex justify-content-center align-items-center">{{$user->name}}</div>
                     @if ($time->last_logout != null)
                     <div class="col-3 permanence_time">
                         <div class="last_login">{{$time->last_login}}</div>
                         <div class="last_logout">{{$time->last_logout}}</div>
                     </div>
                         @else
-                        <div class="col-3"></div>
+                        <div class="col-3 d-flex justify-content-center align-items-center medium_permanence_time"></div>
                         @endif
                         @if ($time->last_logout != null && $counter == 0)
                         <?php $counter = 1?>                       
-                        <div class="col-3 ofline text-danger">{{$time->last_logout}}</div>
+                        <div class="col-3 ofline text-danger d-flex justify-content-center align-items-center">{{$time->last_logout}}</div>
                         @elseif ($counter == 0)
                         <?php $counter = 1?>
-                        <div class="col-3 text-success">online</div>
-                        @else                       
-                        @foreach ($articles as $article)
-                            @if ($user_buy[0]->article_id == $article->id)
-                            <div class="col-3">{{$article->price}}$</div>
+                        <div class="col-3 text-success d-flex justify-content-center align-items-center">online</div>
+                        @else 
+                        <div class="col-3 user_purcase">
+                            <?php $counter_price = 0?>
+                            @if (count($user_buys) > 0)
+                            @foreach ($user_buys as $i => $user_buy)
+                            @if ($user_buy->user_id == $user->id && $user_buy->created_at > $time->last_login && $user_buy->created_at < $time->last_logout)
+                            @foreach ($articles as $article)
+                                @if ($article->id == $user_buy->article_id)
+                                <?php $couter_price = 1?>
+                                <p>{{$article->price}}</p>
+                                @endif
+                            @endforeach
                             @endif
-                        @endforeach
+                            @endforeach
+                            @endif                   
+                    </div>
                         @endif
                     </div>
                     @endif

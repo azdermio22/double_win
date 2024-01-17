@@ -880,7 +880,7 @@ permanence_times.forEach((time,i)=> {
      if (s < 10 && s > -10) {
         s = "0"+s;
     }
-    let time_spend = `${y}`+`${m}`+`${d}`+`${h}:`+`${min}:`+`${s}`;
+    let time_spend = `${y}`+`${m}`+`${d}`+`${h}:`+`${min}:`+`${s}s`;
     time_spend = time_spend.replace('-','');
     time.innerHTML = time_spend.replace('-','');
 });
@@ -929,8 +929,42 @@ if (min < 10 && min > -10) {
  if (s < 10 && s > -10) {
     s = "0"+s;
 }
-let current_data = `${y}`+`${m}`+`${d}`+`${h}:`+`${min}:`+`${s}`;
+let current_data = `${y}`+`${m}`+`${d}`+`${h}:`+`${min}:`+`${s}s`;
 current_data = current_data.replace('-','');
 ofline.innerHTML = current_data;
+});
+let user_purcases = document.querySelectorAll('.user_purcase');
+user_purcases.forEach((user_purcase)=> {
+    let prices = user_purcase.querySelectorAll('p');
+    let total = 0;
+    prices.forEach((price)=> {
+        total += +price.innerHTML;
+    });
+    user_purcase.innerHTML = total;
+});
+
+let medium_permanence_time = document.querySelectorAll('.medium_permanence_time');
+user_expands.forEach((user_expand, i)=> {
+    let medium_time = 0;
+    let sessions = user_expand.querySelectorAll('.row');
+    sessions.forEach((session, i)=> {
+        if (i != 0) {        
+            let col_time = session.querySelector('.permanence_time');
+            col_time = col_time.innerHTML.replace('s','');
+            col_time = col_time.split(":");
+            let h = col_time[0] * 3600;
+            let min = col_time[1] * 60;
+            medium_time += (+h) + (+min) + (+col_time[2]);
+        }
+    });
+    medium_time /= (sessions.length - 1);
+    medium_time = `${Math.round(medium_time)}`;
+    if (medium_time.length == 3) {
+        medium_time /= 60;
+    }else if (medium_time.length == 4) {
+        medium_time /= 3600;
+        medium_time /= 60;
+    }
+    medium_permanence_time[i].innerHTML = Math.round(medium_time);
 });
 // end dashboard
