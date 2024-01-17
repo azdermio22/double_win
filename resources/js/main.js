@@ -965,6 +965,36 @@ user_expands.forEach((user_expand, i)=> {
         medium_time /= 3600;
         medium_time /= 60;
     }
-    medium_permanence_time[i].innerHTML = Math.round(medium_time);
+    medium_permanence_time[i].innerHTML = medium_time.toFixed(2).replace('.',':')+'s';
+});
+
+
+
+// graphic
+let graphic_fragments = document.querySelectorAll('.graphic_fragment');
+let bottom_index_fragments = document.querySelectorAll('.bottom_index_fragment');
+let fragment_increment = 100 / last_logout.length;
+let fragment_percentage = 0;
+graphic_fragments.forEach((fragment, fi)=> {
+    if (fi > 0) {   
+    }
+    last_login.forEach((login, i)=> {
+        login = login.innerHTML.split(/[:, ]+/); 
+        let logout = last_logout[i].innerHTML.split(/[:, ]+/);   
+        if (bottom_index_fragments[fi].innerHTML == login[1]) {
+            fragment_percentage += fragment_increment;
+        }
+        let fis = fi;
+        if (fi > 0) {
+            fis = fi-1;
+        }
+        if (bottom_index_fragments[fis].innerHTML == logout[1]) {
+            fragment_percentage -= fragment_increment;
+        }
+    });
+     fragment.querySelector('.graphic_rappresentation').style.height = fragment_percentage+"%";
+     if (fi > 0 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') > fragment_percentage) {
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_boul_up')
+     }
 });
 // end dashboard

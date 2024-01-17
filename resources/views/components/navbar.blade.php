@@ -50,7 +50,7 @@
             <div class="link_hover"></div>
         </div>
     </form>
-    <a href="{{route('dashboard')}}"><i class="bi bi-gear-fill"></i></a>
+    <a class="nav_link" href="{{route('dashboard')}}"><i class="bi bi-gear-fill"></i></a>
     @if (Route::currentRouteName() != "profile")       
     <div class="position-relative d-flex justify-content-center">
         @if ($profile)    
