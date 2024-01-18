@@ -16,6 +16,14 @@
         </div>
     </header>
     <main>
+        <div class="categori_title">abbigliamento</div>
+        <div class="card_row row justify-content-evenly">
+            @foreach ($articles as $article)
+            @if ($article->categori_id == 1)
+            <x-card :article="$article" :images="$images"></x-card>
+            @endif
+            @endforeach
+          </div>
         <div class="container-fluid p-0">
             <div class="categori_title">veicoli</div>
             <div class="card_row row justify-content-evenly">

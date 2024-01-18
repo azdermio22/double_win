@@ -1391,7 +1391,6 @@ border-radius: 15px;
 }
 .graphic_rappresentation{
     background-color: rgb(255, 201, 100);
-    border-top: none;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -1410,15 +1409,16 @@ border-radius: 15px;
     background-color: rgb(255, 201, 100);
 }
 .line_boul_up{
-    width: 135%;
+    width: 95%;
     aspect-ratio: 1/1;
     border: 3px solid orange;
     border-top: none;
     border-bottom-left-radius: 100%;
     border-bottom-right-radius: 100%;
     position: absolute;
-    top: -10px;
+    bottom: 100%;
     background-color: white;
+    box-shadow: 0px 10px 0px 7px rgb(255, 201, 100);
 }
 .line_curved_up{
     width: 100%;
@@ -1429,10 +1429,11 @@ border-radius: 15px;
     border-bottom-right-radius: 100%;
     position: absolute;
     top: -100%;
-    background-color: white
+    background-color: white;
+    box-shadow: 10px 7px 0px 7px rgb(255, 201, 100);
 }
 .line_curved_down{
-    width: 100%;
+    width: 95%;
     height: 100%;
     border: 3px solid orange;
     border-top: none;
@@ -1440,6 +1441,7 @@ border-radius: 15px;
     border-bottom-left-radius: 100%;
     position: absolute;
     bottom: 100%;
-    background-color: white
+    background-color: white;
+    box-shadow: -10px 7px 0px 7px rgb(255, 201, 100);
 }
 /* end dashboard */

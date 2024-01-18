@@ -973,26 +973,38 @@ user_expands.forEach((user_expand, i)=> {
 // graphic
 let graphic_fragments = document.querySelectorAll('.graphic_fragment');
 let bottom_index_fragments = document.querySelectorAll('.bottom_index_fragment');
-let fragment_increment = 100 / last_logout.length;
+let day = new Date().getDate();
+let last_logout_day = [];
+last_logout.forEach((logout)=> {
+    logout = logout.innerHTML.split(/[:, ,-]+/);
+    if (logout[2] == day) {
+        last_logout_day.push(logout);
+    }
+});
+let fragment_increment = 100 / last_logout_day.length;
 let fragment_percentage = 0;
 graphic_fragments.forEach((fragment, fi)=> {
-    if (fi > 0) {   
-    }
+    let graphic_set = 0;
     last_login.forEach((login, i)=> {
-        login = login.innerHTML.split(/[:, ]+/); 
-        let logout = last_logout[i].innerHTML.split(/[:, ]+/);   
-        if (bottom_index_fragments[fi].innerHTML == login[1]) {
+        login = login.innerHTML.split(/[:, ,-]+/); 
+        let logout = last_logout[i].innerHTML.split(/[:, ,-]+/);
+        if (bottom_index_fragments[fi].innerHTML == login[3] && login[2] == day) {
             fragment_percentage += fragment_increment;
         }
         let fis = fi;
         if (fi > 0) {
             fis = fi-1;
         }
-        if (bottom_index_fragments[fis].innerHTML == logout[1]) {
+        if (bottom_index_fragments[fis].innerHTML == logout[3] && logout[2] == day) {
             fragment_percentage -= fragment_increment;
         }
+        graphic_set = 1;
     });
+    if (graphic_set = 1) {
      fragment.querySelector('.graphic_rappresentation').style.height = fragment_percentage+"%";
+     if (fragment.querySelector('.graphic_rappresentation').style.height != "0%") {
+        fragment.querySelector('.graphic_rappresentation').style.borderTop = "3px solid orange";
+     }
 
      if (fi > 0 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') > fragment_percentage) {
         graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_boul_down');
@@ -1006,9 +1018,9 @@ graphic_fragments.forEach((fragment, fi)=> {
  
      }else if (fi > 1 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') < fragment_percentage && graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','') > graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','')) {
         graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_boul_up');
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').style.height = (graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','') / graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%',''))*100 -100 +"%";
 
-     }else if(fi > 1){
-        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').style.borderTop = '3px solid orange';
      }
+    }
 });
 // end dashboard
