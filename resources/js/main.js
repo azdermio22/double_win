@@ -993,8 +993,22 @@ graphic_fragments.forEach((fragment, fi)=> {
         }
     });
      fragment.querySelector('.graphic_rappresentation').style.height = fragment_percentage+"%";
+
      if (fi > 0 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') > fragment_percentage) {
-        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_boul_up')
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_boul_down');
+        
+    }else if (fi > 1 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') < fragment_percentage && graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','') == graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','')) {
+       graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_curved_up');
+
+    }else if (fi > 1 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') == fragment_percentage && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') < graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','')) {
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_curved_down');
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').style.height = (graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','') / graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%',''))*100 -100 +"%";
+ 
+     }else if (fi > 1 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') < fragment_percentage && graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','') > graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','')) {
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_boul_up');
+
+     }else if(fi > 1){
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').style.borderTop = '3px solid orange';
      }
 });
 // end dashboard
