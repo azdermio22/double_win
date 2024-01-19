@@ -83,30 +83,30 @@
         <div class="d-flex graphic_container1">
         <div class="left_index"></div>
         <div class="graphic_container2">
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
-            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
+            <div class="graphic_fragment"><div class="graphic_rappresentation"><div class="line_boul"></div><div class="line_boul1"></div><div class="line_boul2"></div></div></div>
         </div>
     </div>
         <div class="bottom_index">

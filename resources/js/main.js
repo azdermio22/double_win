@@ -377,6 +377,31 @@ espandi.addEventListener('click',()=>{
         cou = 0; 
     }
 })
+let left_arrow = document.querySelector('.detail_left_arrow_container');
+let right_arrow = document.querySelector('.detail_right_arrow_container');
+let slider = document.querySelector('.miniature_detail_slider');
+let img = slider.querySelectorAll('.miniature_detail').length;
+let img_number = 0;
+let counter = 4;
+if (img > 4) {
+    right_arrow.classList.remove("d-none");
+    left_arrow.classList.remove("d-none");
+right_arrow.addEventListener('click',()=>{
+    if (counter != img) {
+        img_number += 115;
+        slider.style.left = "-"+img_number+"px";
+        counter++;
+    }
+});
+left_arrow.addEventListener('click',()=>{
+    if (counter > 4) {
+        console.log(img_number);
+        img_number -= 115;
+        slider.style.left = "-"+img_number+"px";
+        counter--;
+    }
+});
+}
 }
 // end detail
 // profile
@@ -945,6 +970,7 @@ user_purcases.forEach((user_purcase)=> {
 
 let medium_permanence_time = document.querySelectorAll('.medium_permanence_time');
 user_expands.forEach((user_expand, i)=> {
+    if (user_expands[i].querySelectorAll('.row').length > 1) {
     let medium_time = 0;
     let sessions = user_expand.querySelectorAll('.row');
     sessions.forEach((session, i)=> {
@@ -966,6 +992,7 @@ user_expands.forEach((user_expand, i)=> {
         medium_time /= 60;
     }
     medium_permanence_time[i].innerHTML = medium_time.toFixed(2).replace('.',':')+'s';
+}
 });
 
 
@@ -988,25 +1015,30 @@ graphic_fragments.forEach((fragment, fi)=> {
     last_login.forEach((login, i)=> {
         login = login.innerHTML.split(/[:, ,-]+/); 
         let logout = last_logout[i].innerHTML.split(/[:, ,-]+/);
-        if (bottom_index_fragments[fi].innerHTML == login[3] && login[2] == day) {
+        if (bottom_index_fragments[fi].innerHTML == login[3].replace('0','') && login[2] == day) {
             fragment_percentage += fragment_increment;
         }
         let fis = fi;
         if (fi > 0) {
             fis = fi-1;
         }
-        if (bottom_index_fragments[fis].innerHTML == logout[3] && logout[2] == day) {
+        if (bottom_index_fragments[fis].innerHTML == logout[3].replace('0','') && logout[2] == day) {
             fragment_percentage -= fragment_increment;
         }
         graphic_set = 1;
     });
     if (graphic_set = 1) {
-     fragment.querySelector('.graphic_rappresentation').style.height = fragment_percentage+"%";
+     fragment.querySelector('.graphic_rappresentation').style.height = fragment_percentage-2.5+"%";
      if (fragment.querySelector('.graphic_rappresentation').style.height != "0%") {
-        fragment.querySelector('.graphic_rappresentation').style.borderTop = "3px solid orange";
+        fragment.querySelector('.graphic_rappresentation').style.borderTop = "3px solid orange";  
      }
+     
+     if (fi > 1 && graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','') == 0 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') > 0 && graphic_fragments[fi].querySelector('.graphic_rappresentation').style.height.replace('%','') == 0) {
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('graphic_zero_left');
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul1').classList.add('line_boul_down');
+        graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul2').classList.add('graphic_zero_right');
 
-     if (fi > 0 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') > fragment_percentage) {
+     }else if (fi > 1 && graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','') < graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') > fragment_percentage) {
         graphic_fragments[fi-1].querySelector('.graphic_rappresentation').querySelector('.line_boul').classList.add('line_boul_down');
         
     }else if (fi > 1 && graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','') < fragment_percentage && graphic_fragments[fi-2].querySelector('.graphic_rappresentation').style.height.replace('%','') == graphic_fragments[fi-1].querySelector('.graphic_rappresentation').style.height.replace('%','')) {

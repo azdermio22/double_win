@@ -13,6 +13,8 @@
                         </div>
                     </div>
                     <div class="row miniature_slider_container">
+                        <div class="detail_left_arrow_container d-none"><div class="left_arrow_detail"></div></div>
+                        <div class="detail_right_arrow_container d-none"><div class="right_arrow_detail"></div></div>
                         <div class="w-100 h-100 p-0 position_relative">
                             <div class="miniature_detail_slider">
                                 @foreach ($article->images as $image)
